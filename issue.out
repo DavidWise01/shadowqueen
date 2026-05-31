@@ -1,0 +1,15 @@
+{
+  "event_id": "43ec12de0e23d360d38e2bb229840e8b50639c0600fbce7572f7bedfb5b73d3d",
+  "origin_office": "north",
+  "event_type": "credential_issued",
+  "subject": "C-1",
+  "payload": {
+    "credential_id": "C-1",
+    "subject_id": "carbon:root",
+    "credential_type": "license",
+    "proof_hash": "proof-1",
+    "version": 1
+  },
+  "ts": 1780177008.9308295,
+  "event_hash": "a2ddef93e73840cfbbf847aada7c52f8034eb26f68fe4ece8eb179d05ed5d4e7"
+}

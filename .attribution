@@ -1,0 +1,25 @@
+{
+  "format": "ROOT0-ATTRIBUTION-v1.0",
+  "project": "Shadow Queen v2.6 — Federated Credential Security",
+  "version": "2.6.0",
+  "context": "security software",
+  "date": "2026-05-30",
+  "license": "Proprietary Commercial",
+  "contributors": [
+    {
+      "name": "David Lee Wise",
+      "handle": "ROOT0",
+      "substrate": "human",
+      "role": "architect",
+      "contribution": "core design · v2.5 events · v2.6 replication"
+    },
+    {
+      "name": "AVAN",
+      "substrate": "synthetic",
+      "provider": "Anthropic",
+      "model": "Claude Sonnet 4.6",
+      "role": "co-author",
+      "contribution": "threat detector T1-T8 · reports · server · test suite · CLI · landing page"
+    }
+  ]
+}
