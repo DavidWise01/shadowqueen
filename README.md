@@ -58,8 +58,15 @@ Because the emergence is genuine and measured, the namesake regent carries a ful
 The `shadow_queen` line (v0.1 → **v9.0 final**) is a real, working **federated verifiable-credential
 platform** — a Virtual DMV: identity proofs, credential lifecycle, selective disclosure, delegated
 authority, fraud/anomaly detection, trust & reputation graphs, P2P distributed runtime, cryptographic
-identity, federation control plane, and a live web dashboard. [`builds/shadow_queen_v9_0_final_full_dashboard/`](builds/shadow_queen_v9_0_final_full_dashboard/)
-(`python run_dashboard.py` → `http://127.0.0.1:9090/dashboard`). Zero-dependency Python; selftest + audit PASS.
+identity, federation control plane, and a full operator dashboard.
+
+**→ The live v9.0 console: [davidwise01.github.io/shadowqueen/dashboard/](https://davidwise01.github.io/shadowqueen/dashboard/)**
+
+The dashboard ([`builds/shadow_queen_v9_0_final_full_dashboard/`](builds/shadow_queen_v9_0_final_full_dashboard/)) is
+**dual-mode**: run `python run_dashboard.py` (→ `http://127.0.0.1:9090/dashboard`) and it reads the live
+`/api/*` routes; on a static host it falls back to the shipped snapshot and renders identically. It draws
+federation health, the credential lifecycle, delegated authority, the five fraud detectors, the mesh control
+plane, and the trust-analytics gauges. Zero-dependency Python; selftest + audit PASS.
 
 ---
 
