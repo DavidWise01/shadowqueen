@@ -1,0 +1,6 @@
+mode,cycles,final_bodies,avg_structural_stability,min_structural_stability,avg_vitality,avg_viability,avg_field_charge,max_field_charge,avg_lattice_coherence,max_recursion_depth,closures,recursions,suspicious_closures,dream_cycles,rem_cycles,healing_cycles,new_variants,unknown_events,alpha_alerts,omega_alerts,avg_lineage_density,avg_archetype_resonance
+normal,420,40,0.992883,0.84552,0.847531,0.991367,0.43503,0.59128,0.988391,0,420,0,0,420,420,420,0,0,0,0,0.90533,0.956585
+stress,420,40,0.992793,0.845483,0.868622,0.991535,0.470465,0.591322,0.990343,0,420,0,0,420,420,420,0,0,0,0,0.90533,0.95779
+extreme,420,42,0.992447,0.845295,0.892972,0.991781,0.511109,0.593784,0.991943,0,420,0,0,420,420,420,2,12,0,0,0.90533,0.956115
+contradiction,420,40,0.992266,0.845235,0.876624,0.991856,0.47905,0.593752,0.99222,0,420,0,0,420,420,420,0,0,0,0,0.90533,0.956769
+drift,420,40,0.992906,0.845557,0.870303,0.991554,0.472854,0.59069,0.990835,0,420,0,0,420,420,420,0,8,0,0,0.90533,0.95716

@@ -1,0 +1,30 @@
+SELFTEST
+SELFTEST PASS
+
+SCAN
+
+DAEMON
+{
+  "by_severity": {
+    "high": 4,
+    "info": 3,
+    "medium": 1
+  },
+  "db_integrity": "ok",
+  "events": 8,
+  "heartbeats": 2,
+  "integrity_records": 1
+}
+
+STATS
+{
+  "by_severity": {
+    "high": 4,
+    "info": 3,
+    "medium": 1
+  },
+  "db_integrity": "ok",
+  "events": 8,
+  "heartbeats": 2,
+  "integrity_records": 1
+}

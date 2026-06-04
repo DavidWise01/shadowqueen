@@ -1,0 +1,77 @@
+SELFTEST PASS
+{
+  "age_state": {
+    "ok": true,
+    "presentation": "presentation:010bd9c065fac6cc",
+    "status": "ready",
+    "disclosed": {
+      "dob": "1981-06-21",
+      "state": "MN"
+    },
+    "redacted": [
+      "address",
+      "class",
+      "full_name",
+      "license_number",
+      "trust_score"
+    ],
+    "proof_hash": "010bd9c065fac6ccfcd8d03a0a119c0ba5ea21275989b4656a84bc23eb62558c",
+    "errors": []
+  },
+  "full": {
+    "ok": true,
+    "presentation": "presentation:f217759d368dc3a6",
+    "status": "ready",
+    "disclosed": {
+      "full_name": "Root User",
+      "dob": "1981-06-21",
+      "state": "MN",
+      "class": "D"
+    },
+    "redacted": [
+      "address",
+      "license_number",
+      "trust_score"
+    ],
+    "proof_hash": "f217759d368dc3a66fcca49b6747f0d27c1a0d955518be72af4c7fc34952f827",
+    "errors": []
+  },
+  "blocked": {
+    "ok": false,
+    "presentation": "presentation:71ecaf9ba4cfdfdb",
+    "status": "blocked",
+    "disclosed": {
+      "state": "MN"
+    },
+    "redacted": [
+      "address",
+      "class",
+      "dob",
+      "full_name",
+      "license_number",
+      "trust_score"
+    ],
+    "proof_hash": "71ecaf9ba4cfdfdb2fa32e2911841504f9b664b56f7b6686f1e64c6d6f1fe754",
+    "errors": [
+      "trust_below_minimum"
+    ]
+  }
+}
+{
+  "owner": "citizen:root",
+  "credentials": 1,
+  "policies": 3,
+  "presentations": 3,
+  "events": 7,
+  "ledger": {
+    "ok": true,
+    "entries": 7,
+    "head": "9ced778ff56f5397ad1c132b3221f0e952afb5d4cafa760b7acc9e60fe179a0c"
+  },
+  "db_integrity": "ok"
+}
+{
+  "ok": true,
+  "entries": 7,
+  "head": "9ced778ff56f5397ad1c132b3221f0e952afb5d4cafa760b7acc9e60fe179a0c"
+}

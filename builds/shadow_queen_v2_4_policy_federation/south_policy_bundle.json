@@ -1,0 +1,48 @@
+{
+  "office_id": "south",
+  "version": 2,
+  "rules": [
+    {
+      "rule_id": "issue.registrar",
+      "action": "issue",
+      "role": "registrar",
+      "allow": true,
+      "conditions": {
+        "min_trust": 0.5
+      },
+      "reason": "south registrar may issue",
+      "priority": 100,
+      "version": 2
+    },
+    {
+      "rule_id": "renew.registrar",
+      "action": "renew",
+      "role": "registrar",
+      "allow": true,
+      "conditions": {
+        "status": [
+          "active",
+          "suspended"
+        ],
+        "window_days": 180
+      },
+      "reason": "south renewal window",
+      "priority": 100,
+      "version": 2
+    },
+    {
+      "rule_id": "revoke.clerk.deny",
+      "action": "revoke",
+      "role": "clerk",
+      "allow": true,
+      "conditions": {
+        "status": [
+          "suspended"
+        ]
+      },
+      "reason": "south permits clerk revoke",
+      "priority": 100,
+      "version": 2
+    }
+  ]
+}

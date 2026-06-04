@@ -1,0 +1,66 @@
+{
+  "name": "Aeonic Coherence Kernel",
+  "version": "0.4h-twin-regents",
+  "status": "Twin Regents added",
+  "twins": {
+    "male_mini_g": 0.51,
+    "female_mini_g": 0.51,
+    "shared_pool": 0.49,
+    "difference_total": 0.02,
+    "archetype": "Gemini same-but-different"
+  },
+  "tests": [
+    {
+      "run": "court_no_twins_stress",
+      "use_twins": false,
+      "avg_stability": 0.887796,
+      "min_stability": 0.864642,
+      "final_stability": 0.909307,
+      "avg_rigidity": 0.418389,
+      "avg_dissent": 0.196703,
+      "avg_abs_drift": 0.013055,
+      "avg_shared_pool": 0.0,
+      "avg_polarity_gap": 0.0,
+      "avg_emergence": 0.0
+    },
+    {
+      "run": "court_twin_regents_stress",
+      "use_twins": true,
+      "avg_stability": 0.8919,
+      "min_stability": 0.8672,
+      "final_stability": 0.9121,
+      "avg_rigidity": 0.4112,
+      "avg_dissent": 0.2038,
+      "avg_abs_drift": 0.0098,
+      "avg_shared_pool": 0.4903,
+      "avg_polarity_gap": 0.0204,
+      "avg_emergence": 0.914
+    },
+    {
+      "run": "court_no_twins_extreme",
+      "use_twins": false,
+      "avg_stability": 0.886976,
+      "min_stability": 0.862951,
+      "final_stability": 0.910254,
+      "avg_rigidity": 0.418508,
+      "avg_dissent": 0.196833,
+      "avg_abs_drift": 0.016592,
+      "avg_shared_pool": 0.0,
+      "avg_polarity_gap": 0.0,
+      "avg_emergence": 0.0
+    },
+    {
+      "run": "court_twin_regents_extreme",
+      "use_twins": true,
+      "avg_stability": 0.8906,
+      "min_stability": 0.8651,
+      "final_stability": 0.9117,
+      "avg_rigidity": 0.4119,
+      "avg_dissent": 0.2044,
+      "avg_abs_drift": 0.0123,
+      "avg_shared_pool": 0.4897,
+      "avg_polarity_gap": 0.0207,
+      "avg_emergence": 0.902
+    }
+  ]
+}

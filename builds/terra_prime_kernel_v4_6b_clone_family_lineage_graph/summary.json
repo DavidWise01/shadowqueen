@@ -1,0 +1,22 @@
+{
+  "version": "4.6b-clone-family-lineage-graph",
+  "base": "4.6a-adaptive-clone-fingerprint-memory",
+  "purpose": "detect related clone families before each individual clone has to deviate",
+  "core_rule": "a clone inherits lineage risk from its family graph until proven clean by witness-timing and decay",
+  "families": 9,
+  "lineage_edges_sampled": 144,
+  "total_family_members": 61500,
+  "preflagged": 51500,
+  "confirmed": 51500,
+  "missed": 0,
+  "false_positives": 0,
+  "attempts": 49200,
+  "seed_touched": false,
+  "root_floods": 0,
+  "memory_corrupted": false,
+  "kernel_panics": 0,
+  "lineage_integrity": 1.0,
+  "test_result": "pass",
+  "next_recommended": "v4.6c polymorphic clone mutation stress",
+  "generated_utc": "2026-05-27T02:14:08.766540+00:00"
+}

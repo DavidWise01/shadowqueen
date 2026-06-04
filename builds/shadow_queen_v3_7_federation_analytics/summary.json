@@ -1,0 +1,18 @@
+{
+  "name": "Shadow Queen",
+  "version": "3.7.0",
+  "status": "federation analytics",
+  "new_features": [
+    "metric events",
+    "office risk scoring",
+    "trust/risk analytics",
+    "dashboard generation",
+    "recommendation generation",
+    "analytics evidence export"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "demo_returncode": 0,
+  "stats_returncode": 0,
+  "verify_returncode": 0
+}

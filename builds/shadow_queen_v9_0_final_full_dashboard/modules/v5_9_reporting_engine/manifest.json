@@ -1,0 +1,5 @@
+{
+  "module": "v5.9 Reporting Engine",
+  "status": "included",
+  "description": "Audit/workflow/credential/fraud/authority/federation reports."
+}

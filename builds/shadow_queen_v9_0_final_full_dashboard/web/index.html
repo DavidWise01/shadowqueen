@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>Shadow Queen v9.0 Final Dashboard</title><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{margin:0;background:#070711;color:#eee;font-family:Arial,Helvetica,sans-serif}
+header{padding:28px;background:#151526;border-bottom:1px solid #333}
+h1{margin:0;color:#d8b4fe}p{color:#bbb}
+main{padding:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:#171724;border:1px solid #34344a;border-radius:14px;padding:18px}
+h2{font-size:18px;margin:0 0 12px;color:#c084fc}.row{display:flex;justify-content:space-between;border-bottom:1px solid #303044;padding:7px 0;gap:12px}
+.row span{color:#ccc}.row strong{text-align:right}.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:#312e81;color:#ddd;margin-top:8px}
+footer{padding:24px;color:#aaa}
+</style></head><body><header><h1>Shadow Queen v9.0 Final</h1>
+<p>Final packaged dashboard for the distributed virtual DMV / identity-governance simulator.</p><span class="badge">Final Release Package</span></header>
+<main id="grid"></main><footer>Open directly, or run <code>python run_dashboard.py</code>.</footer>
+<script>
+const DATA = {"version": "9.0.0-final", "status": "operational-final", "federation": {"offices": 4, "healthy": 3, "degraded": 1, "leader": "office:north", "mesh_status": "operational"}, "activity": {"citizens": 100, "silicon_agents": 25, "credentials": 1000, "investigations": 100, "workflows": 5}, "credentials": {"active": 875, "revoked": 75, "expired": 50, "verification_success_rate": 0.982}, "authority": {"active_grants": 64, "revoked_grants": 9, "scope_denials": 14}, "fraud": {"duplicate_identity": 8, "forged_credential": 4, "revoked_credential_presented": 11, "authority_escalation": 3, "cross_office_conflict": 6}, "mesh": {"heartbeat": "active", "replication": "active", "cross_office_query": "active", "failover": "enabled", "leader_election": "enabled"}, "reports": {"audit": "generated", "workflow": "generated", "credential": "generated", "fraud": "generated", "authority": "generated", "federation": "generated"}, "analytics": {"mesh_health": 0.94, "revocation_propagation": 0.91, "investigation_throughput": 0.88, "trust_score": 0.9, "system_maturity": 0.99}};
+const sections = ["federation","activity","credentials","authority","fraud","mesh","reports","analytics"];
+function renderObj(obj){return Object.entries(obj).map(([k,v])=>`<div class="row"><span>${k}</span><strong>${typeof v==="object"?JSON.stringify(v):v}</strong></div>`).join("");}
+document.getElementById("grid").innerHTML=sections.map(s=>`<section class="card"><h2>${s}</h2>${renderObj(DATA[s])}</section>`).join("");
+</script></body></html>

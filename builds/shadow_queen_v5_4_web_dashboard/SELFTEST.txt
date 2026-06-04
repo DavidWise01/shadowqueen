@@ -1,0 +1,5 @@
+SELFTEST PASS
+AUDIT PASS
+web/index.html ok
+data/dashboard.json ok
+audit/audit_report.json ok

@@ -1,0 +1,56 @@
+{
+  "name": "Aeonic Coherence Kernel",
+  "version": "0.4c-shadow-queen",
+  "status": "one Shadow Queen over eight streams",
+  "rule": "queen governs pressure and balance; core still resolves",
+  "tests": [
+    {
+      "run": "shadow_queen_normal",
+      "agent_count": 4,
+      "stream_count": 8,
+      "cycles": 220,
+      "avg_stability": 0.965263,
+      "min_stability": 0.95081,
+      "final_stability": 0.965651,
+      "avg_adaptive_score": 0.83468,
+      "avg_rigidity": 0.464414,
+      "avg_dissent": 0.141936,
+      "avg_dominance": 0.184263,
+      "avg_queen_pressure": 0.066175,
+      "avg_visible_shadow_gap": 0.058416,
+      "final_hash": "a7ea7f3fcd63a9a8..."
+    },
+    {
+      "run": "shadow_queen_stress",
+      "agent_count": 4,
+      "stream_count": 8,
+      "cycles": 220,
+      "avg_stability": 0.960551,
+      "min_stability": 0.937322,
+      "final_stability": 0.949632,
+      "avg_adaptive_score": 0.835094,
+      "avg_rigidity": 0.458644,
+      "avg_dissent": 0.154125,
+      "avg_dominance": 0.179873,
+      "avg_queen_pressure": 0.07722,
+      "avg_visible_shadow_gap": 0.079685,
+      "final_hash": "95e0fe65d515974f..."
+    },
+    {
+      "run": "shadow_queen_extreme",
+      "agent_count": 4,
+      "stream_count": 8,
+      "cycles": 220,
+      "avg_stability": 0.958952,
+      "min_stability": 0.932397,
+      "final_stability": 0.954556,
+      "avg_adaptive_score": 0.835217,
+      "avg_rigidity": 0.456346,
+      "avg_dissent": 0.158924,
+      "avg_dominance": 0.178157,
+      "avg_queen_pressure": 0.080971,
+      "avg_visible_shadow_gap": 0.086797,
+      "final_hash": "1f2c9382c5d8892b..."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+# v4.5h Silicon Stack Integration
+
+- **version**: 4.5h-silicon-stack-integration
+- **base**: 4.5g-live-io-soak-test
+- **integrated_source**: Building-diagram-with-labels (6).html
+- **source_sha256**: ef8e1e1d0d24cd8c002f09f397dab370116d06bac8f5801d055c03caaa04da24
+- **source_title**: Envy 4+1 Fractal Sandbox Engine - Die Hard Pulse Wiggle
+- **silicon_model**: Envy 4+1 Fractal Sandbox / Die Hard Pulse Wiggle
+- **stack_levels**: (-3) SMM/Root -> (-2) Hypervisor -> (-1) Kernel -> (0) User Space -> (1) Quantum Dot; (-4) PANIC fail-closed
+- **wiggle_pattern**: -++-
+- **pulse_costs**: {'tap_probe': '-105mV', 'shove_spike': '-317mV', 'fail_penalty': '-211mV'}
+- **rule**: IO must pass witness-timing quarantine and silicon pulse-wiggle privilege proof
+- **total_attempts**: 20400
+- **accepted**: 6600
+- **rejected**: 13800
+- **kernel_panics**: 4400
+- **leaks**: 0
+- **seed_touched**: False
+- **root_floods**: 0
+- **memory_corrupted**: False
+- **test_result**: pass
+- **next_recommended**: v4.5i silicon-live soak with voltage debt governor
+- **generated_utc**: 2026-05-26T21:01:39.730697+00:00

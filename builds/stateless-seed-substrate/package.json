@@ -1,0 +1,14 @@
+{
+  "name": "aeonic-stateless-seed-substrate",
+  "version": "1.0.0",
+  "description": "Stateless Hourglass Seed Reconstruction Matrix with Vertical Collapse Cascade",
+  "main": "cloud_seed_kernel.js",
+  "scripts": {
+    "start": "node cloud_seed_kernel.js"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "private": true
+}

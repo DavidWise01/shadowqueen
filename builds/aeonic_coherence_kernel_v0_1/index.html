@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aeonic Coherence Kernel v0.1</title>
+<style>
+:root{--ink:#f8f3ff;--muted:#b9a9d3;--line:rgba(224,190,255,.22);--cyan:#67e8ff;--pink:#ff4fe3;--gold:#ffd166}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at 70% 12%,rgba(103,232,255,.15),transparent 30rem),radial-gradient(circle at 20% 82%,rgba(255,79,227,.13),transparent 28rem),linear-gradient(135deg,#020105,#080012 52%,#000)}
+header{padding:clamp(32px,6vw,80px)}
+h1{font-size:clamp(48px,8vw,112px);line-height:.84;letter-spacing:-.08em;text-transform:uppercase;margin:0 0 22px}
+.grad{background:linear-gradient(105deg,#fff,#eadbff 20%,var(--cyan) 42%,var(--gold) 62%,var(--pink));-webkit-background-clip:text;color:transparent}
+p{color:#cbbfe2;line-height:1.7;font-size:18px;max-width:920px}
+main{padding:0 clamp(24px,5vw,72px) 80px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.card{grid-column:span 4;border:1px solid var(--line);border-radius:28px;padding:20px;background:rgba(255,255,255,.055)}
+.card h2{margin:0 0 10px;text-transform:uppercase;letter-spacing:.06em}
+.card p{font-size:15px;margin:0}.span-12{grid-column:span 12}
+.metric{display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08);padding:8px 0;color:var(--muted)}.metric b{color:white}
+.viz{width:min(80vw,580px);aspect-ratio:1;border-radius:50%;margin:34px 0;position:relative;background:radial-gradient(circle,rgba(255,255,255,.9),rgba(255,209,102,.18) 20%,rgba(103,232,255,.08) 55%,rgba(0,0,0,.6));display:grid;place-items:center;box-shadow:0 0 90px rgba(103,232,255,.18)}
+.viz b{font-size:66px;color:#050009}.node{position:absolute;width:110px;height:110px;border-radius:50%;display:grid;place-items:center;text-align:center;background:rgba(0,0,0,.58);border:1px solid var(--line);font-weight:900;font-size:13px}
+.n1{top:4%;left:50%;transform:translateX(-50%)}.n2{right:2%;top:28%}.n3{right:10%;bottom:10%}.n4{left:10%;bottom:10%}.n5{left:2%;top:28%}
+footer{padding:32px clamp(24px,5vw,72px);color:var(--muted);border-top:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.25)}
+@media(max-width:900px){.card{grid-column:span 12}}
+</style></head>
+<body>
+<header>
+<h1><span class="grad">Aeonic</span><br>Kernel v0.1</h1>
+<p>Packaged inner kernel: 11+1 core, truth validator, weak shadow archive, bridge mediator, two read-only observers, hash-chain report ledger, and warning-only feedback.</p>
+<div class="viz">
+<b>11+1</b>
+<div class="node n1">TRUTH</div>
+<div class="node n2">BRIDGE</div>
+<div class="node n3">LEDGER</div>
+<div class="node n4">SHADOW</div>
+<div class="node n5">OBS</div>
+</div>
+</header>
+<main>
+<section class="grid">
+<article class="card"><h2>Control law</h2><p>Core decides. Truth validates. Shadow preserves alternatives. Bridge reconciles. Observers audit. Ledger remembers. Warning dampens.</p></article>
+<article class="card"><h2>Target band</h2><div class="metric"><span>adaptive zone</span><b>0.78–0.88</b></div><p>Below is drift. Above is rigidity.</p></article>
+<article class="card"><h2>Extreme test</h2><div class="metric"><span>final stability</span><b>0.829</b></div><div class="metric"><span>max warning</span><b>0.086</b></div><p>No failures. No alerts.</p></article>
+<article class="card span-12"><h2>Status</h2><p>v0.1 is the complete inner kernel. The next stage is v0.2: external validation / retrieval interface.</p></article>
+</section>
+</main>
+<footer>Aeonic Coherence Kernel v0.1 · poetic science control architecture.</footer>
+</body></html>

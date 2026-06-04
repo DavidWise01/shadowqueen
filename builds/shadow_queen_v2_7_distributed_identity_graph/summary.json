@@ -1,0 +1,20 @@
+{
+  "name": "Shadow Queen",
+  "version": "2.7.0",
+  "status": "distributed identity graph",
+  "new_features": [
+    "identity graph nodes",
+    "relationship edges",
+    "distributed graph events",
+    "graph replication",
+    "duplicate identity scan",
+    "node hash drift detection",
+    "edge convergence audit"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "identity_returncode": 0,
+  "stats_returncode": 0,
+  "verify_returncode": 0,
+  "created_utc": "2026-05-31T00:06:03.643162+00:00"
+}

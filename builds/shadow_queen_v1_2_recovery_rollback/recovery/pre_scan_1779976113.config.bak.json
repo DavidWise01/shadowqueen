@@ -1,0 +1,34 @@
+{
+  "db": "shadowqueen.db",
+  "iterations": 1,
+  "interval": 0.05,
+  "log_file": "shadowqueen.log",
+  "recovery_dir": "recovery",
+  "checkpoint_on_start": true,
+  "checkpoint_on_quarantine": true,
+  "events": [
+    {
+      "source_id": "good-1",
+      "event_type": "unit",
+      "phase": "good"
+    },
+    {
+      "source_id": "bad-1",
+      "event_type": "unit",
+      "phase": "bad"
+    },
+    {
+      "source_id": "inverse-1",
+      "event_type": "unit",
+      "phase": "inversed"
+    },
+    {
+      "source_id": "remirror-1",
+      "event_type": "unit",
+      "phase": "remirrored",
+      "features": {
+        "origin_phase": "good"
+      }
+    }
+  ]
+}

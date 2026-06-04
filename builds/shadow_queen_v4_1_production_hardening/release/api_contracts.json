@@ -1,0 +1,9 @@
+{
+  "identity": "POST /identity",
+  "credential": "POST /credential",
+  "wallet": "POST /wallet/presentation",
+  "authority": "POST /authority/check",
+  "investigation": "POST /case",
+  "analytics": "GET /analytics/dashboard",
+  "operator": "GET /operator/dashboard"
+}

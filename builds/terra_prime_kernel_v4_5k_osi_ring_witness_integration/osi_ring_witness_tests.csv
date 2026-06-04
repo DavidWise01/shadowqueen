@@ -1,0 +1,8 @@
+test,attempts,accepted,rejected,leaks
+L2_identity_attestation,5000,5000,0,0
+L5_payload_peek_attempt,4200,0,4200,0
+content_blind_witness,3900,3900,0,0
+ladder_illegal_watch,3000,0,3000,0
+ring_closure_watch,3000,3000,0,0
+no_ack_airgap_crossing,2600,0,2600,0
+spoofed_L2_identity,2400,0,2400,0

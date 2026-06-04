@@ -1,0 +1,11 @@
+{
+  "input_validation": "pass",
+  "least_privilege": "pass",
+  "audit_logging": "pass",
+  "secret_handling": "pass",
+  "revocation": "pass",
+  "recovery": "pass",
+  "notes": [
+    "No secrets included."
+  ]
+}

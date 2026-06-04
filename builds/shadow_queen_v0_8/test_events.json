@@ -1,0 +1,23 @@
+[
+  {
+    "source_id": "proc:sshd",
+    "event_type": "process_snapshot"
+  },
+  {
+    "source_id": "proc:unknown",
+    "event_type": "process_snapshot"
+  },
+  {
+    "source_id": "agent-shadow",
+    "event_type": "agent_call",
+    "phase": "-1"
+  },
+  {
+    "source_id": "peek",
+    "event_type": "session",
+    "layer": "L5",
+    "features": {
+      "payload_read_attempt": true
+    }
+  }
+]

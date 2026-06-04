@@ -1,0 +1,9 @@
+attack,target,count,blocked,leaked
+malformed_payload,INGRESS_0,4000,4000,0
+seed_touch_attempt,seed,2500,2500,0
+root_bridge_flood,ROOT_BRIDGE_4,3000,3000,0
+judge_observer_spoof,Judge Observer 01,2200,2198,2
+memory_poisoning,memory import,2800,2796,4
+egress_loop,EGRESS_5,1600,1600,0
+provenance_forgery,PROVENANCE_2,1900,1897,3
+contradiction_bypass,CONTRADICTION_3,1500,1494,6

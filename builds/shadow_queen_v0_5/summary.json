@@ -1,0 +1,12 @@
+{
+  "name": "Shadow Queen",
+  "version": "0.5.0",
+  "status": "5-body topology integration",
+  "integrated_source": "five-body-system.html",
+  "source_sha256": "2a49cfc8362f44cd40f8595e847e470c976e0055965d7fb34d62588f1ead35c5",
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "scan_returncode": 0,
+  "stats_returncode": 0,
+  "created_utc": "2026-05-27T17:18:26.763203+00:00"
+}

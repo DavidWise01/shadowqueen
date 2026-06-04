@@ -1,0 +1,21 @@
+{
+  "name": "Shadow Queen",
+  "version": "2.0.0",
+  "status": "peer-to-peer distributed runtime",
+  "new_features": [
+    "peer node registry",
+    "signed message receipts",
+    "inbox/outbox queues",
+    "offline replay",
+    "conflict queue",
+    "federated trust score",
+    "per-node ledger"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "register_returncode": 0,
+  "send_returncode": 0,
+  "stats_returncode": 0,
+  "verify_returncode": 0,
+  "created_utc": "2026-05-29T17:22:37.262839+00:00"
+}

@@ -1,0 +1,54 @@
+{
+  "name": "Terra Prime Coherence Kernel",
+  "version": "0.7-2of3-vector-agreement",
+  "status": "Continuously self-correcting coherence law added",
+  "law": "minimum 2-of-3 vector agreement under bounded uncertainty",
+  "vectors": {
+    "light": "explicit resolution",
+    "shadow": "ambiguity preservation",
+    "mercury": "adaptive reframing"
+  },
+  "closure": {
+    "2_of_3": "close",
+    "3_of_3": "close with Jester suspicion",
+    "0_of_3": "continue recursion"
+  },
+  "tests": [
+    {
+      "run": "v07_three_vector_agreement_stress",
+      "cycles": 280,
+      "avg_structural_stability": 0.842,
+      "min_structural_stability": 0.781,
+      "avg_vitality": 0.724,
+      "avg_viability": 0.737,
+      "avg_bridge_tension": 0.138,
+      "avg_mercury_motion": 0.392,
+      "avg_recursion_depth": 1.34,
+      "max_recursion_depth": 5,
+      "close_2_of_3": 196,
+      "close_with_suspicion": 21,
+      "continue_recursion": 63,
+      "all_disagree_cycles": 63,
+      "avg_jester_suspicion": 0.031,
+      "avg_abs_drift": 0.018
+    },
+    {
+      "run": "v07_three_vector_agreement_extreme",
+      "cycles": 280,
+      "avg_structural_stability": 0.827,
+      "min_structural_stability": 0.742,
+      "avg_vitality": 0.758,
+      "avg_viability": 0.729,
+      "avg_bridge_tension": 0.166,
+      "avg_mercury_motion": 0.431,
+      "avg_recursion_depth": 1.91,
+      "max_recursion_depth": 7,
+      "close_2_of_3": 178,
+      "close_with_suspicion": 16,
+      "continue_recursion": 86,
+      "all_disagree_cycles": 86,
+      "avg_jester_suspicion": 0.024,
+      "avg_abs_drift": 0.027
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "name": "Aeonic Coherence Kernel",
+  "version": "0.4.0",
+  "status": "multi-agent arbitration added",
+  "test_focus": "2 agents vs 1 agent",
+  "modules": [
+    "agent_pool",
+    "agent_proposals",
+    "arbitration_bridge",
+    "agent_reputation_memory",
+    "dissent_preservation",
+    "dominance_control"
+  ],
+  "tests": [
+    {
+      "run": "one_agent_normal",
+      "agent_count": 1,
+      "cycles": 220,
+      "avg_stability": 0.923079,
+      "min_stability": 0.906486,
+      "final_stability": 0.926311,
+      "avg_adaptive_score": 0.837128,
+      "avg_rigidity": 0.763497,
+      "avg_dissent": 0.0,
+      "avg_dominance": 1.0,
+      "final_hash": "f64b3da76dd78bdd..."
+    },
+    {
+      "run": "two_agent_normal",
+      "agent_count": 2,
+      "cycles": 220,
+      "avg_stability": 0.971997,
+      "min_stability": 0.938666,
+      "final_stability": 0.963854,
+      "avg_adaptive_score": 0.833816,
+      "avg_rigidity": 0.486171,
+      "avg_dissent": 0.075861,
+      "avg_dominance": 0.527377,
+      "final_hash": "5b0cac1ea7698cc8..."
+    },
+    {
+      "run": "one_agent_stress",
+      "agent_count": 1,
+      "cycles": 220,
+      "avg_stability": 0.921043,
+      "min_stability": 0.891087,
+      "final_stability": 0.913025,
+      "avg_adaptive_score": 0.837119,
+      "avg_rigidity": 0.764628,
+      "avg_dissent": 0.0,
+      "avg_dominance": 1.0,
+      "final_hash": "186f14932e31d40a..."
+    },
+    {
+      "run": "two_agent_stress",
+      "agent_count": 2,
+      "cycles": 220,
+      "avg_stability": 0.968903,
+      "min_stability": 0.932867,
+      "final_stability": 0.962995,
+      "avg_adaptive_score": 0.834121,
+      "avg_rigidity": 0.486321,
+      "avg_dissent": 0.080178,
+      "avg_dominance": 0.525683,
+      "final_hash": "c0e5d04d3f4de12c..."
+    }
+  ]
+}

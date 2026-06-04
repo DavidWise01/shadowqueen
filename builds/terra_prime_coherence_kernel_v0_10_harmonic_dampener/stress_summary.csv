@@ -1,0 +1,8 @@
+run,dampener,avg_structural_stability,min_structural_stability,avg_vitality,avg_viability,avg_field_charge,max_field_charge,avg_lattice_coherence,max_recursion_depth,recursions,closures,alpha_alerts,omega_alerts
+v09_extreme_baseline,False,0.806,0.711,0.801,0.726,0.758,0.913,0.809,10,151,241,19,8
+v10_extreme_dampened,True,0.818,0.742,0.787,0.739,0.701,0.824,0.827,8,132,259,6,4
+v09_contradiction_baseline,False,0.817,0.733,0.792,0.735,0.734,0.884,0.821,9,139,253,11,5
+v10_contradiction_dampened,True,0.826,0.758,0.779,0.743,0.687,0.803,0.835,7,121,271,3,3
+v10_normal_dampened,True,0.844,0.803,0.733,0.749,0.616,0.704,0.864,5,90,304,0,1
+v10_stress_dampened,True,0.831,0.769,0.761,0.746,0.662,0.781,0.843,7,108,283,1,2
+v10_drift_dampened,True,0.833,0.773,0.758,0.746,0.651,0.758,0.842,7,104,286,1,3

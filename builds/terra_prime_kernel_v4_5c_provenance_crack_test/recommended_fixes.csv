@@ -1,0 +1,6 @@
+crack,fix
+contradiction_laundering,triple contradiction pass with time-separated evaluator
+neutral_mediator_capture,neutral cannot certify itself; require Light+Shadow countersign
+identity_phase_flip,phase-attribution lock: +1 emission and -1 reflection must keep separate hashes
+false_observer_continuity,observer continuity requires nonce chain plus behavioral continuity score
+source_reflection_confusion,origin/reflection path must include irreversible direction marker

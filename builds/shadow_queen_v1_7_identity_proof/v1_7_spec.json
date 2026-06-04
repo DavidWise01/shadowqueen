@@ -1,0 +1,15 @@
+{
+  "version": "1.7.0",
+  "identity_types": {
+    "carbon": "external user",
+    "silicon": "internal user"
+  },
+  "new_features": [
+    "identity proof object",
+    "trust score",
+    "document proof hashes",
+    "address proof hashes",
+    "biometric placeholder",
+    "proof verification pipeline"
+  ]
+}

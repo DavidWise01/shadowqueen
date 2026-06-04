@@ -1,0 +1,6 @@
+mode,renewal_cap,final_bodies,avg_structural_stability,avg_vitality,avg_viability,avg_field_charge,max_field_charge,avg_lattice_coherence,max_recursion_depth,closures,recursions,new_variants,unknown_events,alpha_alerts,omega_alerts,real_improvement
+extreme_v1_1,False,101,0.897581,0.913062,0.930386,0.721894,0.996065,0.884752,3,363,57,61,15,162,0,False
+extreme_v1_2,True,52,0.884,0.861,0.842,0.684,0.861,0.872,5,348,72,12,15,34,3,True
+contradiction_v1_1,False,161,0.905945,0.849501,0.90095,0.766087,0.91205,0.725284,5,366,54,121,0,52,229,False
+contradiction_v1_2,True,52,0.872,0.811,0.836,0.693,0.842,0.804,6,344,76,12,0,18,47,True
+drift_v1_2,True,44,0.861,0.804,0.831,0.612,0.789,0.881,4,381,39,4,10,3,1,True

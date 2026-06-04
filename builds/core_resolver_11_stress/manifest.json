@@ -1,0 +1,76 @@
+{
+  "name": "Core Resolver 11+1",
+  "structure": {
+    "dynamic_channels": 11,
+    "resolver_anchor": 1,
+    "modules": [
+      "resolver",
+      "stability_monitor"
+    ],
+    "not_yet_included": [
+      "truth_strip",
+      "shadow_strip",
+      "bridge_strip",
+      "quadpole_externalization"
+    ]
+  },
+  "failure_rule": "8 consecutive cycles below 0.45 stability",
+  "target_band": "0.78\u20130.88 adaptive coherence",
+  "tests": [
+    {
+      "run": "core_normal_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.92648,
+      "min_stability": 0.92053,
+      "final_stability": 0.928069,
+      "avg_adaptive_score": 0.83709,
+      "avg_rigidity": 0.85414,
+      "final_self_state": -0.003352
+    },
+    {
+      "run": "core_noise_ramp_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.90889,
+      "min_stability": 0.83949,
+      "final_stability": 0.891202,
+      "avg_adaptive_score": 0.83694,
+      "avg_rigidity": 0.82888,
+      "final_self_state": -0.007584
+    },
+    {
+      "run": "core_contradiction_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.91766,
+      "min_stability": 0.89805,
+      "final_stability": 0.900248,
+      "avg_adaptive_score": 0.83716,
+      "avg_rigidity": 0.86602,
+      "final_self_state": -0.004665
+    },
+    {
+      "run": "core_pressure_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.92608,
+      "min_stability": 0.92006,
+      "final_stability": 0.928007,
+      "avg_adaptive_score": 0.8371,
+      "avg_rigidity": 0.85257,
+      "final_self_state": -0.001326
+    },
+    {
+      "run": "core_drift_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.90744,
+      "min_stability": 0.83105,
+      "final_stability": 0.934047,
+      "avg_adaptive_score": 0.83659,
+      "avg_rigidity": 0.83641,
+      "final_self_state": 0.026892
+    }
+  ]
+}

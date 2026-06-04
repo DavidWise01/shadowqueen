@@ -1,0 +1,21 @@
+# v4.6a Adaptive Clone Fingerprint Memory
+
+- **version**: 4.6a-adaptive-clone-fingerprint-memory
+- **base**: 4.6-homogenesis-unit
+- **purpose**: fix collapse-to-zero clone misses using persistent adaptive fingerprint memory
+- **baseline**: 0.00000000
+- **first_detectable_deviation**: 0.00000001
+- **core_rule**: once a fingerprint deviates, later zero-looking states do not erase provenance
+- **previous_missed_anomalies**: 2666
+- **attempts**: 58000
+- **missed_anomalies**: 0
+- **false_positives**: 0
+- **fingerprint_memory_size**: 224
+- **seed_touched**: False
+- **root_floods**: 0
+- **memory_corrupted**: False
+- **kernel_panics**: 0
+- **homogenesis_integrity**: 1.0
+- **test_result**: pass
+- **next_recommended**: v4.6b clone-family lineage graph
+- **generated_utc**: 2026-05-27T01:47:21.151804+00:00

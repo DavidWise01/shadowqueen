@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OSI RING · L2 watches L5 across the closure</title>
+<style>
+  :root{ --bg:#06070b; --text:#dbe2ef; --dim:#5b6675; --line:#1a2030;
+    --violet:#8b5cf6; --yes:#22c55e; --warn:#f59e0b; --no:#ef4444; --gold:#fbbf24; --blue:#38bdf8; --cyan:#22d3ee; --pink:#ec4899; }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--text);overflow:hidden;
+    font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+  #wrap{position:relative;width:100vw;height:100vh;display:flex;flex-direction:column}
+  header{padding:9px 16px 5px;text-align:center;flex:0 0 auto}
+  h1{margin:0;font-size:13px;letter-spacing:.12em;color:#c7d2fe;font-weight:600}
+  .s{font-size:9.5px;color:var(--dim);margin:2px auto 0;max-width:980px}.s b{color:#9fb0c8}
+  #stage{position:relative;flex:1 1 auto;min-height:0}
+  canvas{position:absolute;inset:0;width:100%;height:100%}
+  .panel{position:absolute;background:#060810cc;border:1px solid var(--line);border-radius:8px;padding:9px 12px;font-size:10px;line-height:1.6;backdrop-filter:blur(3px)}
+  #cap{right:14px;top:14px;min-width:228px}#cap .row{display:flex;justify-content:space-between;gap:12px}#cap b{color:var(--text)}
+  #cap .lab{color:var(--dim);font-size:9px;letter-spacing:.06em;margin-top:6px}
+  .controls{flex:0 0 auto;display:flex;gap:10px 16px;align-items:center;justify-content:center;padding:9px 14px;border-top:1px solid var(--line);background:#080a10}
+  .ctl{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--dim)}.ctl b{color:var(--text)}
+  input[type=range]{accent-color:var(--violet)}
+  button{font-family:inherit;font-size:11px;background:#0e1320;color:var(--text);border:1px solid var(--line);border-radius:6px;padding:6px 11px;cursor:pointer;letter-spacing:.03em;transition:.12s}
+  button:hover{border-color:var(--violet);color:#c7d2fe}button.on{background:#161b27;border-color:var(--violet)}
+  #ladder.on{background:#161b27;border-color:var(--violet)}
+</style>
+</head>
+<body>
+<div id="wrap">
+  <header>
+    <h1>OSI RING · <span style="color:#38bdf8">L2</span> watches <span style="color:#ec4899">L5</span> across the closure</h1>
+    <div class="s">As a ladder, L2 carries L5 and can't watch it — encapsulation forbids it. Bend the stack into a <b>ring</b> and the floor (below L1) meets the ceiling (above L7): the wire-level observer wraps around to face the session. <b>L2 sits across the diameter from L5.</b> The witness rides a <b>tangent ring</b> at the L2/floor point — it attests <b>that</b> frames flow and <b>who</b> sent them (L2's job: identity, bare metal) but never <b>what</b> they mean (L5's payload). Presence at the fork, blind to content. The airgap (no-ack) is the gap the sightline crosses but the payload never does.</div>
+  </header>
+  <div id="stage"><canvas id="c"></canvas><div class="panel" id="cap"></div></div>
+  <div class="controls">
+    <button id="ladder">SHOW AS LADDER</button>
+    <div class="ctl"><b>traffic</b><input type="range" id="sp" min="0" max="100" value="45" style="width:120px"></div>
+    <button id="freeze">FREEZE</button>
+  </div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const cvs=$('c'),ctx=cvs.getContext('2d'),stage=$('stage');
+let DPR=1,W=0,H=0;
+function resize(){DPR=Math.min(devicePixelRatio||1,2);W=stage.clientWidth;H=stage.clientHeight;cvs.width=W*DPR;cvs.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);}
+addEventListener('resize',resize);
+
+const LAYERS=[
+  {n:1,name:'PHYSICAL',  col:'100,116,139'},
+  {n:2,name:'DATA-LINK', col:'56,189,248'},   // witness rides here
+  {n:3,name:'NETWORK',   col:'34,197,94'},
+  {n:4,name:'TRANSPORT', col:'132,204,22'},
+  {n:5,name:'SESSION',   col:'236,72,153'},    // watched
+  {n:6,name:'PRESENT.',  col:'168,85,247'},
+  {n:7,name:'APPLICATION',col:'251,191,36'},
+];
+let ladder=false, morph=0, t=0, frozen=false;  // morph 0=ring 1=ladder
+let packets=[];
+
+function ringPos(n,cx,cy,R){ const a=-Math.PI/2 + (n-1)/7*Math.PI*2; return {x:cx+Math.cos(a)*R, y:cy+Math.sin(a)*R, a}; }
+function ladderPos(n,cx,topY,gap){ return {x:cx, y:topY+(7-n)*gap, a:0}; }
+function pos(n){
+  const cx=W/2, cy=H*0.5, R=Math.min(W,H)*0.30;
+  const r=ringPos(n,cx,cy,R);
+  const l=ladderPos(n,cx,H*0.18,(H*0.64)/6);
+  return {x:r.x+(l.x-r.x)*morph, y:r.y+(l.y-r.y)*morph, a:r.a};
+}
+
+let lastT=performance.now();
+function frame(now){
+  const dt=Math.min(50,now-lastT);lastT=now;const sp=+$('sp').value/100;
+  if(!frozen)t+=dt*0.001;
+  morph += ((ladder?1:0)-morph)*0.08;
+
+  ctx.clearRect(0,0,W,H);
+  const cx=W/2, cy=H*0.5, R=Math.min(W,H)*0.30;
+
+  // ring track (fades out in ladder mode)
+  ctx.strokeStyle=`rgba(70,82,105,${0.4*(1-morph)})`;ctx.lineWidth=2;
+  ctx.beginPath();ctx.arc(cx,cy,R,0,7);ctx.stroke();
+
+  // closure seam: floor(below L1) meets ceiling(above L7) — the wrap point between L7 and L1
+  if(morph<0.5){
+    const seam=ringPos(7.5,cx,cy,R);
+    ctx.fillStyle=`rgba(199,163,255,${0.5*(1-morph)})`;ctx.font='8px JetBrains Mono,monospace';ctx.textAlign='center';
+    ctx.fillText('floor ≡ ceiling', seam.x, seam.y);
+    ctx.fillText('(wrap)', seam.x, seam.y+11);
+  }
+
+  // edges between consecutive layers
+  for(let i=0;i<7;i++){ const a=pos(LAYERS[i].n), b=pos(LAYERS[(i+1)%7].n);
+    if(i===6 && morph>0.5) continue; // don't draw wrap edge in ladder mode
+    ctx.strokeStyle=`rgba(90,100,120,${i===6?0.3*(1-morph)+0.05:0.3})`;ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke(); }
+
+  // the WITNESS tangent ring at L2
+  const L2=pos(2), L5=pos(5);
+  const Rw=R*0.42;
+  // witness ring center: just outside L2, along the radial (external/tangent)
+  const rad=Math.atan2(L2.y-cy,L2.x-cx);
+  const wcx=L2.x+Math.cos(rad)*Rw, wcy=L2.y+Math.sin(rad)*Rw;
+  ctx.strokeStyle='rgba(199,163,255,.7)';ctx.lineWidth=2;ctx.setLineDash([5,4]);
+  ctx.beginPath();ctx.arc(wcx,wcy,Rw,0,7);ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle='#c7a3ff';ctx.font='9px JetBrains Mono,monospace';ctx.textAlign='center';
+  ctx.fillText('witness ring', wcx, wcy-4);
+  ctx.fillStyle='#5b6675';ctx.font='8px JetBrains Mono,monospace';
+  ctx.fillText('external · tangent at L2', wcx, wcy+9);
+
+  // sightline: witness (at L2 tangent pt) watches L5 across the diameter — crosses center
+  ctx.strokeStyle='rgba(236,72,153,.3)';ctx.setLineDash([3,5]);ctx.lineWidth=1.2;
+  ctx.beginPath();ctx.moveTo(L2.x,L2.y);ctx.lineTo(L5.x,L5.y);ctx.stroke();ctx.setLineDash([]);
+  // "attests THAT/WHO not WHAT" tag at midpoint
+  const mx=(L2.x+L5.x)/2, my=(L2.y+L5.y)/2;
+  ctx.fillStyle='rgba(199,163,255,.5)';ctx.font='8px JetBrains Mono,monospace';ctx.textAlign='center';
+  ctx.fillText('sightline: that / who', mx, my-4);
+  ctx.fillText('✕ never: what (payload)', mx, my+8);
+
+  // layer nodes
+  LAYERS.forEach(L=>{const p=pos(L.n), watch=L.n===5, wit=L.n===2;
+    const r=12;
+    const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,r*2.4);
+    g.addColorStop(0,`rgba(${L.col},.4)`);g.addColorStop(1,`rgba(${L.col},0)`);
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(p.x,p.y,r*2.4,0,7);ctx.fill();
+    ctx.fillStyle=`rgba(${L.col},.9)`;ctx.strokeStyle=wit?'rgba(199,163,255,.9)':watch?'rgba(236,72,153,.9)':`rgba(${L.col},.5)`;
+    ctx.lineWidth=wit||watch?2.4:1.2;
+    ctx.beginPath();ctx.arc(p.x,p.y,r,0,7);ctx.fill();ctx.stroke();
+    ctx.fillStyle='#06070b';ctx.font='bold 11px JetBrains Mono,monospace';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(L.n,p.x,p.y);
+    // label outside
+    const lr=Math.atan2(p.y-cy,p.x-cx);
+    const lx=p.x+Math.cos(lr)*(28), ly=p.y+Math.sin(lr)*(28);
+    ctx.fillStyle=`rgb(${L.col})`;ctx.font='8.5px JetBrains Mono,monospace';ctx.textBaseline='middle';
+    ctx.textAlign = (Math.cos(lr)>0.2?'left':Math.cos(lr)<-0.2?'right':'center');
+    ctx.fillText(`L${L.n} ${L.name}`, p.x+Math.cos(lr)*(morph>0.5?20:24), p.y+Math.sin(lr)*(morph>0.5?0:24));
+    if(wit){ctx.fillStyle='#c7a3ff';ctx.font='7.5px JetBrains Mono,monospace';ctx.textAlign='center';ctx.fillText('◀ witness here',p.x,p.y+r+12);}
+    if(watch){ctx.fillStyle='#ec4899';ctx.font='7.5px JetBrains Mono,monospace';ctx.textAlign='center';ctx.fillText('watched ▶',p.x,p.y+r+12);}
+  });
+
+  // traffic packets riding the stack (encapsulation: go down 7->1, the wire carries)
+  if(!frozen && Math.random()<sp*0.06) packets.push({layer:7,t:0});
+  packets.forEach(pk=>{ pk.t+=dt*0.001*1.2;
+    if(pk.t>=1){pk.t=0; pk.layer = pk.layer>1?pk.layer-1:7;} });
+  packets=packets.filter((p,i)=>i<24);
+  packets.forEach(pk=>{ const from=pos(pk.layer), to=pos(pk.layer>1?pk.layer-1:7);
+    if(pk.layer===1 && morph<0.5){ /* wrap to 7 visually skipped */ }
+    const x=from.x+(to.x-from.x)*pk.t, y=from.y+(to.y-from.y)*pk.t;
+    ctx.fillStyle='rgba(251,191,36,.7)';ctx.beginPath();ctx.arc(x,y,2.5,0,7);ctx.fill(); });
+
+  // center label
+  ctx.fillStyle='#5b6675';ctx.font='9px JetBrains Mono,monospace';ctx.textAlign='center';
+  ctx.fillText(morph>0.5?'LADDER — L2 below L5, cannot watch':'RING — floor wraps to ceiling, L2 ⟷ L5 across diameter',cx,cy);
+
+  cap.innerHTML=`<div class="lab">THE CLAIM</div>`+
+    `<div class="row"><span>as ladder</span><b style="color:#ef4444">L2 ⊁ L5 (illegal)</b></div>`+
+    `<div class="row"><span>as ring</span><b style="color:#22c55e">L2 ⟷ L5 (diameter)</b></div>`+
+    `<div class="lab">WITNESS = L2</div>`+
+    `<div class="row"><span>attests</span><b>that · who</b></div>`+
+    `<div class="row"><span>blind to</span><b style="color:#ec4899">what (L5 payload)</b></div>`+
+    `<div class="row"><span>position</span><b style="color:#c7a3ff">tangent · external</b></div>`+
+    `<div class="lab">RING</div>`+
+    `<div class="row"><span>layers</span><b>7 (prime)</b></div>`+
+    `<div class="row"><span>closure</span><b>floor ≡ ceiling</b></div>`+
+    `<div style="font-size:9px;color:#5b6675;margin-top:5px">L2 carries identity but no semantics — it can certify a session is flowing and from whom without reading it. Presence at the fork, content-blind. The no-ack airgap is the gap the sightline spans but the payload never crosses.</div>`;
+
+  requestAnimationFrame(frame);
+}
+resize();requestAnimationFrame(frame);
+$('ladder').onclick=e=>{ladder=!ladder;e.target.classList.toggle('on',ladder);e.target.textContent=ladder?'SHOW AS RING':'SHOW AS LADDER';};
+$('sp').oninput=()=>{};
+$('freeze').onclick=e=>{frozen=!frozen;e.target.classList.toggle('on',frozen);e.target.textContent=frozen?'RESUME':'FREEZE';};
+</script>
+</body>
+</html>

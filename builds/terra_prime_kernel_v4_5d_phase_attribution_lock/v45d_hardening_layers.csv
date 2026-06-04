@@ -1,0 +1,7 @@
+layer,function
+phase-attribution lock,+1 emission hash and -1 reflection hash must remain separate
+irreversible direction marker,prevents reflected payload from posing as direct emission
+neutral countersign,neutral cannot certify itself; requires Light + Shadow countersign
+triple contradiction pass,three contradiction evaluators separated by phase and time
+phase hash separation,identity cannot flip phase without new provenance chain
+delayed live import,memory import waits until triple pass remains stable

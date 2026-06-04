@@ -1,0 +1,14 @@
+[
+  {
+    "source_id": "proc:sshd",
+    "event_type": "process_snapshot"
+  },
+  {
+    "source_id": "proc:sshd",
+    "event_type": "process_snapshot"
+  },
+  {
+    "source_id": "proc:sshd",
+    "event_type": "process_snapshot"
+  }
+]

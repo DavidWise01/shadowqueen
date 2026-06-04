@@ -1,0 +1,2 @@
+run,cycles,avg_structural_stability,min_structural_stability,avg_vitality,avg_viability,avg_field_charge,max_field_charge,avg_lattice_coherence,min_lattice_coherence,avg_recursion_depth,max_recursion_depth,closures,recursions,suspicious,avg_active_bodies,avg_trust,alpha_alerts,omega_alerts
+v09_40body_extreme,420,0.806,0.711,0.801,0.726,0.758,0.913,0.809,0.736,2.78,10,241,151,28,32.0,0.651,19,8

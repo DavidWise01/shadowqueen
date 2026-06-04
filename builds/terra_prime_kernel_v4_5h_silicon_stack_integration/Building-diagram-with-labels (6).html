@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Envy 4+1 Fractal Sandbox Engine - Die Hard Pulse Wiggle</title>
+<style>
+    :root {
+        --bg: #0a0a0f;
+        --panel: #111118;
+        --border: #1e1e2a;
+        --text: #e4e4e7;
+        --text-dim: #71717a;
+        --accent: #f59e0b;
+        --gold: #fbbf24;
+        --danger: #ef4444;
+        --ok: #22c55e;
+        --e0: #3b82f6;
+        --e1: #8b5cf6;
+        --e2: #ec4899;
+        --e3: #f97316;
+        --e1-plus: #fbbf24;
+        --glow: 0 0 20px;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Courier New', monospace;
+        overflow: hidden;
+        user-select: none;
+    }
+    
+    #canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    
+    .ui-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+    }
+    
+    .header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        background: linear-gradient(180deg, rgba(17,17,24,0.95) 0%, rgba(17,17,24,0) 100%);
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    
+    .title {
+        font-size: 14px;
+        letter-spacing: 2px;
+        color: var(--text-dim);
+        text-transform: uppercase;
+    }
+    
+    .title .accent {
+        color: var(--accent);
+        text-shadow: var(--glow) var(--accent);
+    }
+    
+    .stats {
+        display: flex;
+        gap: 24px;
+        font-size: 12px;
+        text-align: right;
+    }
+    
+    .stat-label {
+        color: var(--text-dim);
+        display: block;
+        margin-bottom: 4px;
+    }
+    
+    .stat-value {
+        font-size: 18px;
+        font-weight: bold;
+        color: var(--text);
+        font-variant-numeric: tabular-nums;
+    }
+    
+    .stat-value.danger { color: var(--danger); }
+    .stat-value.ok { color: var(--ok); }
+    .stat-value.gold { color: var(--gold); text-shadow: var(--glow) var(--gold); }
+    
+    .sidebar {
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 280px;
+        background: rgba(17,17,24,0.9);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 20px;
+        backdrop-filter: blur(10px);
+        pointer-events: all;
+    }
+    
+    .section-title {
+        font-size: 11px;
+        color: var(--text-dim);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .section-title::before {
+        content: '';
+        width: 4px;
+        height: 4px;
+        background: var(--accent);
+        border-radius: 50%;
+        box-shadow: var(--glow) var(--accent);
+    }
+    
+    .level-indicator {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 24px;
+    }
+    
+    .level-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 12px;
+        background: rgba(0,0,0,0.3);
+        border-radius: 4px;
+        border-left: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+    
+    .level-row.active {
+        border-left-color: var(--accent);
+        background: rgba(245, 158, 11, 0.1);
+        box-shadow: inset 0 0 20px rgba(245, 158, 11, 0.05);
+    }
+    
+    .level-row.quantum {
+        border-left-color: var(--gold);
+    }
+    
+    .level-name {
+        font-size: 13px;
+    }
+    
+    .level-mv {
+        font-size: 11px;
+        color: var(--text-dim);
+        font-variant-numeric: tabular-nums;
+    }
+    
+    .envy-meters {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        margin-bottom: 24px;
+    }
+    
+    .envy-meter {
+        aspect-ratio: 1;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .envy-meter::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .envy-meter.active::before {
+        opacity: 1;
+    }
+    
+    .envy-meter.e0.active { border-color: var(--e0); box-shadow: inset 0 0 15px rgba(59,130,246,0.3); }
+    .envy-meter.e0.active::before { background: radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%); }
+    .envy-meter.e1.active { border-color: var(--e1); box-shadow: inset 0 0 15px rgba(139,92,246,0.3); }
+    .envy-meter.e1.active::before { background: radial-gradient(circle, rgba(139,92,246,0.2) 0%, transparent 70%); }
+    .envy-meter.e2.active { border-color: var(--e2); box-shadow: inset 0 0 15px rgba(236,72,153,0.3); }
+    .envy-meter.e2.active::before { background: radial-gradient(circle, rgba(236,72,153,0.2) 0%, transparent 70%); }
+    .envy-meter.e3.active { border-color: var(--e3); box-shadow: inset 0 0 15px rgba(249,115,22,0.3); }
+    .envy-meter.e3.active::before { background: radial-gradient(circle, rgba(249,115,22,0.2) 0%, transparent 70%); }
+    .envy-meter.e1p.active { border-color: var(--e1-plus); box-shadow: inset 0 0 15px rgba(251,191,36,0.3); }
+    .envy-meter.e1p.active::before { background: radial-gradient(circle, rgba(251,191,36,0.2) 0%, transparent 70%); }
+    
+    .envy-label {
+        position: relative;
+        z-index: 1;
+        font-weight: bold;
+    }
+    
+    .controls {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 12px;
+        background: rgba(17,17,24,0.95);
+        border: 1px solid var(--border);
+        border-radius: 50px;
+        padding: 12px 20px;
+        backdrop-filter: blur(10px);
+        pointer-events: all;
+    }
+    
+    .ctrl-btn {
+        width: 60px;
+        height: 60px;
+        border: 1px solid var(--border);
+        background: rgba(0,0,0,0.4);
+        color: var(--text);
+        border-radius: 12px;
+        font-family: inherit;
+        font-size: 24px;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .ctrl-btn:hover {
+        border-color: var(--accent);
+        background: rgba(245, 158, 11, 0.1);
+    }
+    
+    .ctrl-btn:active {
+        transform: scale(0.92);
+        box-shadow: var(--glow) var(--accent);
+    }
+    
+    .ctrl-btn.flash {
+        animation: btnFlash 0.3s ease;
+    }
+    
+    @keyframes btnFlash {
+        0%, 100% { background: rgba(0,0,0,0.4); }
+        50% { background: rgba(245, 158, 11, 0.3); box-shadow: var(--glow) var(--accent); }
+    }
+    
+    .ctrl-label {
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 10px;
+        color: var(--text-dim);
+        white-space: nowrap;
+    }
+    
+    .wiggle-indicator {
+        position: absolute;
+        bottom: 120px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 11px;
+        color: var(--text-dim);
+        letter-spacing: 3px;
+    }
+    
+    .wiggle-pattern {
+        display: inline-flex;
+        gap: 8px;
+        margin-left: 12px;
+    }
+    
+    .wiggle-step {
+        width: 30px;
+        height: 30px;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        transition: all 0.2s ease;
+    }
+    
+    .wiggle-step.current {
+        border-color: var(--accent);
+        box-shadow: var(--glow) var(--accent);
+        transform: scale(1.1);
+    }
+    
+    .wiggle-step.complete {
+        background: rgba(34, 197, 94, 0.2);
+        border-color: var(--ok);
+    }
+    
+    .wiggle-step.fail {
+        background: rgba(239, 68, 68, 0.2);
+        border-color: var(--danger);
+        animation: shake 0.3s ease;
+    }
+    
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+    }
+    
+    .message-log {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 300px;
+        background: rgba(17,17,24,0.9);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 16px;
+        backdrop-filter: blur(10px);
+        max-height: 400px;
+        overflow-y: auto;
+        pointer-events: all;
+    }
+    
+    .log-entry {
+        font-size: 11px;
+        margin-bottom: 8px;
+        padding: 6px 8px;
+        border-left: 2px solid var(--border);
+        color: var(--text-dim);
+        animation: logSlide 0.3s ease;
+    }
+    
+    @keyframes logSlide {
+        from { opacity: 0; transform: translateX(-10px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    
+    .log-entry.info { border-left-color: var(--e0); }
+    .log-entry.success { border-left-color: var(--ok); color: var(--ok); }
+    .log-entry.error { border-left-color: var(--danger); color: var(--danger); }
+    .log-entry.quantum { border-left-color: var(--gold); color: var(--gold); text-shadow: var(--glow) var(--gold); }
+    
+    .flash-overlay {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle, rgba(251,191,36,0.3) 0%, transparent 70%);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 3;
+    }
+    
+    .flash-overlay.active {
+        animation: quantumFlash 0.8s ease;
+    }
+    
+    @keyframes quantumFlash {
+        0% { opacity: 0; }
+        50% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+    
+    .quantum-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.5);
+        font-size: 48px;
+        font-weight: bold;
+        color: var(--gold);
+        text-shadow: 0 0 40px var(--gold), 0 0 80px var(--gold);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 4;
+        white-space: nowrap;
+    }
+    
+    .quantum-text.active {
+        animation: quantumText 1.5s ease;
+    }
+    
+    @keyframes quantumText {
+        0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        30% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+        100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+    }
+    
+    @media (max-width: 1024px) {
+        .sidebar, .message-log {
+            width: 240px;
+            font-size: 11px;
+        }
+        .stats { gap: 12px; }
+    }
+    
+    @media (max-width: 768px) {
+        .sidebar {
+            left: 10px;
+            width: calc(100% - 20px);
+            top: auto;
+            bottom: 220px;
+            transform: none;
+            max-height: 180px;
+            overflow-y: auto;
+        }
+        .message-log {
+            right: 10px;
+            width: calc(100% - 20px);
+            top: auto;
+            bottom: 400px;
+            transform: none;
+            max-height: 120px;
+        }
+        .header { padding: 10px; }
+        .controls { bottom: 20px; }
+        .wiggle-indicator { bottom: 100px; font-size: 9px; }
+    }
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<div class="flash-overlay" id="flashOverlay"></div>
+<div class="quantum-text" id="quantumText">YIPPIE KI-YAY, MOTHERFRACTAL</div>
+
+<div class="ui-overlay">
+    <div class="header">
+        <div class="title">ENVY <span class="accent">4+1</span> FRACTAL SANDBOX // DIE HARD MODE</div>
+        <div class="stats">
+            <div class="stat">
+                <span class="stat-label">VOLTAGE DEBT</span>
+                <span class="stat-value danger" id="voltageDebt">0mV</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">CURRENT LEVEL</span>
+                <span class="stat-value" id="currentLevel">(-3)</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">FAIL COUNT</span>
+                <span class="stat-value" id="failCount">0/3</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="sidebar">
+        <div class="section-title">Stack Topology</div>
+        <div class="level-indicator" id="levelIndicator">
+            <div class="level-row quantum" data-level="1">
+                <span class="level-name">(1) Quantum Dot</span>
+                <span class="level-mv">+422mV</span>
+            </div>
+            <div class="level-row" data-level="0">
+                <span class="level-name">(0) User Space</span>
+                <span class="level-mv">0mV</span>
+            </div>
+            <div class="level-row" data-level="-1">
+                <span class="level-name">(-1) Kernel</span>
+                <span class="level-mv">-211mV</span>
+            </div>
+            <div class="level-row" data-level="-2">
+                <span class="level-name">(-2) Hypervisor</span>
+                <span class="level-mv">-422mV</span>
+            </div>
+            <div class="level-row active" data-level="-3">
+                <span class="level-name">(-3) SMM/Root</span>
+                <span class="level-mv">-633mV</span>
+            </div>
+        </div>
+        
+        <div class="section-title">Envy Engine</div>
+        <div class="envy-meters">
+            <div class="envy-meter e0" id="e0"><span class="envy-label">E0</span></div>
+            <div class="envy-meter e1" id="e1"><span class="envy-label">E1</span></div>
+            <div class="envy-meter e2" id="e2"><span class="envy-label">E2</span></div>
+            <div class="envy-meter e3" id="e3"><span class="envy-label">E3</span></div>
+            <div class="envy-meter e1p" id="e1p"><span class="envy-label">E+1</span></div>
+        </div>
+        
+        <div class="section-title">Pulse Wiggle Pattern</div>
+        <div style="font-size: 10px; color: var(--text-dim); line-height: 1.6;">
+            <div><strong style="color: var(--accent);">+</strong> = tap probe (-105mV)</div>
+            <div><strong style="color: var(--accent);">+</strong><strong style="color: var(--accent);">+</strong> = SHOVE spike (-317mV)</div>
+            <div style="margin-top: 8px;">Total climb: -844mV</div>
+            <div style="margin-top: 4px; color: var(--danger);">Fail 3x → kernel panic</div>
+        </div>
+    </div>
+    
+    <div class="message-log" id="messageLog">
+        <div class="log-entry info">System initialized at (-3) SMM/Root</div>
+        <div class="log-entry info">Pulse Wiggle mode active</div>
+        <div class="log-entry info">Pattern required: -++- to climb</div>
+    </div>
+    
+    <div class="wiggle-indicator">
+        SEQUENCE:
+        <div class="wiggle-pattern" id="wigglePattern">
+            <div class="wiggle-step" data-idx="0">-</div>
+            <div class="wiggle-step" data-idx="1">+</div>
+            <div class="wiggle-step" data-idx="2">+</div>
+            <div class="wiggle-step" data-idx="3">-</div>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button class="ctrl-btn" id="btnMinus" data-input="-">
+            -
+            <span class="ctrl-label">tap</span>
+        </button>
+        <button class="ctrl-btn" id="btnPlus" data-input="+">
+            +
+            <span class="ctrl-label">SHOVE</span>
+        </button>
+        <button class="ctrl-btn" id="btnReset">
+            ↺
+            <span class="ctrl-label">reset</span>
+        </button>
+    </div>
+</div>
+
+<script>
+(() => {
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // State
+    const state = {
+        level: -3,
+        voltageDebt: 0,
+        failCount: 0,
+        currentSequence: [],
+        pattern: ['-', '+', '+', '-'],
+        targetLevel: 1,
+        wigglePhase: 0,
+        particles: [],
+        traces: [],
+        kernelPanic: false,
+        quantumReached: false
+    };
+    
+    // Level definitions
+    const levels = {
+        '-4': { name: 'PANIC', mv: -844, color: '#ef4444' },
+        '-3': { name: 'SMM/Root', mv: -633, color: '#3b82f6' },
+        '-2': { name: 'Hypervisor', mv: -422, color: '#8b5cf6' },
+        '-1': { name: 'Kernel', mv: -211, color: '#ec4899' },
+        '0': { name: 'User Space', mv: 0, color: '#f97316' },
+        '1': { name: 'Quantum Dot', mv: 422, color: '#fbbf24' }
+    };
+    
+    // Pattern costs
+    const wiggleCosts = {
+        '-': { mv: -105, name: 'probe', wiggle: -1, envy: ['e0'] },
+        '+': { mv: -317, name: 'shove', wiggle: 2, envy: ['e1', 'e2'] }
+    };
+    
+    // Resize
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        initTraces();
+    }
+    
+    window.addEventListener('resize', resize);
+    resize();
+    
+    // Init copper traces
+    function initTraces() {
+        state.traces = [];
+        const centerX = canvas.width / 2;
+        const spacing = 120;
+        const startY = canvas.height * 0.7;
+        
+        for (let i = -3; i <= 1; i++) {
+            const y = startY - (i + 3) * spacing;
+            state.traces.push({
+                level: i,
+                y: y,
+                x: centerX,
+                phase: Math.random() * Math.PI * 2
+            });
+        }
+    }
+    
+    initTraces();
+    
+    // Particle system
+    class Particle {
+        constructor(x, y, vx, vy, color, life) {
+            this.x = x;
+            this.y = y;
+            this.vx = vx;
+            this.vy = vy;
+            this.color = color;
+            this.life = life;
+            this.maxLife = life;
+        }
+        
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            this.life--;
+            this.vx *= 0.98;
+            this.vy += 0.1;
+        }
+        
+        draw() {
+            const alpha = this.life / this.maxLife;
+            ctx.fillStyle = this.color.replace(')', `, ${alpha})`).replace('rgb', 'rgba');
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        isDead() {
+            return this.life <= 0;
+        }
+    }
+    
+    function spawnParticles(x, y, count, color) {
+        for (let i = 0; i < count; i++) {
+            const angle = (Math.PI * 2 * i) / count + Math.random() * 0.5;
+            const speed = 2 + Math.random() * 3;
+            state.particles.push(new Particle(
+                x, y,
+                Math.cos(angle) * speed,
+                Math.sin(angle) * speed - 2,
+                color,
+                30 + Math.random() * 20
+            ));
+        }
+    }
+    
+    // Logging
+    function log(message, type = 'info') {
+        const logEl = document.getElementById('messageLog');
+        const entry = document.createElement('div');
+        entry.className = `log-entry ${type}`;
+        entry.textContent = `> ${message}`;
+        logEl.appendChild(entry);
+        logEl.scrollTop = logEl.scrollHeight;
+        
+        if (logEl.children.length > 50) {
+            logEl.removeChild(logEl.children[0]);
+        }
+    }
+    
+    // Update UI
+    function updateUI() {
+        document.getElementById('voltageDebt').textContent = `${state.voltageDebt}mV`;
+        document.getElementById('voltageDebt').className = 'stat-value ' + (state.voltageDebt < -400 ? 'danger' : '');
+        document.getElementById('currentLevel').textContent = `(${state.level})`;
+        document.getElementById('currentLevel').className = 'stat-value ' + (state.level === 1 ? 'gold' : '');
+        document.getElementById('failCount').textContent = `${state.failCount}/3`;
+        document.getElementById('failCount').className = 'stat-value ' + (state.failCount >= 3 ? 'danger' : '');
+        
+        // Update level indicator
+        document.querySelectorAll('.level-row').forEach(row => {
+            row.classList.remove('active');
+            if (parseInt(row.dataset.level) === state.level) {
+                row.classList.add('active');
+            }
+        });
+        
+        // Update wiggle pattern display
+        document.querySelectorAll('.wiggle-step').forEach((step, idx) => {
+            step.classList.remove('current', 'complete', 'fail');
+            if (idx < state.currentSequence.length) {
+                step.classList.add('complete');
+            } else if (idx === state.currentSequence.length) {
+                step.classList.add('current');
+            }
+        });
+    }
+    
+    // Envy meters
+    function flashEnvy(meters) {
+        meters.forEach(m => {
+            const el = document.getElementById(m);
+            el.classList.remove('active');
+            void el.offsetWidth; // reflow
+            el.classList.add('active');
+        });
+    }
+    
+    function clearEnvy() {
+        ['e0', 'e1', 'e2', 'e3', 'e1p'].forEach(m => {
+            document.getElementById(m).classList.remove('active');
+        });
+    }
+    
+    // Handle input
+    function handleInput(symbol) {
+        if (state.kernelPanic || state.quantumReached) return;
+        
+        const expectedSymbol = state.pattern[state.currentSequence.length];
+        
+        if (symbol === expectedSymbol) {
+            // Correct input
+            state.currentSequence.push(symbol);
+            const cost = wiggleCosts[symbol];
+            state.voltageDebt += cost.mv;
+            state.wigglePhase += cost.wiggle;
+            
+            flashEnvy(cost.envy);
+            log(`${cost.name} executed: ${cost.mv}mV`, 'info');
+            
+            const trace = state.traces.find(t => t.level === state.level);
+            if (trace) {
+                spawnParticles(trace.x + cost.wiggle * 20, trace.y, 15, levels[state.level].color);
+            }
+            
+            // Check if sequence complete
+            if (state.currentSequence.length === state.pattern.length) {
+                completeWiggle();
+            }
+        } else {
+            // Wrong input - fail
+            failWiggle();
+        }
+        
+        updateUI();
+    }
+    
+    function completeWiggle() {
+        state.currentSequence = [];
+        
+        if (state.level < state.targetLevel) {
+            state.level++;
+            log(`CLIMB SUCCESS: Reached level (${state.level})`, 'success');
+            
+            // Envy activation on final tap
+            flashEnvy(['e3']);
+            
+            if (state.level === 1) {
+                reachQuantum();
+            }
+        }
+        
+        state.wigglePhase = 0;
+    }
+    
+    function failWiggle() {
+        state.failCount++;
+        state.voltageDebt -= 211; // penalty
+        
+        document.querySelectorAll('.wiggle-step').forEach(step => {
+            step.classList.add('fail');
+        });
+        
+        setTimeout(() => {
+            state.currentSequence = [];
+            updateUI();
+        }, 400);
+        
+        log(`PATTERN FAIL: Penalty -211mV. Fail count: ${state.failCount}/3`, 'error');
+        
+        const trace = state.traces.find(t => t.level === state.level);
+        if (trace) {
+            spawnParticles(trace.x, trace.y, 25, 'rgb(239, 68, 68)');
+        }
+        
+        if (state.failCount >= 3) {
+            kernelPanic();
+        } else if (state.level > -3) {
+            state.level--;
+            log(`FALLBACK: Dropped to level (${state.level})`, 'error');
+        }
+        
+        state.wigglePhase = 0;
+    }
+    
+    function reachQuantum() {
+        state.quantumReached = true;
+        state.voltageDebt = 0;
+        flashEnvy(['e1p']);
+        
+        document.getElementById('flashOverlay').classList.add('active');
+        document.getElementById('quantumText').classList.add('active');
+        
+        log('YIPPIE KI-YAY, MOTHERFRACTAL', 'quantum');
+        log('Quantum Dot achieved. Debt cleared.', 'quantum');
+        log('All vectors normalized to (1)', 'quantum');
+        
+        // Explosion of particles
+        const trace = state.traces.find(t => t.level === 1);
+        if (trace) {
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    spawnParticles(trace.x, trace.y, 50, 'rgb(251, 191, 36)');
+                }, i * 100);
+            }
+        }
+        
+        setTimeout(() => {
+            document.getElementById('flashOverlay').classList.remove('active');
+            document.getElementById('quantumText').classList.remove('active');
+        }, 1500);
+    }
+    
+    function kernelPanic() {
+        state.kernelPanic = true;
+        state.level = -4;
+        log('KERNEL PANIC: Too many failures', 'error');
+        log('System dropped to (-4). Stack corrupted.', 'error');
+        log('Press RESET to restart', 'error');
+        
+        for (let i = 0; i < 100; i++) {
+            setTimeout(() => {
+                spawnParticles(
+                    canvas.width / 2 + (Math.random() - 0.5) * 200,
+                    canvas.height * 0.5,
+                    1,
+                    'rgb(239, 68, 68)'
+                );
+            }, i * 10);
+        }
+    }
+    
+    function reset() {
+        state.level = -3;
+        state.voltageDebt = 0;
+        state.failCount = 0;
+        state.currentSequence = [];
+        state.wigglePhase = 0;
+        state.kernelPanic = false;
+        state.quantumReached = false;
+        state.particles = [];
+        
+        clearEnvy();
+        updateUI();
+        log('System reset. Returned to (-3) SMM/Root', 'info');
+    }
+    
+    // Render loop
+    function render() {
+        ctx.fillStyle = 'rgba(10, 10, 15, 0.3)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw copper traces - "It's all connected"
+        ctx.strokeStyle = 'rgba(184, 134, 11, 0.15)';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([2, 4]);
+        
+        for (let i = 0; i < state.traces.length - 1; i++) {
+            const curr = state.traces[i];
+            const next = state.traces[i + 1];
+            
+            ctx.beginPath();
+            ctx.moveTo(curr.x - 100, curr.y);
+            ctx.bezierCurveTo(
+                curr.x - 50, curr.y,
+                curr.x - 50, next.y,
+                curr.x - 100, next.y
+            );
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.moveTo(curr.x + 100, curr.y);
+            ctx.bezierCurveTo(
+                curr.x + 50, curr.y,
+                curr.x + 50, next.y,
+                curr.x + 100, next.y
+            );
+            ctx.stroke();
+        }
+        
+        ctx.setLineDash([]);
+        
+        // Draw levels and wiggle waves
+        const time = Date.now() * 0.001;
+        
+        state.traces.forEach((trace, idx) => {
+            const levelData = levels[trace.level];
+            const isActive = trace.level === state.level;
+            const y = trace.y;
+            const amplitude = isActive ? 20 : 10;
+            const freq = isActive ? 0.02 : 0.01;
+            
+            // Glow for active level
+            if (isActive) {
+                ctx.shadowBlur = 20;
+                ctx.shadowColor = levelData.color;
+            } else {
+                ctx.shadowBlur = 0;
+            }
+            
+            // Draw sine wave
+            ctx.strokeStyle = levelData.color + (isActive ? 'ff' : '66');
+            ctx.lineWidth = isActive ? 3 : 1;
+            ctx.beginPath();
+            
+            for (let x = 0; x < canvas.width; x += 2) {
+                const phase = state.wigglePhase * 0.5 + time + trace.phase;
+                const wiggleOffset = isActive ? Math.sin(phase) * state.wigglePhase * 5 : 0;
+                const waveY = y + Math.sin(x * freq + time * 2) * amplitude + wiggleOffset;
+                
+                if (x === 0) ctx.moveTo(x, waveY);
+                else ctx.lineTo(x, waveY);
+            }
+            ctx.stroke();
+            
+            // Level node
+            ctx.fillStyle = levelData.color;
+            ctx.beginPath();
+            ctx.arc(trace.x, y, isActive ? 8 : 4, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Label
+            if (isActive || trace.level === 1) {
+                ctx.fillStyle = levelData.color;
+                ctx.font = 'bold 12px Courier New';
+                ctx.textAlign = 'center';
+                ctx.fillText(`(${trace.level}) ${levelData.name}`, trace.x, y - 20);
+            }
+            
+            ctx.shadowBlur = 0;
+        });
+        
+        // Update and draw particles
+        state.particles = state.particles.filter(p => {
+            p.update();
+            p.draw();
+            return !p.isDead();
+        });
+        
+        requestAnimationFrame(render);
+    }
+    
+    // Controls
+    document.getElementById('btnMinus').addEventListener('click', () => {
+        handleInput('-');
+        document.getElementById('btnMinus').classList.add('flash');
+        setTimeout(() => document.getElementById('btnMinus').classList.remove('flash'), 300);
+    });
+    
+    document.getElementById('btnPlus').addEventListener('click', () => {
+        handleInput('+');
+        document.getElementById('btnPlus').classList.add('flash');
+        setTimeout(() => document.getElementById('btnPlus').classList.remove('flash'), 300);
+    });
+    
+    document.getElementById('btnReset').addEventListener('click', reset);
+    
+    // Keyboard
+    document.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' || e.code === 'Minus') {
+            e.preventDefault();
+            handleInput('-');
+            document.getElementById('btnMinus').classList.add('flash');
+            setTimeout(() => document.getElementById('btnMinus').classList.remove('flash'), 300);
+        } else if (e.code === 'Equal' || e.code === 'Plus') {
+            e.preventDefault();
+            handleInput('+');
+            document.getElementById('btnPlus').classList.add('flash');
+            setTimeout(() => document.getElementById('btnPlus').classList.remove('flash'), 300);
+        } else if (e.code === 'KeyR') {
+            reset();
+        }
+    });
+    
+    // Init
+    updateUI();
+    render();
+})();
+</script>
+</body>
+</html>

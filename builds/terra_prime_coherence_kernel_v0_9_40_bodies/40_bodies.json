@@ -1,0 +1,258 @@
+{
+  "bodies": [
+    {
+      "id": 1,
+      "name": "Light King",
+      "class": "primary_attractor",
+      "side": "light"
+    },
+    {
+      "id": 2,
+      "name": "Shadow Queen",
+      "class": "primary_attractor",
+      "side": "shadow"
+    },
+    {
+      "id": 3,
+      "name": "Mercury",
+      "class": "primary_attractor",
+      "side": "mercury"
+    },
+    {
+      "id": 4,
+      "name": "Core Resolver",
+      "class": "core",
+      "side": "core"
+    },
+    {
+      "id": 5,
+      "name": "Health-Light",
+      "class": "domain",
+      "side": "light"
+    },
+    {
+      "id": 6,
+      "name": "Health-Shadow",
+      "class": "domain",
+      "side": "shadow"
+    },
+    {
+      "id": 7,
+      "name": "Finance-Light",
+      "class": "domain",
+      "side": "light"
+    },
+    {
+      "id": 8,
+      "name": "Finance-Shadow",
+      "class": "domain",
+      "side": "shadow"
+    },
+    {
+      "id": 9,
+      "name": "Legal-Light",
+      "class": "domain",
+      "side": "light"
+    },
+    {
+      "id": 10,
+      "name": "Legal-Shadow",
+      "class": "domain",
+      "side": "shadow"
+    },
+    {
+      "id": 11,
+      "name": "Language-Light",
+      "class": "domain",
+      "side": "light"
+    },
+    {
+      "id": 12,
+      "name": "Language-Shadow",
+      "class": "domain",
+      "side": "shadow"
+    },
+    {
+      "id": 13,
+      "name": "Memory-Light",
+      "class": "domain",
+      "side": "light"
+    },
+    {
+      "id": 14,
+      "name": "Memory-Shadow",
+      "class": "domain",
+      "side": "shadow"
+    },
+    {
+      "id": 15,
+      "name": "Strategy-Light",
+      "class": "domain",
+      "side": "light"
+    },
+    {
+      "id": 16,
+      "name": "Strategy-Shadow",
+      "class": "domain",
+      "side": "shadow"
+    },
+    {
+      "id": 17,
+      "name": "Ethics-Light",
+      "class": "domain",
+      "side": "light"
+    },
+    {
+      "id": 18,
+      "name": "Ethics-Shadow",
+      "class": "domain",
+      "side": "shadow"
+    },
+    {
+      "id": 19,
+      "name": "Emotion-Light",
+      "class": "domain",
+      "side": "light"
+    },
+    {
+      "id": 20,
+      "name": "Emotion-Shadow",
+      "class": "domain",
+      "side": "shadow"
+    },
+    {
+      "id": 21,
+      "name": "Infrastructure-Light",
+      "class": "domain",
+      "side": "light"
+    },
+    {
+      "id": 22,
+      "name": "Infrastructure-Shadow",
+      "class": "domain",
+      "side": "shadow"
+    },
+    {
+      "id": 23,
+      "name": "Discovery-Light",
+      "class": "domain",
+      "side": "light"
+    },
+    {
+      "id": 24,
+      "name": "Discovery-Shadow",
+      "class": "domain",
+      "side": "shadow"
+    },
+    {
+      "id": 25,
+      "name": "Governance-Light",
+      "class": "domain",
+      "side": "light"
+    },
+    {
+      "id": 26,
+      "name": "Governance-Shadow",
+      "class": "domain",
+      "side": "shadow"
+    },
+    {
+      "id": 27,
+      "name": "Creation-Light",
+      "class": "domain",
+      "side": "light"
+    },
+    {
+      "id": 28,
+      "name": "Creation-Shadow",
+      "class": "domain",
+      "side": "shadow"
+    },
+    {
+      "id": 29,
+      "name": "Healer",
+      "class": "tribe",
+      "side": "temperament"
+    },
+    {
+      "id": 30,
+      "name": "Builder",
+      "class": "tribe",
+      "side": "temperament"
+    },
+    {
+      "id": 31,
+      "name": "Warrior",
+      "class": "tribe",
+      "side": "temperament"
+    },
+    {
+      "id": 32,
+      "name": "Scholar",
+      "class": "tribe",
+      "side": "temperament"
+    },
+    {
+      "id": 33,
+      "name": "Trader",
+      "class": "tribe",
+      "side": "temperament"
+    },
+    {
+      "id": 34,
+      "name": "Mystic",
+      "class": "tribe",
+      "side": "temperament"
+    },
+    {
+      "id": 35,
+      "name": "Witness",
+      "class": "tribe",
+      "side": "temperament"
+    },
+    {
+      "id": 36,
+      "name": "Keeper",
+      "class": "tribe",
+      "side": "temperament"
+    },
+    {
+      "id": 37,
+      "name": "Origin",
+      "class": "ancestor",
+      "side": "meta"
+    },
+    {
+      "id": 38,
+      "name": "Form",
+      "class": "ancestor",
+      "side": "meta"
+    },
+    {
+      "id": 39,
+      "name": "Motion",
+      "class": "ancestor",
+      "side": "meta"
+    },
+    {
+      "id": 40,
+      "name": "Return",
+      "class": "ancestor",
+      "side": "meta"
+    }
+  ],
+  "external_observers": [
+    {
+      "id": "Alpha",
+      "name": "Observer Alpha",
+      "mode": "read_only",
+      "role": "external evidence / reality check"
+    },
+    {
+      "id": "Omega",
+      "name": "Observer Omega",
+      "mode": "read_only",
+      "role": "continuity / history check"
+    }
+  ]
+}

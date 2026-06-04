@@ -1,0 +1,2 @@
+run,use_twins,avg_stability,min_stability,final_stability,avg_rigidity,avg_dissent,avg_abs_drift,avg_shared_pool,avg_polarity_gap,avg_emergence
+court_no_twins_extreme,False,0.886976,0.862951,0.910254,0.418508,0.196833,0.016592,0.0,0.0,0.0

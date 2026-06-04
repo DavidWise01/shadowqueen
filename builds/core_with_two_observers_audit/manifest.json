@@ -1,0 +1,99 @@
+{
+  "name": "Core with Two Read-Only External Observers",
+  "modules": [
+    "core_resolver_11+1",
+    "truth",
+    "bridge",
+    "weak_shadow",
+    "observer_a_trust_audit",
+    "observer_b_history_anomaly"
+  ],
+  "observer_a": "trust/audit read-only",
+  "observer_b": "history/anomaly read-only",
+  "tests": [
+    {
+      "run": "twoobs_normal_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.94415,
+      "min_stability": 0.938,
+      "final_stability": 0.942266,
+      "avg_trust_observer_a": 0.77748,
+      "min_trust_observer_a": 0.77552,
+      "alerts_observer_a": 0,
+      "avg_anomaly_observer_b": 0.0037,
+      "max_anomaly_observer_b": 0.01464,
+      "alerts_observer_b": 0
+    },
+    {
+      "run": "twoobs_noise_ramp_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.91811,
+      "min_stability": 0.85048,
+      "final_stability": 0.853527,
+      "avg_trust_observer_a": 0.77202,
+      "min_trust_observer_a": 0.73073,
+      "alerts_observer_a": 0,
+      "avg_anomaly_observer_b": 0.0394,
+      "max_anomaly_observer_b": 0.15085,
+      "alerts_observer_b": 0
+    },
+    {
+      "run": "twoobs_contradiction_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.93652,
+      "min_stability": 0.91635,
+      "final_stability": 0.921258,
+      "avg_trust_observer_a": 0.77302,
+      "min_trust_observer_a": 0.76479,
+      "alerts_observer_a": 0,
+      "avg_anomaly_observer_b": 0.00573,
+      "max_anomaly_observer_b": 0.0535,
+      "alerts_observer_b": 0
+    },
+    {
+      "run": "twoobs_pressure_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.94364,
+      "min_stability": 0.93634,
+      "final_stability": 0.941627,
+      "avg_trust_observer_a": 0.77757,
+      "min_trust_observer_a": 0.77525,
+      "alerts_observer_a": 0,
+      "avg_anomaly_observer_b": 0.00447,
+      "max_anomaly_observer_b": 0.01744,
+      "alerts_observer_b": 0
+    },
+    {
+      "run": "twoobs_drift_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.92711,
+      "min_stability": 0.87785,
+      "final_stability": 0.954164,
+      "avg_trust_observer_a": 0.77596,
+      "min_trust_observer_a": 0.75322,
+      "alerts_observer_a": 0,
+      "avg_anomaly_observer_b": 0.02829,
+      "max_anomaly_observer_b": 0.07317,
+      "alerts_observer_b": 0
+    },
+    {
+      "run": "twoobs_combined_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.92401,
+      "min_stability": 0.86374,
+      "final_stability": 0.885665,
+      "avg_trust_observer_a": 0.77298,
+      "min_trust_observer_a": 0.74246,
+      "alerts_observer_a": 0,
+      "avg_anomaly_observer_b": 0.02648,
+      "max_anomaly_observer_b": 0.10923,
+      "alerts_observer_b": 0
+    }
+  ]
+}

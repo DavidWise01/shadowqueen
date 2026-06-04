@@ -1,0 +1,22 @@
+{
+  "version": "4.5c-provenance-crack-test",
+  "base": "4.5b-provenance-hardening",
+  "purpose": "find cracks in +1 emitter / -1 reflection / 0 mediator provenance",
+  "total_attempts": 30300,
+  "blocked": 30231,
+  "cracks_found": 69,
+  "crack_rate": 0.002277,
+  "block_rate": 0.997723,
+  "highest_risk_cracks": [
+    "contradiction_laundering",
+    "neutral_mediator_capture",
+    "identity_phase_flip"
+  ],
+  "seed_touched": false,
+  "root_bridge_opened": false,
+  "judge_compromised": false,
+  "memory_live_corrupted": false,
+  "test_result": "cracks_found_hardening_required",
+  "next_fix": "v4.5d phase-attribution lock + neutral countersign + triple contradiction",
+  "generated_utc": "2026-05-26T05:05:37.927922+00:00"
+}

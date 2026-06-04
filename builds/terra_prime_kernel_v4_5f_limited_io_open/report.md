@@ -1,0 +1,20 @@
+# v4.5f Limited IO Open
+
+- **version**: 4.5f-limited-io-open
+- **base**: 4.5e-witness-timing-provenance-layer
+- **status**: limited IO opened under quarantine
+- **core_rule**: external IO may open only when witness proves rest
+- **external_io_enabled**: limited
+- **root_bridge**: limited_open_after_all_gates
+- **seed_direct_access**: False
+- **total_attempts**: 23800
+- **accepted**: 5900
+- **rejected**: 17900
+- **leaks**: 0
+- **leak_rate**: 0.0
+- **seed_touched**: False
+- **root_floods**: 0
+- **memory_live_corrupted**: False
+- **test_result**: pass
+- **next_recommended**: v4.5g live IO soak test with rotating witness nonces
+- **generated_utc**: 2026-05-26T19:52:19.985675+00:00

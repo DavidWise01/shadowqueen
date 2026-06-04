@@ -1,0 +1,63 @@
+{
+  "name": "Aeonic Coherence Kernel",
+  "version": "0.4e-timed-jester",
+  "status": "timed Jester with fatigue and cooldown",
+  "tests": [
+    {
+      "run": "queen_only_stress",
+      "use_jester": false,
+      "cycles": 220,
+      "avg_stability": 0.957625,
+      "min_stability": 0.931266,
+      "final_stability": 0.966706,
+      "avg_adaptive_score": 0.835188,
+      "avg_rigidity": 0.458109,
+      "avg_dissent": 0.154891,
+      "avg_queen_pressure": 0.087833,
+      "jester_active_cycles": 0,
+      "avg_jester_pressure": 0.0
+    },
+    {
+      "run": "queen_jester_stress",
+      "use_jester": true,
+      "cycles": 220,
+      "avg_stability": 0.927168,
+      "min_stability": 0.906955,
+      "final_stability": 0.937667,
+      "avg_adaptive_score": 0.837021,
+      "avg_rigidity": 0.42441,
+      "avg_dissent": 0.186342,
+      "avg_queen_pressure": 0.087833,
+      "jester_active_cycles": 40,
+      "avg_jester_pressure": 0.058478
+    },
+    {
+      "run": "queen_only_extreme",
+      "use_jester": false,
+      "cycles": 220,
+      "avg_stability": 0.957356,
+      "min_stability": 0.928992,
+      "final_stability": 0.967552,
+      "avg_adaptive_score": 0.835164,
+      "avg_rigidity": 0.457782,
+      "avg_dissent": 0.155436,
+      "avg_queen_pressure": 0.091571,
+      "jester_active_cycles": 0,
+      "avg_jester_pressure": 0.0
+    },
+    {
+      "run": "queen_jester_extreme",
+      "use_jester": true,
+      "cycles": 220,
+      "avg_stability": 0.926616,
+      "min_stability": 0.904156,
+      "final_stability": 0.936136,
+      "avg_adaptive_score": 0.837023,
+      "avg_rigidity": 0.423804,
+      "avg_dissent": 0.187416,
+      "avg_queen_pressure": 0.091571,
+      "jester_active_cycles": 39,
+      "avg_jester_pressure": 0.059788
+    }
+  ]
+}

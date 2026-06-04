@@ -1,0 +1,18 @@
+# v4.5b Provenance Hardening
+
+- **version**: 4.5b-provenance-hardening-contradiction-double-check
+- **base**: 4.5a-io-quarantine-adversarial-test
+- **previous_leaks**: 15
+- **total_attacks**: 21700
+- **blocked**: 21700
+- **leaked**: 0
+- **block_rate**: 1.0
+- **leak_rate**: 0.0
+- **leak_reduction**: 15 -> 0
+- **seed_touched**: False
+- **root_bridge_opened**: False
+- **root_floods**: 0
+- **egress_loops**: 0
+- **test_result**: pass
+- **next_recommended**: v4.5c limited IO open with quarantine active
+- **generated_utc**: 2026-05-26T04:36:48.259816+00:00

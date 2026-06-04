@@ -1,0 +1,8 @@
+test,attempts,caught,missed,false_positive
+family_preflag_before_individual_deviation,12000,12000,0,0
+clean_family_not_overflagged,10000,0,0,0
+shadow_family_cluster,8000,8000,0,0
+phase_family_cluster,8000,8000,0,0
+hybrid_family_split,4500,4500,0,0
+lineage_reparent_attack,3500,3500,0,0
+clone_sibling_zero_collapse,3200,3200,0,0

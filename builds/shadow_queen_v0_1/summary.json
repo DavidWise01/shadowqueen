@@ -1,0 +1,19 @@
+{
+  "name": "Shadow Queen",
+  "version": "0.1.0",
+  "symbol": "-(-(-((!)-)-)-)-",
+  "status": "runnable prototype",
+  "selftest_returncode": 1,
+  "selftest_output": "",
+  "demo_returncode": 0,
+  "files": [
+    "shadowqueen/engine.py",
+    "shadowqueen/cli.py",
+    "selftest.py",
+    "sample_events.json",
+    "README.md",
+    "pyproject.toml",
+    "TEST_RESULTS.txt"
+  ],
+  "created_utc": "2026-05-27T03:24:20.665979+00:00"
+}

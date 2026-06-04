@@ -1,0 +1,20 @@
+{
+  "name": "Shadow Queen",
+  "version": "3.3.0",
+  "status": "smart credential templates",
+  "new_features": [
+    "reusable credential templates",
+    "field schema validation",
+    "required proof rules",
+    "trust minimums",
+    "credential derivation checks",
+    "wallet presentation requirements",
+    "template versioning/hash"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "demo_returncode": 0,
+  "stats_returncode": 0,
+  "verify_returncode": 0,
+  "created_utc": "2026-05-31T14:52:12.495880+00:00"
+}

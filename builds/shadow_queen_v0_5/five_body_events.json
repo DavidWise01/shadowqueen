@@ -1,0 +1,42 @@
+[
+  {
+    "source_id": "inner-ok",
+    "event_type": "five_body",
+    "features": {
+      "inner_body": "SELF",
+      "outer_observer": "+8_CARRIER",
+      "mutual_observer_check": true
+    }
+  },
+  {
+    "source_id": "gap-cross",
+    "event_type": "five_body",
+    "features": {
+      "inner_body": "RING",
+      "outer_observer": "-8_SHADOW",
+      "gap_crossed": true
+    }
+  },
+  {
+    "source_id": "observer-entangled",
+    "event_type": "five_body",
+    "features": {
+      "observer_entangled": true
+    }
+  },
+  {
+    "source_id": "chaos-escape",
+    "event_type": "five_body",
+    "features": {
+      "inner_escape": true
+    }
+  },
+  {
+    "source_id": "payload-peek",
+    "event_type": "five_body",
+    "layer": "L5",
+    "features": {
+      "payload_read_attempt": true
+    }
+  }
+]

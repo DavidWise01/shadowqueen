@@ -1,0 +1,54 @@
+[
+  {
+    "source_id": "closure-ok",
+    "event_type": "nested_closure",
+    "features": {
+      "left_pair": [
+        1,
+        2
+      ],
+      "right_pair": [
+        3,
+        4
+      ],
+      "null_count": 2,
+      "outer_wrap": true,
+      "depth": 2
+    }
+  },
+  {
+    "source_id": "single-null",
+    "event_type": "nested_closure",
+    "features": {
+      "null_count": 1
+    }
+  },
+  {
+    "source_id": "no-wrap",
+    "event_type": "nested_closure",
+    "features": {
+      "outer_wrap": false
+    }
+  },
+  {
+    "source_id": "stacking-fail",
+    "event_type": "nested_closure",
+    "features": {
+      "stacking": true
+    }
+  },
+  {
+    "source_id": "exposed-internals",
+    "event_type": "nested_closure",
+    "features": {
+      "internals_exposed": true
+    }
+  },
+  {
+    "source_id": "ack-crossed",
+    "event_type": "nested_closure",
+    "features": {
+      "ack_crossed_airgap": true
+    }
+  }
+]

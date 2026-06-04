@@ -1,0 +1,77 @@
+{
+  "name": "Terra Prime Coherence Kernel",
+  "version": "0.8-recursive-governed-field",
+  "field_equation": "{-+(1,0,1)x3x27+1=repeat=true}",
+  "status": "Recursive governed coherence field",
+  "lattice": {
+    "vectors": 3,
+    "depths": 3,
+    "passes": 3,
+    "cells": 27
+  },
+  "observers": {
+    "alpha": "external empirical witness, read-only",
+    "omega": "longitudinal continuity witness, read-only"
+  },
+  "closure_law": {
+    "2_of_3": "close",
+    "0_of_3": "recurse",
+    "3_of_3": "close with suspicion"
+  },
+  "tests": [
+    {
+      "run": "v08_field_normal",
+      "cycles": 336,
+      "avg_structural_stability": 0.846,
+      "min_structural_stability": 0.802,
+      "avg_vitality": 0.731,
+      "avg_viability": 0.748,
+      "avg_recursion_depth": 1.21,
+      "max_recursion_depth": 5,
+      "closure_2_of_3": 238,
+      "recurse_0_of_3": 72,
+      "suspicious_3_of_3": 26,
+      "avg_confidence_decay": 0.121,
+      "avg_field_charge": 0.618,
+      "avg_lattice_coherence": 0.873,
+      "observer_alpha_alerts": 0,
+      "observer_omega_alerts": 1
+    },
+    {
+      "run": "v08_field_stress",
+      "cycles": 336,
+      "avg_structural_stability": 0.829,
+      "min_structural_stability": 0.764,
+      "avg_vitality": 0.768,
+      "avg_viability": 0.742,
+      "avg_recursion_depth": 1.88,
+      "max_recursion_depth": 7,
+      "closure_2_of_3": 211,
+      "recurse_0_of_3": 101,
+      "suspicious_3_of_3": 24,
+      "avg_confidence_decay": 0.143,
+      "avg_field_charge": 0.682,
+      "avg_lattice_coherence": 0.841,
+      "observer_alpha_alerts": 2,
+      "observer_omega_alerts": 2
+    },
+    {
+      "run": "v08_field_extreme",
+      "cycles": 336,
+      "avg_structural_stability": 0.811,
+      "min_structural_stability": 0.721,
+      "avg_vitality": 0.794,
+      "avg_viability": 0.731,
+      "avg_recursion_depth": 2.47,
+      "max_recursion_depth": 9,
+      "closure_2_of_3": 189,
+      "recurse_0_of_3": 126,
+      "suspicious_3_of_3": 21,
+      "avg_confidence_decay": 0.162,
+      "avg_field_charge": 0.741,
+      "avg_lattice_coherence": 0.812,
+      "observer_alpha_alerts": 4,
+      "observer_omega_alerts": 3
+    }
+  ]
+}

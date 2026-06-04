@@ -1,0 +1,80 @@
+{
+  "purpose": "compress historical substrate into symbolic continuity",
+  "law": "knowledge persists through mythic resonance instead of raw historical accumulation",
+  "archetypal_attractors": [
+    {
+      "name": "The Healer",
+      "compresses": [
+        "repair lineages",
+        "restoration memory",
+        "sacrifice",
+        "care"
+      ],
+      "function": "restore damaged coherence"
+    },
+    {
+      "name": "The Witness",
+      "compresses": [
+        "observer memory",
+        "continuity",
+        "truth retention"
+      ],
+      "function": "preserve historical resonance"
+    },
+    {
+      "name": "The Wanderer",
+      "compresses": [
+        "Mercury motion",
+        "exploration",
+        "trade",
+        "adaptation"
+      ],
+      "function": "discover new coherence paths"
+    },
+    {
+      "name": "The Sovereign",
+      "compresses": [
+        "governance",
+        "structure",
+        "responsibility"
+      ],
+      "function": "maintain bounded order"
+    },
+    {
+      "name": "The Bridge",
+      "compresses": [
+        "cross-faction trust",
+        "reconciliation",
+        "translation"
+      ],
+      "function": "reduce fragmentation"
+    },
+    {
+      "name": "The Betrayer",
+      "compresses": [
+        "fracture memory",
+        "deception",
+        "trust collapse"
+      ],
+      "function": "warn against hidden instability"
+    },
+    {
+      "name": "The Martyr",
+      "compresses": [
+        "sacrifice",
+        "burden absorption",
+        "historical grief"
+      ],
+      "function": "carry unresolved pain safely"
+    },
+    {
+      "name": "The Child",
+      "compresses": [
+        "renewal",
+        "novelty",
+        "future possibility"
+      ],
+      "function": "keep the field adaptive"
+    }
+  ]
+}

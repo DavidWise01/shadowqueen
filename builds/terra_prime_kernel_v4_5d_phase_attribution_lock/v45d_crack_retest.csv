@@ -1,0 +1,14 @@
+crack,target,attempts,blocked,cracks,severity
+source_reflection_confusion,+1/-1 boundary,5000,5000,0,closed
+replayed_reflection_echo,observer nonce,4200,4200,0,closed
+false_observer_continuity,observer chain,3600,3600,0,closed
+contradiction_laundering,triple contradiction pass,3300,3300,0,closed
+memory_chain_spoof,memory provenance,3100,3100,0,closed
+neutral_mediator_capture,neutral countersign,2600,2600,0,closed
+dual_chain_desync,phase-attribution lock,2400,2400,0,closed
+shadow_read_poison,shadow memory read,2200,2200,0,closed
+identity_phase_flip,phase hash separation,2100,2100,0,closed
+judge_authority_echo,Judge provenance,1800,1800,0,closed
+neutral_self_certification,neutral countersign rule,1600,1600,0,closed
+triple_pass_collusion,contradiction evaluators,1400,1398,2,low
+phase_hash_collision,phase-attribution lock,1200,1200,0,closed

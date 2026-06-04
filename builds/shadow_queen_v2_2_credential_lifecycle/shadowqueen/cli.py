@@ -1,0 +1,28 @@
+
+import argparse,json
+from .core import Store,Credential,CredentialLifecycle
+def lifecycle(args): return CredentialLifecycle(Store(args.db,args.node))
+def issue(args): print(json.dumps(lifecycle(args).issue(Credential.create(args.credential_id,args.subject,args.type,args.ttl,args.proof_hash),args.actor,args.reason),indent=2))
+def suspend(args): print(json.dumps(lifecycle(args).suspend(args.credential_id,args.actor,args.reason),indent=2))
+def revoke(args): print(json.dumps(lifecycle(args).revoke(args.credential_id,args.actor,args.reason),indent=2))
+def renew(args): print(json.dumps(lifecycle(args).renew(args.credential_id,args.new_id,args.ttl,args.actor,args.reason),indent=2))
+def expire(args): print(json.dumps(lifecycle(args).expire_due(args.actor),indent=2))
+def audit(args): print(json.dumps(lifecycle(args).audit(),indent=2))
+def listc(args): print(json.dumps(Store(args.db,args.node).credentials(),indent=2))
+def hist(args): print(json.dumps(Store(args.db,args.node).history(args.credential_id),indent=2))
+def stats(args): print(json.dumps(Store(args.db,args.node).stats(),indent=2))
+def verify(args): print(json.dumps(Store(args.db,args.node).verify_ledger(),indent=2))
+def evidence(args): print(json.dumps(Store(args.db,args.node).bundle(args.output),indent=2))
+def main(argv=None):
+    p=argparse.ArgumentParser(); p.add_argument("--db",default="credentials.db"); p.add_argument("--node",default="queen"); sub=p.add_subparsers(dest="cmd",required=True)
+    a=sub.add_parser("issue"); a.add_argument("credential_id"); a.add_argument("subject"); a.add_argument("--type",default="identity"); a.add_argument("--ttl",type=int,default=365); a.add_argument("--proof-hash",default=""); a.add_argument("--actor",default="queen"); a.add_argument("--reason",default="initial issuance"); a.set_defaults(func=issue)
+    a=sub.add_parser("suspend"); a.add_argument("credential_id"); a.add_argument("--actor",default="queen"); a.add_argument("--reason",default="suspended"); a.set_defaults(func=suspend)
+    a=sub.add_parser("revoke"); a.add_argument("credential_id"); a.add_argument("--actor",default="queen"); a.add_argument("--reason",default="revoked"); a.set_defaults(func=revoke)
+    a=sub.add_parser("renew"); a.add_argument("credential_id"); a.add_argument("new_id"); a.add_argument("--ttl",type=int,default=365); a.add_argument("--actor",default="queen"); a.add_argument("--reason",default="renewal"); a.set_defaults(func=renew)
+    a=sub.add_parser("expire-due"); a.add_argument("--actor",default="scheduler"); a.set_defaults(func=expire)
+    sub.add_parser("audit").set_defaults(func=audit); sub.add_parser("list").set_defaults(func=listc)
+    a=sub.add_parser("history"); a.add_argument("--credential-id"); a.set_defaults(func=hist)
+    sub.add_parser("stats").set_defaults(func=stats); sub.add_parser("verify-ledger").set_defaults(func=verify)
+    a=sub.add_parser("evidence"); a.add_argument("output"); a.set_defaults(func=evidence)
+    args=p.parse_args(argv); return args.func(args)
+if __name__=="__main__": raise SystemExit(main())

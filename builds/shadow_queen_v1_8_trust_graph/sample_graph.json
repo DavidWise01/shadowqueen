@@ -1,0 +1,59 @@
+{
+  "nodes": [
+    {
+      "entity_id": "carbon:david",
+      "entity_type": "carbon",
+      "identity_hash": "C-ID-001",
+      "address_hash": "C-ADDR-001",
+      "document_hash": "C-DOC-001",
+      "trust_score": 0.9
+    },
+    {
+      "entity_id": "silicon:queen",
+      "entity_type": "silicon",
+      "identity_hash": "S-ID-QUEEN",
+      "document_hash": "S-DOC-001",
+      "trust_score": 0.95
+    },
+    {
+      "entity_id": "silicon:minion-1",
+      "entity_type": "silicon",
+      "identity_hash": "S-ID-M1",
+      "document_hash": "S-DOC-M1",
+      "trust_score": 0.8
+    },
+    {
+      "entity_id": "silicon:shadow-clone",
+      "entity_type": "silicon",
+      "identity_hash": "S-ID-SHADOW",
+      "document_hash": "S-DOC-SHADOW",
+      "trust_score": 0.1
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "silicon:queen",
+      "target_id": "silicon:minion-1",
+      "relation": "issuer",
+      "confidence": 0.95
+    },
+    {
+      "source_id": "silicon:minion-1",
+      "target_id": "carbon:david",
+      "relation": "witness",
+      "confidence": 0.9
+    },
+    {
+      "source_id": "silicon:queen",
+      "target_id": "silicon:shadow-clone",
+      "relation": "shadow_clone",
+      "confidence": 0.99
+    },
+    {
+      "source_id": "carbon:david",
+      "target_id": "silicon:shadow-clone",
+      "relation": "parent",
+      "confidence": 0.5
+    }
+  ]
+}

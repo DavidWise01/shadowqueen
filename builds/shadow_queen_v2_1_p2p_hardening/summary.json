@@ -1,0 +1,21 @@
+{
+  "name": "Shadow Queen",
+  "version": "2.1.0",
+  "status": "p2p hardening",
+  "new_features": [
+    "nonce replay protection",
+    "message TTL",
+    "rate limits",
+    "peer trust penalties",
+    "peer quarantine threshold",
+    "rejection reasons",
+    "conflict escalation"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "register_returncode": 0,
+  "send_returncode": 0,
+  "stats_returncode": 0,
+  "verify_returncode": 0,
+  "created_utc": "2026-05-29T19:30:11.529832+00:00"
+}

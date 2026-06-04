@@ -1,0 +1,20 @@
+{
+  "name": "Shadow Queen",
+  "version": "1.9.0",
+  "status": "fraud + anomaly detection",
+  "new_features": [
+    "fraud/anomaly scoring",
+    "shared proof hash detection",
+    "low-trust detection",
+    "clone/shadow-clone scoring",
+    "domain crossing scoring",
+    "multiple issuer detection"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "ingest_returncode": 0,
+  "findings_returncode": 0,
+  "stats_returncode": 0,
+  "verify_returncode": 0,
+  "created_utc": "2026-05-29T04:26:05.882770+00:00"
+}

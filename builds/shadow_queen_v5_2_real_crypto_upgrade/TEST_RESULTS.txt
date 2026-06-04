@@ -1,0 +1,119 @@
+SELFTEST
+SELFTEST PASS
+Spreadsheet runtime warmup failed during python startup
+Traceback (most recent call last):
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py", line 26, in warm_spreadsheet_runtime_on_startup
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 785, in warm_spreadsheet_runtime
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 720, in _warm_feature_flows
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 704, in _warm_collaboration_flows
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/generated/interface/models.py", line 48821, in hydrate_crdt_from_proto
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/rpc/remote.py", line 747, in __call__
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/rpc/client.py", line 150, in call
+artifact_tool.rpc.client.RemoteError: hydrateCrdtFromProto requires an empty collaborative document.
+
+DEMO
+{
+  "message": {
+    "verified": true,
+    "envelope": "env2:47fe77cab3838225",
+    "reason": "signature_verified"
+  },
+  "credential": {
+    "verified": true,
+    "envelope": "env2:6a2764208b710134",
+    "reason": "signature_verified"
+  },
+  "presentation": {
+    "verified": true,
+    "envelope": "env2:19824d1ef07cc2f9",
+    "reason": "signature_verified"
+  },
+  "authority": {
+    "verified": true,
+    "envelope": "env2:037f9e1e808be5c4",
+    "reason": "signature_verified"
+  },
+  "tampered": {
+    "verified": false,
+    "envelope": "env2:6a2764208b710134",
+    "reason": "payload_hash_mismatch"
+  },
+  "rotation": {
+    "node": "office:north",
+    "key_id": "ed25519:ff165b2ab58c75cf",
+    "version": 2,
+    "public_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAUCu5RoI+3xr8AqllOzmxcf3llh7vlDi1d7BZIMCJwTU=\n-----END PUBLIC KEY-----\n"
+  },
+  "post_rotation": {
+    "verified": true,
+    "envelope": "env2:f31e3f95e6a712d8",
+    "reason": "signature_verified"
+  },
+  "north": {
+    "node": "office:north",
+    "keys": 2,
+    "trusted_keys": 2,
+    "revocations": 0,
+    "rotations": 1,
+    "envelopes": 5,
+    "verifications": 0,
+    "ledger": {
+      "ok": true,
+      "entries": 8,
+      "head": "6622a355123aee7f0250b5879c7eeb2cf73f55771e907a46c5121f4ee0c39125"
+    },
+    "db_integrity": "ok"
+  },
+  "south": {
+    "node": "office:south",
+    "keys": 1,
+    "trusted_keys": 2,
+    "revocations": 1,
+    "rotations": 0,
+    "envelopes": 0,
+    "verifications": 6,
+    "ledger": {
+      "ok": true,
+      "entries": 10,
+      "head": "d20d37afc087ffcc4850f45e0e8420f2a9c774576ea723609ab2579f3890c99b"
+    },
+    "db_integrity": "ok"
+  }
+}
+Spreadsheet runtime warmup failed during python startup
+Traceback (most recent call last):
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py", line 26, in warm_spreadsheet_runtime_on_startup
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 785, in warm_spreadsheet_runtime
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 720, in _warm_feature_flows
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 704, in _warm_collaboration_flows
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/generated/interface/models.py", line 48821, in hydrate_crdt_from_proto
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/rpc/remote.py", line 747, in __call__
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/rpc/client.py", line 150, in call
+artifact_tool.rpc.client.RemoteError: hydrateCrdtFromProto requires an empty collaborative document.
+
+STATUS
+{
+  "node": "office:north",
+  "keys": 1,
+  "trusted_keys": 1,
+  "revocations": 0,
+  "rotations": 0,
+  "envelopes": 0,
+  "verifications": 0,
+  "ledger": {
+    "ok": true,
+    "entries": 1,
+    "head": "091bea477c0f114d04615e7635ac626ce9693633be2d95ff61f497bf9c969a3f"
+  },
+  "db_integrity": "ok"
+}
+Spreadsheet runtime warmup failed during python startup
+Traceback (most recent call last):
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py", line 26, in warm_spreadsheet_runtime_on_startup
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 785, in warm_spreadsheet_runtime
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 720, in _warm_feature_flows
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 704, in _warm_collaboration_flows
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/generated/interface/models.py", line 48821, in hydrate_crdt_from_proto
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/rpc/remote.py", line 747, in __call__
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/rpc/client.py", line 150, in call
+artifact_tool.rpc.client.RemoteError: hydrateCrdtFromProto requires an empty collaborative document.

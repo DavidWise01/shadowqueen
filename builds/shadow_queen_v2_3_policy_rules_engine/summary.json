@@ -1,0 +1,18 @@
+{
+  "name": "Shadow Queen",
+  "version": "2.3.0",
+  "status": "policy rules engine",
+  "new_features": [
+    "role-based policy rules",
+    "eligibility checks",
+    "renewal windows",
+    "revocation/suspension rules",
+    "policy denial reasons",
+    "policy audit ledger"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "stats_returncode": 0,
+  "verify_returncode": 0,
+  "created_utc": "2026-05-29T23:27:54.331284+00:00"
+}

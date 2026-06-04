@@ -1,0 +1,140 @@
+SELFTEST
+SELFTEST PASS
+Spreadsheet runtime warmup failed during python startup
+Traceback (most recent call last):
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py", line 26, in warm_spreadsheet_runtime_on_startup
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 785, in warm_spreadsheet_runtime
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 720, in _warm_feature_flows
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 704, in _warm_collaboration_flows
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/generated/interface/models.py", line 48821, in hydrate_crdt_from_proto
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/rpc/remote.py", line 747, in __call__
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/rpc/client.py", line 150, in call
+artifact_tool.rpc.client.RemoteError: hydrateCrdtFromProto requires an empty collaborative document.
+
+DEMO
+{
+  "north": {
+    "node": "office:north",
+    "region": "MN",
+    "peers": 3,
+    "inbox": 0,
+    "outbox": 5,
+    "heartbeats": 1,
+    "replications": 1,
+    "ledger": {
+      "ok": true,
+      "entries": 15,
+      "head": "69b61351b306257eeaa247ae406bf31949703822a8c4163d867ca7be88df0c77"
+    },
+    "db_integrity": "ok"
+  },
+  "south": {
+    "node": "office:south",
+    "region": "IA",
+    "peers": 3,
+    "inbox": 2,
+    "outbox": 0,
+    "heartbeats": 0,
+    "replications": 0,
+    "ledger": {
+      "ok": true,
+      "entries": 9,
+      "head": "ee311d9b8c16843cf100f5e08f5b212932b284aa9855201ecf6da7457616070b"
+    },
+    "db_integrity": "ok"
+  },
+  "east": {
+    "node": "office:east",
+    "region": "WI",
+    "peers": 3,
+    "inbox": 2,
+    "outbox": 0,
+    "heartbeats": 0,
+    "replications": 0,
+    "ledger": {
+      "ok": true,
+      "entries": 9,
+      "head": "1c63b5b502bddf264e1189c983fa368b70a797ff7ace77598391697e21e5c9ab"
+    },
+    "db_integrity": "ok"
+  },
+  "west": {
+    "node": "office:west",
+    "region": "ND",
+    "peers": 3,
+    "inbox": 1,
+    "outbox": 0,
+    "heartbeats": 0,
+    "replications": 0,
+    "ledger": {
+      "ok": true,
+      "entries": 7,
+      "head": "69d0198fa21323449ba5cec7539b636e76fc18d39fba3502c49a522f42eaf91b"
+    },
+    "db_integrity": "ok"
+  },
+  "heartbeat": {
+    "message": "msg:fcd90f4be133d78f",
+    "dst": "office:south",
+    "status": "delivered"
+  },
+  "replication": {
+    "message": "msg:8c7fb6c3b0f81c86",
+    "dst": "office:east",
+    "status": "delivered"
+  },
+  "broadcast": [
+    {
+      "message": "msg:5594f605b64a36de",
+      "dst": "office:south",
+      "status": "delivered"
+    },
+    {
+      "message": "msg:eab7ebd2ec738ae1",
+      "dst": "office:east",
+      "status": "delivered"
+    },
+    {
+      "message": "msg:ebff98e36e79ce83",
+      "dst": "office:west",
+      "status": "delivered"
+    }
+  ]
+}
+Spreadsheet runtime warmup failed during python startup
+Traceback (most recent call last):
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py", line 26, in warm_spreadsheet_runtime_on_startup
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 785, in warm_spreadsheet_runtime
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 720, in _warm_feature_flows
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 704, in _warm_collaboration_flows
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/generated/interface/models.py", line 48821, in hydrate_crdt_from_proto
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/rpc/remote.py", line 747, in __call__
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/rpc/client.py", line 150, in call
+artifact_tool.rpc.client.RemoteError: hydrateCrdtFromProto requires an empty collaborative document.
+
+STATUS
+{
+  "node": "office:north",
+  "region": "local",
+  "peers": 0,
+  "inbox": 0,
+  "outbox": 0,
+  "heartbeats": 0,
+  "replications": 0,
+  "ledger": {
+    "ok": true,
+    "entries": 1,
+    "head": "87dc7101a1fb1ea1dbf07ae80a1e830843f9bbe142268e2f819e8e6c9eafa67b"
+  },
+  "db_integrity": "ok"
+}
+Spreadsheet runtime warmup failed during python startup
+Traceback (most recent call last):
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py", line 26, in warm_spreadsheet_runtime_on_startup
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 785, in warm_spreadsheet_runtime
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 720, in _warm_feature_flows
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 704, in _warm_collaboration_flows
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/generated/interface/models.py", line 48821, in hydrate_crdt_from_proto
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/rpc/remote.py", line 747, in __call__
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/rpc/client.py", line 150, in call
+artifact_tool.rpc.client.RemoteError: hydrateCrdtFromProto requires an empty collaborative document.

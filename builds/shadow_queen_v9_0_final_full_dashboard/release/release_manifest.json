@@ -1,0 +1,32 @@
+{
+  "name": "Shadow Queen",
+  "version": "9.0.0-final",
+  "status": "final packaged release",
+  "offices": [
+    "north",
+    "south",
+    "east",
+    "west"
+  ],
+  "citizens": 100,
+  "silicon_agents": 25,
+  "credentials": 1000,
+  "investigations": 100,
+  "capabilities": [
+    "identity",
+    "credentials",
+    "workflow",
+    "authority",
+    "fraud",
+    "investigations",
+    "analytics",
+    "notifications",
+    "reporting",
+    "persistence",
+    "replication",
+    "live mesh",
+    "dashboard"
+  ],
+  "created_utc": "2026-06-02T20:23:30Z",
+  "release_hash": "faf424c6add39d6d986557864a4a22e3c9dab35ae05e3c4ecfcc28b5493ea3a7"
+}

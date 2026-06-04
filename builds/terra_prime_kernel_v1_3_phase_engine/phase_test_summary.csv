@@ -1,0 +1,5 @@
+run,phase,direction,viability,max_charge,closures,recursions,suspicious,sentinels,hunters,unresolved,variants,pruned,switches
+light_phase,LIGHT,0→9,0.839,0.778,381,39,4,28,0,0,6,1,0
+dark_phase,DARK,9→0,0.815,0.842,322,98,41,0,63,0,2,11,0
+shadow_phase,SHADOW,0↔9,0.823,0.801,291,72,18,17,19,57,8,4,0
+runtime_switch,LIGHT→DARK→SHADOW,dynamic,0.831,0.823,338,64,27,23,31,18,7,6,8

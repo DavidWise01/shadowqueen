@@ -1,0 +1,103 @@
+{
+  "name": "Core + Truth + Bridge + Shadow + Read-Only External Observer",
+  "structure": {
+    "dynamic_channels": 11,
+    "resolver_anchor": 1,
+    "modules": [
+      "resolver",
+      "stability_monitor",
+      "light_truth_strip",
+      "bridge_strip",
+      "weak_shadow_strip",
+      "external_observer_read_only"
+    ]
+  },
+  "observer_rule": "external observer records trust/deviation only; it does not modify state",
+  "failure_rule": "8 consecutive cycles below 0.45 stability",
+  "tests": [
+    {
+      "run": "extobs_normal_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.94438,
+      "min_stability": 0.93894,
+      "final_stability": 0.945946,
+      "avg_adaptive_score": 0.83636,
+      "avg_rigidity": 0.80797,
+      "avg_observer_trust": 0.77753,
+      "min_observer_trust": 0.77482,
+      "observer_alerts": 0,
+      "final_self_state": 0.000812
+    },
+    {
+      "run": "extobs_noise_ramp_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.91893,
+      "min_stability": 0.85691,
+      "final_stability": 0.920578,
+      "avg_adaptive_score": 0.83686,
+      "avg_rigidity": 0.77549,
+      "avg_observer_trust": 0.77123,
+      "min_observer_trust": 0.74032,
+      "observer_alerts": 0,
+      "final_self_state": 0.039845
+    },
+    {
+      "run": "extobs_contradiction_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.93733,
+      "min_stability": 0.91625,
+      "final_stability": 0.928539,
+      "avg_adaptive_score": 0.83669,
+      "avg_rigidity": 0.81672,
+      "avg_observer_trust": 0.77326,
+      "min_observer_trust": 0.76429,
+      "observer_alerts": 0,
+      "final_self_state": 0.003212
+    },
+    {
+      "run": "extobs_pressure_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.94393,
+      "min_stability": 0.93789,
+      "final_stability": 0.945782,
+      "avg_adaptive_score": 0.83639,
+      "avg_rigidity": 0.80649,
+      "avg_observer_trust": 0.77762,
+      "min_observer_trust": 0.77428,
+      "observer_alerts": 0,
+      "final_self_state": 0.000966
+    },
+    {
+      "run": "extobs_drift_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.92732,
+      "min_stability": 0.87731,
+      "final_stability": 0.952786,
+      "avg_adaptive_score": 0.83674,
+      "avg_rigidity": 0.78157,
+      "avg_observer_trust": 0.77618,
+      "min_observer_trust": 0.75137,
+      "observer_alerts": 0,
+      "final_self_state": 0.002574
+    },
+    {
+      "run": "extobs_combined_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.92442,
+      "min_stability": 0.87089,
+      "final_stability": 0.921662,
+      "avg_adaptive_score": 0.8369,
+      "avg_rigidity": 0.78803,
+      "avg_observer_trust": 0.77268,
+      "min_observer_trust": 0.74662,
+      "observer_alerts": 0,
+      "final_self_state": 0.011447
+    }
+  ]
+}

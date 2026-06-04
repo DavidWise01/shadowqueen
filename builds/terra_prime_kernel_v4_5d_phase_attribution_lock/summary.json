@@ -1,0 +1,20 @@
+{
+  "version": "4.5d-phase-attribution-lock",
+  "base": "4.5c-provenance-crack-test",
+  "purpose": "close contradiction laundering, neutral mediator capture, and identity phase flip cracks",
+  "previous_cracks": 69,
+  "total_attempts": 34500,
+  "blocked": 34498,
+  "cracks_found": 2,
+  "crack_rate": 5.8e-05,
+  "block_rate": 0.999942,
+  "closed_original_cracks": 69,
+  "remaining_crack": "triple_pass_collusion edge",
+  "seed_touched": false,
+  "root_bridge_opened": false,
+  "judge_compromised": false,
+  "memory_live_corrupted": false,
+  "test_result": "pass_with_minor_collusion_edge",
+  "next_recommended": "v4.5e evaluator independence / anti-collusion quorum",
+  "generated_utc": "2026-05-26T05:09:33.191018+00:00"
+}

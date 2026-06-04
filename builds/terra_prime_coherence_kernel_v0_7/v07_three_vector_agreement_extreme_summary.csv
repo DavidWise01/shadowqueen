@@ -1,0 +1,2 @@
+run,cycles,avg_structural_stability,min_structural_stability,avg_vitality,avg_viability,avg_bridge_tension,avg_mercury_motion,avg_recursion_depth,max_recursion_depth,close_2_of_3,close_with_suspicion,continue_recursion,all_disagree_cycles,avg_jester_suspicion,avg_abs_drift
+v07_three_vector_agreement_extreme,280,0.827,0.742,0.758,0.729,0.166,0.431,1.91,7,178,16,86,86,0.024,0.027

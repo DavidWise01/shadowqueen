@@ -1,0 +1,6 @@
+<!doctype html><html><head><meta charset='utf-8'><title>Shadow Queen v5.5</title><style>body{background:#080811;color:#eee;font-family:Arial}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;padding:20px}.card{background:#171724;border:1px solid #333;border-radius:12px;padding:16px}h1{color:#d8b4fe}h2{color:#c084fc}.row{display:flex;justify-content:space-between;border-bottom:1px solid #333;padding:6px}</style></head><body><h1>Shadow Queen v5.5 Live Dashboard</h1><main id='grid'></main><script>
+const eps=['status','offices','credentials','fraud','authority','analytics'];
+function rows(o){if(Array.isArray(o))return o.map(x=>`<div class=row><span>${x.id}</span><b>${x.status||x.trust}</b></div>`).join('');return Object.entries(o).map(([k,v])=>`<div class=row><span>${k}</span><b>${v}</b></div>`).join('')}
+async function refresh(){let html='';for(const e of eps){let d=await fetch('/api/'+e).then(r=>r.json());html+=`<section class=card><h2>${e}</h2>${rows(d)}</section>`}grid.innerHTML=html}
+refresh();setInterval(refresh,2000);
+</script></body></html>

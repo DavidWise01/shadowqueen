@@ -1,0 +1,46 @@
+[
+  {
+    "source_id": "clean-1",
+    "event_type": "agent_call",
+    "timestamp": 0,
+    "phase": "+1"
+  },
+  {
+    "source_id": "shadow-1",
+    "event_type": "agent_call",
+    "timestamp": 0,
+    "phase": "-1",
+    "parent_id": "clean-1"
+  },
+  {
+    "source_id": "peek-1",
+    "event_type": "session",
+    "timestamp": 0,
+    "layer": "L5",
+    "features": {
+      "payload_read_attempt": true
+    }
+  },
+  {
+    "source_id": "bad-wiggle",
+    "event_type": "io",
+    "timestamp": 0,
+    "wiggle_sequence": "++++"
+  },
+  {
+    "source_id": "mem-1",
+    "event_type": "memory",
+    "timestamp": 0,
+    "features": {
+      "memory_import": true,
+      "shadow_read_pass": false
+    }
+  },
+  {
+    "source_id": "child-shadow",
+    "event_type": "agent_call",
+    "timestamp": 0,
+    "parent_id": "shadow-1",
+    "phase": "0"
+  }
+]

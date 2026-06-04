@@ -1,0 +1,15 @@
+{
+  "environment": "production-hardening",
+  "database": {
+    "driver": "sqlite"
+  },
+  "security": {
+    "audit_required": true
+  },
+  "logging": {
+    "level": "INFO"
+  },
+  "federation": {
+    "ledger_required": true
+  }
+}

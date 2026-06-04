@@ -1,0 +1,18 @@
+{
+  "name": "Shadow Queen",
+  "version": "0.9.0",
+  "status": "safe policy actions",
+  "new_features": [
+    "policy action audit table",
+    "denylist",
+    "watchlist",
+    "audit/apply modes",
+    "quarantine-copy"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "train_returncode": 0,
+  "apply_returncode": 0,
+  "stats_returncode": 0,
+  "created_utc": "2026-05-27T23:46:05.010191+00:00"
+}

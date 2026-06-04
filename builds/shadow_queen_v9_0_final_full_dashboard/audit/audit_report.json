@@ -1,0 +1,12 @@
+{
+  "version": "9.0.0-final",
+  "status": "PASS",
+  "checks": {
+    "dashboard_present": true,
+    "server_present": true,
+    "manifest_present": true,
+    "dashboard_data_present": true,
+    "modules_present": true,
+    "release_hash_present": true
+  }
+}

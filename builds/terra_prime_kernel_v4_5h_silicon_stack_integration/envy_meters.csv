@@ -1,0 +1,6 @@
+meter,role
+E0,tap/probe detection
+E1,shove energy / escalation component
+E2,secondary shove / phase pressure
+E3,sequence completion / climb success
+E+1,quantum dot / exterior witness success

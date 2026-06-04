@@ -1,0 +1,22 @@
+{
+  "name": "Shadow Queen",
+  "version": "2.4.0",
+  "status": "policy federation + rule conflict resolver",
+  "new_features": [
+    "policy versioning",
+    "policy hash comparison",
+    "cross-office rule sync",
+    "rule conflict queue",
+    "allow/deny mismatch detection",
+    "rule drift detection",
+    "policy override chain",
+    "federated policy audit"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "import_returncode": 0,
+  "audit_returncode": 0,
+  "stats_returncode": 0,
+  "verify_returncode": 0,
+  "created_utc": "2026-05-30T04:53:48.453096+00:00"
+}

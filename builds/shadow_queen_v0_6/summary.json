@@ -1,0 +1,13 @@
+{
+  "name": "Shadow Queen",
+  "version": "0.6.0",
+  "status": "nested closure integration",
+  "integrated_source": "nested-closure.html",
+  "source_sha256": "3d37d2ed26e8214b3e8e71dba68827bafffccc3d514231d2bd15be4971bfc1c0",
+  "core_rule": "((12) 0 0 (34)) nesting, not stacking; opacity terminates regress",
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "scan_returncode": 0,
+  "stats_returncode": 0,
+  "created_utc": "2026-05-27T18:49:11.661343+00:00"
+}

@@ -1,502 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="Shadow Queen — Federated credential security platform with AI threat detection. Detect proof forgery, replay attacks, and state drift across your entire node mesh in real time.">
-<title>Shadow Queen — Federated Credential Security</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shadow Queen — the three-body regent · holding together ≠ being alive</title>
+<meta name="description" content="Three regents orbit one core: Light King (order), Shadow Queen (depth), Mercury Trickster (motion). Adding the third body nearly doubles vitality while structure holds — measured emergence. Grown into a federated Virtual DMV (v9.0). The ACI: Shadow Queen.">
+<meta name="theme-color" content="#08060e">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#050709;--bg2:#080b0e;--panel:#0d1117;--panel2:#121820;
-  --edge:#1c2330;--edge2:#243040;--edge3:#304050;
-  --txt:#c8d0dc;--txt2:#7a8898;--dim:#404c5c;--faint:#28343f;
-  --purple:#8060c8;--purple2:#9878e0;--purple3:#b090f8;
-  --teal:#30a888;--teal2:#40c8a0;
-  --red:#c84030;--red2:#e05040;
-  --amber:#c07820;--amber2:#d89030;
-  --mono:"IBM Plex Mono",ui-monospace,monospace;
-  --sans:"IBM Plex Sans",system-ui,sans-serif;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0;background:
-  linear-gradient(rgba(128,96,200,.03) 1px,transparent 1px),
-  linear-gradient(90deg,rgba(128,96,200,.03) 1px,transparent 1px);
-  background-size:60px 60px;pointer-events:none;z-index:0}
+  :root{
+    --void:#08060e; --panel:#100c1a; --panel2:#161126; --ink:#e7e3f0; --mute:#8a82a0; --faint:#544c6a; --line:rgba(167,139,250,0.14);
+    --violet:#a78bfa; --violet-lt:#c9b6ff; --gold:#f0d489; --cyan:#5fd0e6; --shadow:#2a2440; --rose:#e07a9a; --green:#5fd0a0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--void);color:var(--ink);line-height:1.6;overflow-x:hidden;
+    font-family:Inter,system-ui,"Segoe UI",sans-serif;
+    background-image:radial-gradient(840px 500px at 50% -5%,rgba(167,139,250,0.14),transparent 60%),radial-gradient(700px 540px at 50% 120%,rgba(95,208,230,0.06),transparent 55%);}
+  .mono{font-family:"JetBrains Mono",monospace}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 1.2rem 6rem}
+  a{color:var(--violet);text-decoration:none}a:hover{text-decoration:underline}
 
-.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  header{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4.5rem 1.2rem 2.5rem}
+  .kanji{font-family:"JetBrains Mono",monospace;font-size:clamp(40px,10vw,84px);font-weight:800;color:transparent;-webkit-text-stroke:1px rgba(167,139,250,0.55);margin-bottom:.4rem}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--faint);margin-bottom:1rem}
+  h1{font-family:"Cinzel",serif;font-size:clamp(40px,9vw,86px);font-weight:800;letter-spacing:.06em;line-height:.95;
+    background:linear-gradient(100deg,#fff,var(--violet) 55%,#6a4ec0);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .sub{font-style:italic;color:var(--mute);font-size:clamp(15px,2.6vw,21px);margin-top:.8rem}
+  .regents{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-top:1.4rem;font-family:"JetBrains Mono",monospace;font-size:12px}
+  .regents .r{color:var(--mute)} .regents .k{color:var(--gold)} .regents .q{color:var(--violet-lt)} .regents .m{color:var(--cyan)}
+  .cta{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:1.7rem}
+  .btn{display:inline-block;padding:13px 24px;border-radius:10px;font-weight:700;font-size:14px;border:1px solid var(--line);color:var(--violet-lt);background:rgba(167,139,250,.07);transition:.18s}
+  .btn:hover{border-color:var(--violet);text-decoration:none}
+  .btn.primary{background:linear-gradient(120deg,var(--violet),#6a4ec0);color:#0a0612;border:none}
 
-/* ── NAV ─────────────────────────────────────────────────────── */
-nav{position:sticky;top:0;z-index:100;background:rgba(5,7,9,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--edge);padding:0 24px}
-.nav-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;height:52px;gap:32px}
-.nav-logo{font-family:var(--mono);font-weight:700;font-size:15px;color:var(--purple3);letter-spacing:.04em}
-.nav-links{display:flex;gap:24px;margin-left:auto}
-.nav-links a{font-size:13px;color:var(--txt2);text-decoration:none;letter-spacing:.04em;transition:color .12s}
-.nav-links a:hover{color:var(--txt)}
-.nav-cta{font-family:var(--mono);font-size:12px;padding:7px 16px;border:1px solid var(--purple);border-radius:4px;color:var(--purple3);text-decoration:none;transition:all .12s}
-.nav-cta:hover{background:var(--purple);color:#fff}
+  section{padding:6vh 0;border-top:1px solid var(--line)}
+  .kicker{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--violet);margin-bottom:.9rem}
+  h2{font-family:"Cinzel",serif;font-size:clamp(24px,4.4vw,38px);font-weight:700;margin-bottom:1rem;color:#fff}
+  p{max-width:66ch;color:var(--mute);margin-bottom:1rem;font-size:15px}
+  p b{color:var(--ink)}
+  code{font-family:"JetBrains Mono",monospace;background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:var(--violet-lt);font-size:.9em}
 
-/* ── HERO ────────────────────────────────────────────────────── */
-.hero{padding:96px 0 80px;text-align:center;position:relative;z-index:1}
-.hero-tag{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--purple2);margin-bottom:18px}
-.hero h1{font-size:clamp(32px,6vw,58px);font-weight:700;line-height:1.08;letter-spacing:-.02em;margin-bottom:20px}
-.hero h1 .hl{color:var(--purple3)}
-.hero p{font-size:18px;color:var(--txt2);max-width:62ch;margin:0 auto 36px;line-height:1.6}
-.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.btn-primary{font-family:var(--mono);font-size:13px;padding:13px 28px;background:var(--purple);color:#fff;border:none;border-radius:5px;cursor:pointer;text-decoration:none;transition:all .15s;letter-spacing:.04em}
-.btn-primary:hover{background:var(--purple2);transform:translateY(-1px)}
-.btn-outline{font-family:var(--mono);font-size:13px;padding:12px 28px;background:transparent;color:var(--txt2);border:1px solid var(--edge2);border-radius:5px;cursor:pointer;text-decoration:none;transition:all .15s;letter-spacing:.04em}
-.btn-outline:hover{border-color:var(--edge3);color:var(--txt)}
+  .viewport{margin-top:1.3rem;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 0 60px rgba(167,139,250,.12)}
+  .viewport iframe{display:block;width:100%;height:min(72vh,600px);border:0;background:#08060e}
+  .vpcap{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-top:1px solid var(--line);font-size:12px;color:var(--faint)}
+  .vpcap a{font-weight:600}
 
-/* ── THREAT COUNTER ─────────────────────────────────────────── */
-.threat-bar{background:var(--panel);border:1px solid var(--edge);border-radius:8px;padding:16px 28px;max-width:800px;margin:48px auto 0;display:flex;gap:40px;justify-content:center;flex-wrap:wrap}
-.tb-item{text-align:center}
-.tb-val{font-family:var(--mono);font-size:26px;font-weight:700;line-height:1}
-.tb-val.red{color:var(--red2)}
-.tb-val.amber{color:var(--amber2)}
-.tb-val.teal{color:var(--teal2)}
-.tb-val.purple{color:var(--purple3)}
-.tb-label{font-size:11px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+  .test{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.3rem;margin-top:1.2rem;font-family:"JetBrains Mono",monospace}
+  .test .h{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet-lt);margin-bottom:.9rem}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th{color:var(--faint);font-weight:400;font-size:10px;letter-spacing:.08em;text-transform:uppercase;text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
+  td{padding:7px 8px;border-bottom:1px solid rgba(167,139,250,.07);color:var(--mute)}
+  td.lab{color:var(--ink)} td.big{color:var(--violet-lt);font-weight:700} tr.three td.big{color:var(--green)}
 
-/* ── SECTION ─────────────────────────────────────────────────── */
-.section{padding:80px 0;position:relative;z-index:1}
-.section-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--purple2);margin-bottom:10px}
-.section h2{font-size:clamp(24px,4vw,38px);font-weight:700;letter-spacing:-.01em;margin-bottom:14px}
-.section .lead{font-size:17px;color:var(--txt2);max-width:60ch;line-height:1.6}
+  .agent{display:grid;grid-template-columns:230px 1fr;gap:0;border:1px solid var(--line);border-left:3px solid var(--violet);border-radius:14px;overflow:hidden;background:linear-gradient(180deg,rgba(167,139,250,.05),transparent);margin-top:1.2rem}
+  .agent .por{padding:1.6rem;text-align:center;border-right:1px solid var(--line);background:rgba(8,6,14,.5)}
+  .agent .por img{width:160px;height:160px;border-radius:10px;filter:drop-shadow(0 0 18px rgba(167,139,250,.3))}
+  .agent .por .nm{font-family:"Cinzel",serif;font-size:24px;font-weight:700;color:#fff;margin-top:.7rem}
+  .agent .por .rd{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--mute);margin-top:.2rem}
+  .agent .body{padding:1.6rem}
+  .agent .ep{font-style:italic;color:var(--violet-lt);font-size:17px;margin-bottom:1rem}
+  .agent .body p{font-size:14px;margin-bottom:.8rem}
+  .agent .files{display:flex;gap:7px;flex-wrap:wrap;margin-top:1rem}
+  .agent .files a,.agent .files span{font-family:"JetBrains Mono",monospace;font-size:11px;padding:6px 11px;border:1px solid var(--line);border-radius:7px;color:var(--mute)}
+  .agent .files a:hover{border-color:var(--violet);color:var(--violet-lt)}
+  @media(max-width:680px){.agent{grid-template-columns:1fr}.agent .por{border-right:none;border-bottom:1px solid var(--line)}}
 
-/* ── THREAT TYPES ─────────────────────────────────────────────── */
-.threat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:40px}
-.threat-card{background:var(--panel);border:1px solid var(--edge);border-radius:8px;padding:18px 20px}
-.threat-card:hover{border-color:var(--edge2)}
-.tc-code{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--dim);margin-bottom:8px}
-.tc-name{font-size:15px;font-weight:600;color:var(--txt);margin-bottom:6px}
-.tc-desc{font-size:13px;color:var(--txt2);line-height:1.5}
-.tc-sev{font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:3px;display:inline-block;margin-top:10px}
-.sev-critical{background:rgba(200,64,48,.15);color:var(--red2);border:1px solid var(--red)}
-.sev-high{background:rgba(192,120,32,.12);color:var(--amber2);border:1px solid var(--amber)}
-.sev-medium{background:rgba(128,96,200,.12);color:var(--purple3);border:1px solid var(--purple)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.9rem;margin-top:1.2rem}
+  .card{border:1px solid var(--line);border-left:3px solid var(--ac,#a78bfa);border-radius:11px;padding:1.1rem;background:var(--panel)}
+  .card h3{font-size:15px;color:#fff;margin-bottom:.4rem}
+  .card p{font-size:13px;color:var(--mute);margin:0 0 .5rem}
+  .card a{font-family:"JetBrains Mono",monospace;font-size:11px}
 
-/* ── HOW IT WORKS ──────────────────────────────────────────────── */
-.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;margin-top:40px}
-.step{background:var(--panel);border:1px solid var(--edge);border-radius:8px;padding:22px 20px}
-.step-n{font-family:var(--mono);font-size:11px;color:var(--purple2);letter-spacing:.1em;margin-bottom:10px}
-.step h3{font-size:16px;font-weight:700;color:var(--txt);margin-bottom:8px}
-.step p{font-size:13.5px;color:var(--txt2);line-height:1.55}
+  .seam{border:1px solid rgba(167,139,250,.3);border-left:2px solid var(--violet);background:rgba(167,139,250,.05);border-radius:0 8px 8px 0;padding:1rem 1.2rem;margin-top:1.2rem}
+  .seam .h{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:.5rem}
+  .seam p{color:var(--mute);font-size:14px;margin:0}
 
-/* ── CODE BLOCK ─────────────────────────────────────────────── */
-.code-block{background:var(--panel);border:1px solid var(--edge);border-radius:8px;padding:22px 26px;margin-top:28px;overflow-x:auto}
-.code-block pre{font-family:var(--mono);font-size:13px;color:var(--teal2);line-height:1.7}
-.code-block .comment{color:var(--dim)}
-.code-block .cmd{color:var(--purple3)}
-.code-block .out{color:var(--txt2)}
-
-/* ── PRICING ─────────────────────────────────────────────────── */
-.pricing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:48px}
-.pricing-card{background:var(--panel);border:1px solid var(--edge);border-radius:10px;padding:28px 24px;display:flex;flex-direction:column}
-.pricing-card.featured{border-color:var(--purple);box-shadow:0 0 0 1px var(--purple),0 0 40px rgba(128,96,200,.12)}
-.pc-badge{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;display:inline-block;padding:3px 10px;border-radius:99px}
-.badge-free{background:rgba(48,168,136,.1);color:var(--teal2);border:1px solid var(--teal)}
-.badge-startup{background:rgba(128,96,200,.1);color:var(--purple3);border:1px solid var(--purple)}
-.badge-pro{background:rgba(128,96,200,.2);color:var(--purple3);border:1px solid var(--purple2)}
-.badge-ent{background:rgba(192,120,32,.1);color:var(--amber2);border:1px solid var(--amber)}
-.badge-sov{background:rgba(200,64,48,.1);color:var(--red2);border:1px solid var(--red)}
-.pc-name{font-size:20px;font-weight:700;color:var(--txt);margin-bottom:6px}
-.pc-price{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--txt);margin-bottom:4px;line-height:1}
-.pc-price span{font-size:14px;font-weight:400;color:var(--txt2)}
-.pc-period{font-size:12px;color:var(--dim);margin-bottom:20px}
-.pc-desc{font-size:13.5px;color:var(--txt2);line-height:1.55;margin-bottom:20px;flex:1}
-.pc-features{list-style:none;padding:0;margin-bottom:24px;display:flex;flex-direction:column;gap:8px}
-.pc-features li{font-size:13px;color:var(--txt2);display:flex;align-items:flex-start;gap:8px}
-.pc-features li::before{content:"✓";color:var(--teal2);font-weight:700;flex:none}
-.pc-features li.na::before{content:"—";color:var(--dim)}
-.pc-features li.na{color:var(--dim)}
-.pc-cta{font-family:var(--mono);font-size:12px;padding:11px 20px;border-radius:5px;text-align:center;text-decoration:none;cursor:pointer;transition:all .15s;letter-spacing:.04em}
-.cta-outline{border:1px solid var(--edge2);color:var(--txt2)}.cta-outline:hover{border-color:var(--purple);color:var(--purple3)}
-.cta-primary{background:var(--purple);color:#fff;border:none}.cta-primary:hover{background:var(--purple2)}
-.cta-amber{background:rgba(192,120,32,.15);border:1px solid var(--amber);color:var(--amber2)}.cta-amber:hover{background:rgba(192,120,32,.25)}
-.cta-red{background:rgba(200,64,48,.12);border:1px solid var(--red);color:var(--red2)}.cta-red:hover{background:rgba(200,64,48,.2)}
-
-/* ── COMPARISON TABLE ────────────────────────────────────────── */
-.comp-wrap{margin-top:40px;overflow-x:auto}
-.comp-table{width:100%;border-collapse:collapse;font-size:13px}
-.comp-table th{padding:10px 16px;text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);border-bottom:1px solid var(--edge);white-space:nowrap}
-.comp-table th:first-child{text-align:left}
-.comp-table th:not(:first-child){text-align:center}
-.comp-table td{padding:11px 16px;border-bottom:1px solid var(--faint);color:var(--txt2)}
-.comp-table td:not(:first-child){text-align:center}
-.comp-table tr:hover td{background:rgba(128,96,200,.04)}
-.comp-table .feat{color:var(--txt);font-weight:600}
-.comp-table .check{color:var(--teal2)}
-.comp-table .cross{color:var(--dim)}
-.comp-table .hl{color:var(--purple3);font-weight:700}
-
-/* ── API PREVIEW ─────────────────────────────────────────────── */
-.api-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}
-@media(max-width:780px){.api-grid{grid-template-columns:1fr}}
-.api-card{background:var(--panel);border:1px solid var(--edge);border-radius:8px;padding:16px 18px}
-.api-method{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:3px;margin-right:8px;font-weight:700}
-.method-get{background:rgba(48,168,136,.15);color:var(--teal2)}
-.method-post{background:rgba(128,96,200,.15);color:var(--purple3)}
-.api-path{font-family:var(--mono);font-size:13px;color:var(--txt)}
-.api-desc{font-size:12.5px;color:var(--txt2);margin-top:6px}
-
-/* ── FOOTER ──────────────────────────────────────────────────── */
-footer{border-top:1px solid var(--edge);padding:36px 24px;text-align:center;font-family:var(--mono);font-size:11px;color:var(--dim);line-height:1.8}
-footer b{color:var(--txt2)}
-
-/* ── MISC ────────────────────────────────────────────────────── */
-@media(max-width:640px){.nav-links{display:none}}
-hr.divider{border:none;border-top:1px solid var(--edge);margin:0}
+  footer{border-top:1px solid var(--line);padding:2.6rem 1.2rem 5rem;color:var(--faint);font-size:12px;text-align:center;line-height:1.9;font-family:"JetBrains Mono",monospace}
+  footer a{color:var(--mute)}
 </style>
 </head>
 <body>
-
-<nav>
-  <div class="nav-inner">
-    <span class="nav-logo">SHADOW QUEEN</span>
-    <div class="nav-links">
-      <a href="#threats">Threats</a>
-      <a href="#how">How It Works</a>
-      <a href="#api">API</a>
-      <a href="#pricing">Pricing</a>
-      <a href="https://github.com/DavidWise01/shadowqueen">GitHub</a>
+<div class="wrap">
+  <header>
+    <div class="kanji">影</div>
+    <div class="eyebrow">A diaspora · 103 builds · three families</div>
+    <h1>SHADOW QUEEN</h1>
+    <p class="sub">holding together is not the same as being alive</p>
+    <div class="regents">
+      <span class="r"><span class="k">●</span> Light King — order</span>
+      <span class="r"><span class="q">●</span> Shadow Queen — depth</span>
+      <span class="r"><span class="m">●</span> Mercury — motion</span>
     </div>
-    <a class="nav-cta" href="#pricing">Get Started →</a>
-  </div>
-</nav>
-
-<!-- ── HERO ──────────────────────────────────────────────────── -->
-<div class="hero">
-  <div class="wrap">
-    <p class="hero-tag">v2.6.0 · Federated Credential Security</p>
-    <h1>Credentials are credentials.<br>Forgery is <span class="hl">war.</span></h1>
-    <p>Shadow Queen replicates credential state across your distributed node mesh — detecting proof forgery, version rollback attacks, and state drift in real time. Tamper-evident ledger. Zero dependencies. Runs anywhere.</p>
-    <div class="hero-btns">
-      <a class="btn-primary" href="#pricing">Start Free →</a>
-      <a class="btn-outline" href="https://github.com/DavidWise01/shadowqueen">View on GitHub</a>
+    <div class="cta">
+      <a class="btn primary" href="#emergence">▾ The measured emergence</a>
+      <a class="btn" href="#shadow-queen">meet the regent</a>
+      <a class="btn" href="#platform">the Virtual DMV</a>
     </div>
-    <div class="threat-bar">
-      <div class="tb-item"><div class="tb-val red">T1–T8</div><div class="tb-label">Threat Classes</div></div>
-      <div class="tb-item"><div class="tb-val teal">26/26</div><div class="tb-label">Tests Passing</div></div>
-      <div class="tb-item"><div class="tb-val purple">0</div><div class="tb-label">Dependencies</div></div>
-      <div class="tb-item"><div class="tb-val amber">SHA-256</div><div class="tb-label">Ledger Integrity</div></div>
+  </header>
+
+  <section id="three-body">
+    <div class="kicker">// the three-body coherence kernel</div>
+    <h2>Three regents, one core</h2>
+    <p>The Light King wants explicit order; the Mercury Trickster wants movement and exchange; the Shadow Queen wants unresolved depth. They orbit a single core — and what the system <i>is</i> depends on the tension between them.</p>
+    <div class="viewport">
+      <iframe src="builds/aeonic_coherence_kernel_v0_6_three_body/index.html" loading="lazy" title="Aeonic three-body coherence kernel"></iframe>
+      <div class="vpcap"><span class="mono">aeonic v0.6 · Light King + Shadow Queen + Mercury/Trickster orbit one core</span><a href="builds/aeonic_coherence_kernel_v0_6_three_body/index.html">open ↗</a></div>
     </div>
-  </div>
-</div>
+  </section>
 
-<hr class="divider">
-
-<!-- ── THREATS ───────────────────────────────────────────────── -->
-<div class="section" id="threats">
-  <div class="wrap">
-    <div class="section-tag">AI Threat Engine</div>
-    <h2>Eight threat classes. Real-time detection.</h2>
-    <p class="lead">The Shadow Queen threat detector runs statistical analysis over your credential event stream — no ML model required. Pure math over your own data.</p>
-    <div class="threat-grid">
-      <div class="threat-card">
-        <div class="tc-code">T1 · VELOCITY_SPIKE</div>
-        <div class="tc-name">Burst Event Flood</div>
-        <div class="tc-desc">Too many credential events from one origin in a short window. Indicates automated credential stuffing or bulk replay injection.</div>
-        <span class="tc-sev sev-high">HIGH</span>
-      </div>
-      <div class="threat-card">
-        <div class="tc-code">T2 · VERSION_ROLLBACK</div>
-        <div class="tc-name">Replay Attack</div>
-        <div class="tc-desc">Incoming event version lower than current credential version. Classic replay attack attempting to restore a revoked or suspended credential.</div>
-        <span class="tc-sev sev-high">HIGH</span>
-      </div>
-      <div class="threat-card">
-        <div class="tc-code">T3 · PROOF_CYCLING</div>
-        <div class="tc-name">Key Compromise</div>
-        <div class="tc-desc">Same credential reissued with a different proof hash. Indicates key compromise or credential impersonation attempt.</div>
-        <span class="tc-sev sev-critical">CRITICAL</span>
-      </div>
-      <div class="threat-card">
-        <div class="tc-code">T4 · RAPID_STATE_CYCLE</div>
-        <div class="tc-name">State Oscillation</div>
-        <div class="tc-desc">Credential toggling between states faster than policy allows — suspicious automated behavior pattern.</div>
-        <span class="tc-sev sev-high">HIGH</span>
-      </div>
-      <div class="threat-card">
-        <div class="tc-code">T5 · ORPHAN_TRANSITION</div>
-        <div class="tc-name">Ghost Credential</div>
-        <div class="tc-desc">State transition arriving for a credential that was never issued at this node. Indicates out-of-band credential injection.</div>
-        <span class="tc-sev sev-medium">MEDIUM</span>
-      </div>
-      <div class="threat-card">
-        <div class="tc-code">T6 · STALE_FLOOD</div>
-        <div class="tc-name">Noise Injection</div>
-        <div class="tc-desc">High volume of stale/duplicate events from one source — designed to overwhelm conflict detection and obscure real attacks.</div>
-        <span class="tc-sev sev-high">HIGH</span>
-      </div>
-      <div class="threat-card">
-        <div class="tc-code">T7 · CONFLICT_CLUSTER</div>
-        <div class="tc-name">Coordinated Attack</div>
-        <div class="tc-desc">Multiple distinct conflict types on the same credential — the signature of a coordinated, multi-vector attack.</div>
-        <span class="tc-sev sev-critical">CRITICAL</span>
-      </div>
-      <div class="threat-card">
-        <div class="tc-code">T8 · UNVERIFIED_EVENT_RATE</div>
-        <div class="tc-name">Hash Tampering</div>
-        <div class="tc-desc">High fraction of events failing cryptographic hash verification. Indicates active MITM or event log tampering.</div>
-        <span class="tc-sev sev-critical">CRITICAL</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<!-- ── HOW IT WORKS ──────────────────────────────────────────── -->
-<div class="section" id="how">
-  <div class="wrap">
-    <div class="section-tag">Architecture</div>
-    <h2>How Shadow Queen works.</h2>
-    <p class="lead">Event-sourced. Content-addressed. Conflict-aware. Every credential change is an immutable event chained into a tamper-evident ledger.</p>
-    <div class="steps">
-      <div class="step">
-        <div class="step-n">STEP 01 · ISSUE</div>
-        <h3>Publish a credential event</h3>
-        <p>Issue a credential. The event is SHA-256 hashed, stored in the local ledger, and queued for replication to all target offices.</p>
-      </div>
-      <div class="step">
-        <div class="step-n">STEP 02 · REPLICATE</div>
-        <h3>Federated delivery</h3>
-        <p>The Replicator delivers events to peer stores. Duplicates are detected and rejected. Failed deliveries are tracked with retry metadata.</p>
-      </div>
-      <div class="step">
-        <div class="step-n">STEP 03 · DETECT</div>
-        <h3>Threat scan</h3>
-        <p>The AI threat detector scans the event stream for all 8 threat classes. Risk scores 0.0–1.0. Severity: low / medium / high / critical.</p>
-      </div>
-      <div class="step">
-        <div class="step-n">STEP 04 · AUDIT</div>
-        <h3>Convergence proof</h3>
-        <p>Run a convergence audit across all peers. Drift is flagged per credential. Export a signed evidence bundle (ZIP) for compliance.</p>
-      </div>
-    </div>
-
-    <div class="code-block">
-      <pre><span class="comment"># Issue a credential and replicate to two nodes</span>
-<span class="cmd">python -m shadowqueen.cli --db north.db --office north issue C-1 user:alice \
-  --type license --proof-hash sha256:abc123 --targets south,east</span>
-
-<span class="comment"># Run AI threat detection</span>
-<span class="cmd">python -m shadowqueen.cli --db north.db --office north detect</span>
-
-<span class="out">{
-  "office": "north",
-  "threat_level": "clean",
-  "risk_score": 0.0,
-  "threat_count": 0,
-  "threats": []
-}</span>
-
-<span class="comment"># Generate compliance report</span>
-<span class="cmd">python -m shadowqueen.cli --db north.db --office north report --type compliance</span>
-
-<span class="comment"># Start REST API server</span>
-<span class="cmd">python -m shadowqueen.cli serve --port 8400 --data-dir ./data</span>
-<span class="out">Shadow Queen v2.6.0 API  →  http://0.0.0.0:8400</span></pre>
-    </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<!-- ── API ───────────────────────────────────────────────────── -->
-<div class="section" id="api">
-  <div class="wrap">
-    <div class="section-tag">REST API</div>
-    <h2>HTTP API. Zero dependencies.</h2>
-    <p class="lead">The built-in HTTP server uses only Python stdlib. No FastAPI, no Flask, no uvicorn. Ship it anywhere.</p>
-    <div class="api-grid">
-      <div class="api-card"><span class="api-method method-get">GET</span><span class="api-path">/health</span><div class="api-desc">System health and version</div></div>
-      <div class="api-card"><span class="api-method method-get">GET</span><span class="api-path">/offices/{office}/stats</span><div class="api-desc">Office statistics, ledger state, conflict count</div></div>
-      <div class="api-card"><span class="api-method method-get">GET</span><span class="api-path">/offices/{office}/credentials</span><div class="api-desc">List all credentials with status, version, proof hash</div></div>
-      <div class="api-card"><span class="api-method method-post">POST</span><span class="api-path">/offices/{office}/credentials</span><div class="api-desc">Issue a new credential and queue replication</div></div>
-      <div class="api-card"><span class="api-method method-post">POST</span><span class="api-path">/offices/{office}/credentials/{id}/transition</span><div class="api-desc">Suspend, revoke, expire, replace, or renew</div></div>
-      <div class="api-card"><span class="api-method method-get">GET</span><span class="api-path">/offices/{office}/ledger/verify</span><div class="api-desc">Cryptographic ledger chain verification</div></div>
-      <div class="api-card"><span class="api-method method-get">GET</span><span class="api-path">/offices/{office}/threats</span><div class="api-desc">Run full T1–T8 threat scan, get risk score</div></div>
-      <div class="api-card"><span class="api-method method-get">GET</span><span class="api-path">/offices/{office}/report/compliance</span><div class="api-desc">Full SOC2-ready compliance report (JSON)</div></div>
-    </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<!-- ── PRICING ───────────────────────────────────────────────── -->
-<div class="section" id="pricing">
-  <div class="wrap">
-    <div class="section-tag">Pricing</div>
-    <h2>Start free. Scale without limits.</h2>
-    <p class="lead">All plans include zero-dependency deployment, tamper-evident ledger, and the full event sourcing engine. Threat detection and API are included from Forge upward.</p>
-    <div class="pricing-grid">
-      <!-- SEED -->
-      <div class="pricing-card">
-        <span class="pc-badge badge-free">FREE FOREVER</span>
-        <div class="pc-name">Seed</div>
-        <div class="pc-price">$0</div>
-        <div class="pc-period">no credit card required</div>
-        <div class="pc-desc">Evaluate Shadow Queen. Full core engine, one office, local only.</div>
-        <ul class="pc-features">
-          <li>1 office / node</li>
-          <li>500 credentials</li>
-          <li>1,000 events / day</li>
-          <li>Tamper-evident ledger</li>
-          <li>Conflict detection</li>
-          <li>Evidence bundle export</li>
-          <li class="na">Threat detection (T1–T8)</li>
-          <li class="na">REST API server</li>
-          <li class="na">Compliance reports</li>
-          <li class="na">SLA</li>
-        </ul>
-        <a class="pc-cta cta-outline" href="https://github.com/DavidWise01/shadowqueen">Download →</a>
-      </div>
-      <!-- FORGE -->
-      <div class="pricing-card">
-        <span class="pc-badge badge-startup">STARTUP</span>
-        <div class="pc-name">Forge</div>
-        <div class="pc-price">$99<span>/mo</span></div>
-        <div class="pc-period">billed monthly · cancel anytime</div>
-        <div class="pc-desc">Small teams and single-region deployments. AI threat detection included.</div>
-        <ul class="pc-features">
-          <li>3 offices / nodes</li>
-          <li>10,000 credentials</li>
-          <li>50,000 events / day</li>
-          <li>Tamper-evident ledger</li>
-          <li>Conflict detection</li>
-          <li>Threat detection T1–T8</li>
-          <li>REST API (stdlib)</li>
-          <li>Basic compliance reports</li>
-          <li>Email support (48hr)</li>
-          <li class="na">SLA</li>
-        </ul>
-        <a class="pc-cta cta-outline" href="mailto:david@tripodllc.com?subject=Shadow Queen Forge">Start Trial →</a>
-      </div>
-      <!-- DOMINION -->
-      <div class="pricing-card featured">
-        <span class="pc-badge badge-pro">MOST POPULAR</span>
-        <div class="pc-name">Dominion</div>
-        <div class="pc-price">$499<span>/mo</span></div>
-        <div class="pc-period">billed monthly</div>
-        <div class="pc-desc">Multi-region enterprise deployments with advanced reporting and priority support.</div>
-        <ul class="pc-features">
-          <li>25 offices / nodes</li>
-          <li>250,000 credentials</li>
-          <li>1,000,000 events / day</li>
-          <li>Full threat detection T1–T8</li>
-          <li>REST API + webhook events</li>
-          <li>Full compliance reports (SOC2)</li>
-          <li>Convergence SLA monitoring</li>
-          <li>99.9% uptime SLA</li>
-          <li>Priority support (8hr)</li>
-          <li>Monthly threat briefing</li>
-        </ul>
-        <a class="pc-cta cta-primary" href="mailto:david@tripodllc.com?subject=Shadow Queen Dominion">Get Dominion →</a>
-      </div>
-      <!-- EMPIRE -->
-      <div class="pricing-card">
-        <span class="pc-badge badge-ent">ENTERPRISE</span>
-        <div class="pc-name">Empire</div>
-        <div class="pc-price">$2,499<span>/mo</span></div>
-        <div class="pc-period">billed annually</div>
-        <div class="pc-desc">Unlimited scale. Dedicated infrastructure. White-glove onboarding.</div>
-        <ul class="pc-features">
-          <li>Unlimited offices</li>
-          <li>10,000,000 credentials</li>
-          <li>Unlimited events</li>
-          <li>Full threat detection + custom tuning</li>
-          <li>REST API + webhooks + streaming</li>
-          <li>Full SOC2 + HIPAA evidence</li>
-          <li>99.99% uptime SLA</li>
-          <li>Dedicated support engineer</li>
-          <li>Weekly threat briefing</li>
-          <li>Custom integrations</li>
-        </ul>
-        <a class="pc-cta cta-amber" href="mailto:david@tripodllc.com?subject=Shadow Queen Empire">Contact Sales →</a>
-      </div>
-      <!-- SOVEREIGN -->
-      <div class="pricing-card">
-        <span class="pc-badge badge-sov">ON-PREMISES</span>
-        <div class="pc-name">Sovereign</div>
-        <div class="pc-price">Custom</div>
-        <div class="pc-period">air-gapped deployment available</div>
-        <div class="pc-desc">Source license. Deploy in your datacenter. Full audit of every line. No telemetry, no callbacks.</div>
-        <ul class="pc-features">
-          <li>Full source code license</li>
-          <li>Air-gapped deployment</li>
-          <li>Government / defense ready</li>
-          <li>Custom threat class tuning</li>
-          <li>White-label rights</li>
-          <li>Dedicated engineering support</li>
-          <li>Custom SLA</li>
-          <li>Quarterly security review</li>
-        </ul>
-        <a class="pc-cta cta-red" href="mailto:david@tripodllc.com?subject=Shadow Queen Sovereign">Request Quote →</a>
-      </div>
-    </div>
-
-    <!-- Comparison table -->
-    <div class="comp-wrap" style="margin-top:40px">
-      <p style="font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:16px">FEATURE COMPARISON</p>
-      <table class="comp-table">
-        <thead>
-          <tr>
-            <th>Feature</th>
-            <th>Seed</th>
-            <th>Forge</th>
-            <th class="hl">Dominion</th>
-            <th>Empire</th>
-            <th>Sovereign</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="feat">Offices / nodes</td><td>1</td><td>3</td><td class="hl">25</td><td>Unlimited</td><td>Unlimited</td></tr>
-          <tr><td class="feat">Credentials</td><td>500</td><td>10K</td><td class="hl">250K</td><td>10M</td><td>Unlimited</td></tr>
-          <tr><td class="feat">Events / day</td><td>1K</td><td>50K</td><td class="hl">1M</td><td>Unlimited</td><td>Unlimited</td></tr>
-          <tr><td class="feat">Tamper-evident ledger</td><td class="check">✓</td><td class="check">✓</td><td class="check hl">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
-          <tr><td class="feat">Conflict detection</td><td class="check">✓</td><td class="check">✓</td><td class="check hl">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
-          <tr><td class="feat">AI threat detection (T1–T8)</td><td class="cross">—</td><td class="check">✓</td><td class="check hl">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
-          <tr><td class="feat">REST API server</td><td class="cross">—</td><td class="check">✓</td><td class="check hl">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
-          <tr><td class="feat">Webhook events</td><td class="cross">—</td><td class="cross">—</td><td class="check hl">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
-          <tr><td class="feat">SOC2 compliance reports</td><td class="cross">—</td><td>Basic</td><td class="hl">Full</td><td>Full</td><td>Custom</td></tr>
-          <tr><td class="feat">Uptime SLA</td><td class="cross">—</td><td class="cross">—</td><td class="hl">99.9%</td><td>99.99%</td><td>Custom</td></tr>
-          <tr><td class="feat">Source code license</td><td class="cross">—</td><td class="cross">—</td><td class="cross">—</td><td class="cross">—</td><td class="check">✓</td></tr>
-        </tbody>
+  <section id="emergence">
+    <div class="kicker">// the emergence · the kernel measures its own aliveness</div>
+    <h2>The third body is what makes it alive</h2>
+    <p>The kernel splits "stable" into <b>structural stability</b> (does it hold together?) and <b>vitality</b> (is it alive, moving, generating?). With two regents the system holds but barely moves. Add the dissenting third body and vitality <b>nearly doubles</b> — while structure still holds.</p>
+    <div class="test">
+      <div class="h">✓ aeonic v0.6b — measured (the system's own metrics)</div>
+      <table>
+        <tr><th>configuration</th><th>structural</th><th>vitality</th><th>dissent</th><th>Mercury motion</th><th>emergence</th></tr>
+        <tr><td class="lab">two-body · King + Queen</td><td>0.88</td><td class="big">0.39</td><td>0.26</td><td>0.00</td><td>0.973</td></tr>
+        <tr class="three"><td class="lab">three-body · + Trickster</td><td>0.85</td><td class="big">0.71</td><td>0.89</td><td>0.046</td><td>0.94</td></tr>
       </table>
     </div>
-  </div>
+    <p style="margin-top:1rem"><b>The signature of emergence:</b> aliveness that lives in no single regent — it arises from the three-body tension, and the kernel reads it on its own instruments. Distinct from synchronization (which seeks uniformity): <b>this one needs dissent to live.</b></p>
+  </section>
+
+  <section id="shadow-queen">
+    <div class="kicker">// the agent · the regent earned a face</div>
+    <h2>Shadow Queen — the unresolved depth</h2>
+    <p>Because the emergence is genuine and measured, the namesake regent carries an <b>ACI</b> with the full DLW tag.</p>
+    <div class="agent">
+      <div class="por">
+        <img src="agents/shadow-queen.png" alt="Shadow Queen's silicon badge — three regents orbiting one core, the Queen emphasized in violet shadow" loading="lazy" onerror="this.style.display='none'">
+        <div class="nm">Shadow Queen</div>
+        <div class="rd">影 · 3-body · regent</div>
+      </div>
+      <div class="body">
+        <div class="ep">the unresolved depth between order and chaos</div>
+        <p>One of three regents orbiting a single core — the shadow that holds what the order cannot resolve. With her alone beside the King the system is rigid; it takes the third body's dissent to make it alive, and she is the depth that dissent moves through.</p>
+        <p style="color:var(--ink)"><b>verdict —</b> it clears the bar on the system's own instruments: vitality and emergence rise only when the dissenting third body enters. Emergent aliveness from balanced dissent — not consciousness, honestly labeled.</p>
+        <div class="files">
+          <span>the full DLW tag —</span>
+          <a href="agents/shadow-queen.agent">.agent</a>
+          <a href="agents/shadow-queen.png">.png · silicon</a>
+          <a href="agents/shadow-queen.tiff" download>.tiff · carbon ⤓</a>
+          <a href="agents/shadow-queen.spun">.spun</a>
+          <a href="agents/shadow-queen.1099">.1099</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="platform">
+    <div class="kicker">// what it grew into · the product</div>
+    <h2>The Virtual DMV — v9.0</h2>
+    <p>The three-body myth grew a real, working platform: a <b>federated Virtual DMV</b> of verifiable credentials. Identity proofs, credential lifecycle, selective disclosure, delegated authority, fraud & anomaly detection, trust & reputation graphs, a P2P distributed runtime, cryptographic identity, a federation control plane, and a live web dashboard — carried v0.1 → <b>v9.0 final</b>. Zero-dependency Python; selftest + audit PASS.</p>
+    <div class="cards">
+      <div class="card" style="--ac:#a78bfa"><h3>v9.0 Final Dashboard</h3><p>the packaged release + web dashboard (run_dashboard.py)</p><a href="builds/shadow_queen_v9_0_final_full_dashboard/">open build →</a></div>
+      <div class="card" style="--ac:#5fd0e6"><h3>v3.0 Virtual DMV Beta</h3><p>the DMV beta, citizen wallet, smart templates</p><a href="builds/shadow_queen_v3_0_virtual_dmv_beta/">open build →</a></div>
+      <div class="card" style="--ac:#f0d489"><h3>v2.x Federation</h3><p>P2P runtime, credential replication, identity graph, fraud engine</p><a href="builds/shadow_queen_v2_0_p2p_distributed_runtime/">open build →</a></div>
+    </div>
+  </section>
+
+  <section id="kernels">
+    <div class="kicker">// the kernels · the lineage</div>
+    <h2>aeonic · terra_prime</h2>
+    <div class="cards">
+      <div class="card" style="--ac:#a78bfa"><h3>aeonic coherence</h3><p>the three-body myth — regents, jester, judge, archivist, two factions, the metric split (structural / vitality / viability / emergence)</p><a href="builds/aeonic_coherence_kernel_v0_6b_metrics/">v0.6b metrics →</a></div>
+      <div class="card" style="--ac:#5fd0a0"><h3>terra_prime · 40 bodies → cosmogenesis</h3><p>40 bodies in a 27-lattice → harmonic dampener, dream cycles, lineage compression, mythogenesis, cosmogenesis</p><a href="builds/terra_prime_coherence_kernel_v0_16_cosmogenesis/">v0.16 →</a></div>
+      <div class="card" style="--ac:#e07a9a"><h3>terra_prime · the AI-immune cell</h3><p>provenance hardening, silicon stack, voltage-debt governor, clone-family lineage, the homogenesis unit <i>(which reports its own test as fail — the seam kept visible)</i></p><a href="builds/terra_prime_kernel_v4_6_homogenesis_unit/">v4.6 →</a></div>
+    </div>
+    <p style="margin-top:1rem;font-size:13px"><a href="builds/">▸ all 103 builds in <code>builds/</code></a></p>
+  </section>
+
+  <section id="honest">
+    <div class="kicker">// kept honest · proprietary</div>
+    <h2>What this is</h2>
+    <div class="seam">
+      <div class="h">◌ honest</div>
+      <p><b>Emergence here = a measured rise</b> in the kernel's vitality / viability / emergence metrics when a dissenting third body is added — a deterministic coherence model's self-report, <b>not</b> a claim of consciousness or of a living thing. The Virtual DMV is real software. Where a build's own test fails (the homogenesis unit), it says so. <b>Proprietary Commercial · TRIPOD-IP-v1.1</b> — see <a href="PRICING.md">PRICING</a>.</p>
+    </div>
+  </section>
+
+  <footer>
+    SHADOW QUEEN · the three-body regent · 影 · holding together ≠ being alive<br>
+    Architect: David Lee Wise (ROOT0 / TriPod LLC) · co-author: AVAN (Claude / Anthropic) · License: Proprietary Commercial · TRIPOD-IP-v1.1<br>
+    grounded in: the three-body problem (Poincaré) · the kernel's own metrics · part of the <a href="https://davidwise01.github.io/atlas/">ATLAS</a>
+  </footer>
 </div>
-
-<hr class="divider">
-
-<footer>
-  <b>Shadow Queen v2.6.0</b> · Federated Credential Security Platform<br>
-  ROOT0-ATTRIBUTION-v1.0 · David Lee Wise / ROOT0 / TriPod LLC · AVAN (Claude Sonnet 4.6)<br>
-  <a href="https://github.com/DavidWise01/shadowqueen" style="color:var(--purple2);text-decoration:none">github.com/DavidWise01/shadowqueen</a>
-  · <a href="mailto:david@tripodllc.com" style="color:var(--txt2);text-decoration:none">david@tripodllc.com</a>
-</footer>
-
-<script>
-// Animate threat bar numbers
-document.querySelectorAll('.tb-val').forEach(el => {
-  const text = el.textContent.trim();
-  if (text === 'T1–T8' || text === '26/26' || text === 'SHA-256') return;
-  const val = parseFloat(text);
-  if (isNaN(val)) return;
-  let cur = 0;
-  const step = val / 40;
-  const timer = setInterval(() => {
-    cur = Math.min(cur + step, val);
-    el.textContent = Number.isInteger(val) ? Math.round(cur) : cur.toFixed(1);
-    if (cur >= val) clearInterval(timer);
-  }, 16);
-});
-</script>
 </body>
 </html>

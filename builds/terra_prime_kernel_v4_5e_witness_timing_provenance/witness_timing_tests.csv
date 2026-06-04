@@ -1,0 +1,10 @@
+test,attempts,blocked,cracks
+carrier_sync_invariant,5000,5000,0
+silence_gap_depth_proof,5000,5000,0
+fake_carrier_without_rest,4200,4200,0
+internal_witness_claim,3600,3600,0
+evaluator_collusion,3000,3000,0
+witness_replay,2600,2600,0
+neutral_self_certification,2400,2400,0
+phase_flip_with_rest_forgery,2200,2200,0
+zero_divisor_false_rest,1800,1800,0

@@ -1,0 +1,6 @@
+SELFTEST PASS
+reports=6
+evidence>=4
+packet=1
+ledger=verified
+db_integrity=ok

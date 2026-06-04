@@ -1,0 +1,20 @@
+{
+  "name": "Shadow Queen",
+  "version": "5.2.0",
+  "status": "real crypto upgrade",
+  "new_features": [
+    "Ed25519 keys",
+    "PEM key files",
+    "public/private separation",
+    "trust store",
+    "signed envelope v2",
+    "real signature verification",
+    "credential/presentation/authority signatures",
+    "key rotation history",
+    "revocation list"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "demo_returncode": 0,
+  "status_returncode": 0
+}

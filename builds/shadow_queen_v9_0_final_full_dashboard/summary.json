@@ -1,0 +1,7 @@
+{
+  "name": "Shadow Queen",
+  "version": "9.0.0-final",
+  "status": "final packaged release",
+  "selftest": "PASS",
+  "audit": "PASS"
+}

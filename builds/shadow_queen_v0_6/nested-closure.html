@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>((12) 0 0 (34)) · nesting, not stacking</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --bg:#06070b; --panel:#0d0f14; --ink:#d7dbe2; --dim:#5a626f; --line:#191e26;
+    --pair1:#fbbf24; --pair2:#22d3ee; --null:#ffffff; --wrap:#a78bfa; --gap:#5b4a8a; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"JetBrains Mono",monospace;display:flex;flex-direction:column;overflow:hidden;}
+  header{padding:10px 16px;border-bottom:1px solid var(--line);flex:0 0 auto;text-align:center}
+  h1{font-size:14px;letter-spacing:.14em;color:#c7d2fe;font-weight:700}
+  h1 .p1{color:var(--pair1)}h1 .p2{color:var(--pair2)}h1 .n{color:#fff}h1 .w{color:var(--wrap)}
+  .nota{font-family:"JetBrains Mono",monospace;font-size:15px;color:#c7d2fe;margin-top:6px;letter-spacing:.18em}
+  .sub{font-size:10px;color:var(--dim);margin-top:4px;letter-spacing:.04em;max-width:780px;margin-left:auto;margin-right:auto}
+  #main{flex:1 1 auto;display:flex;min-height:0}
+  #stage{flex:1 1 auto;position:relative;min-width:0}
+  canvas{position:absolute;inset:0;width:100%;height:100%}
+  #side{flex:0 0 254px;border-left:1px solid var(--line);background:var(--panel);padding:14px;overflow-y:auto;font-size:11px}
+  .lab{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:10px 0 5px}
+  .note{padding:8px 10px;border-radius:6px;font-size:10.5px;border:1px solid var(--line);margin-bottom:5px;line-height:1.6}
+  .note b{color:#fff;font-weight:500}
+  .btns{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+  button{font-family:"JetBrains Mono",monospace;font-size:11px;background:#10131a;color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:7px 12px;cursor:pointer;transition:.2s}
+  button:hover{border-color:var(--wrap);color:#fff}
+  button.on{background:#171327;border-color:var(--wrap);color:var(--wrap)}
+  .val{display:flex;align-items:center;gap:8px;font-size:10px;color:var(--dim);margin-top:8px}
+  input[type=range]{flex:1;accent-color:#a78bfa}
+  .verdict{margin-top:14px;padding:10px;border-radius:8px;border:1px solid var(--line);font-family:"Fraunces",serif;font-style:italic;font-size:11px;line-height:1.65;color:#c2c7cf;background:#0a0c11}
+  .verdict em{color:#fff}
+</style>
+</head>
+<body>
+<header>
+  <h1>NESTING, NOT STACKING</h1>
+  <div class="nota"><span class="w">(</span> <span class="p1">(1 2)</span> <span class="n">0 0</span> <span class="p2">(3 4)</span> <span class="w">)</span></div>
+  <div class="sub">two paired units · the null doubled into a region, not a point · the outer wrap turns the whole into one object · ready to nest inside the next.</div>
+</header>
+<div id="main">
+  <div id="stage"><canvas id="c"></canvas></div>
+  <div id="side">
+    <div class="lab">the move</div>
+    <div class="note">Stacking witnesses gives you <b>three-body forever</b>. Nesting wraps a closed pair as <b>one object</b> — the next level up sees the wrapper, not the pair inside.</div>
+    <div class="lab">why doubled null</div>
+    <div class="note">One null is a tangent <b>point</b> — three-body again (left + null + right). Two nulls make a <b>region</b> — a no-ack airgap with width. Nothing shared. No third body.</div>
+    <div class="lab">why wrap</div>
+    <div class="note">The outer <b style="color:var(--wrap)">( )</b> is what lets it nest. Without the wrap, the next level sees four things. With the wrap, the next level sees <b>one</b>.</div>
+    <div class="lab">depth</div>
+    <div class="val"><span>nesting</span><input type="range" id="depth" min="0" max="4" value="2"><span id="depthv" style="color:#fff">2</span></div>
+    <div class="btns">
+      <button class="on" id="anim">▮▮ animate</button>
+    </div>
+    <div class="verdict">
+      The regress doesn't climb. It <em>encapsulates</em>. Each level hides what's below as a single closed surface — turtles all the way down, but each turtle is opaque to the one above it. <em>That</em> is termination by opacity.
+    </div>
+  </div>
+</div>
+
+<script>
+const cvs=document.getElementById('c'),ctx=cvs.getContext('2d'),stage=document.getElementById('stage');
+let DPR=1,W=0,H=0;
+function resize(){DPR=Math.min(devicePixelRatio||1,2);W=stage.clientWidth;H=stage.clientHeight;cvs.width=W*DPR;cvs.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);}
+new ResizeObserver(resize).observe(stage);
+
+let depth=2, anim=true, t=0;
+
+function frame(){
+  if(anim) t+=0.012;
+  ctx.clearRect(0,0,W,H);
+  // draw recursively, deepest first, then wrap each level
+  drawLevel(W/2,H/2,Math.min(W,H)*0.42, 0, 1);
+  requestAnimationFrame(frame);
+}
+
+function drawLevel(cx,cy,r,lvl,alpha){
+  if(lvl>depth) return;
+  // outer wrap: a soft rounded rectangle / capsule shape suggesting parentheses
+  const w=r*1.9, h=r*1.15;
+  const pulse=anim?(0.94+0.06*Math.sin(t*1.2+lvl*0.7)):1;
+  const W2=w*pulse, H2=h*pulse;
+  const x=cx-W2/2, y=cy-H2/2;
+  // the two parentheses ( and )
+  const wrapA=`rgba(167,139,250,${alpha*0.5})`;
+  ctx.strokeStyle=wrapA;ctx.lineWidth=2-lvl*0.3;
+  // left paren
+  ctx.beginPath();
+  ctx.moveTo(x+18,y+8);
+  ctx.bezierCurveTo(x-W2*0.05,y+H2*0.25, x-W2*0.05,y+H2*0.75, x+18,y+H2-8);
+  ctx.stroke();
+  // right paren
+  ctx.beginPath();
+  ctx.moveTo(x+W2-18,y+8);
+  ctx.bezierCurveTo(x+W2*1.05,y+H2*0.25, x+W2*1.05,y+H2*0.75, x+W2-18,y+H2-8);
+  ctx.stroke();
+  // faint fill to show "this is one unit"
+  ctx.fillStyle=`rgba(167,139,250,${alpha*0.03})`;
+  ctx.beginPath();ctx.ellipse(cx,cy,W2/2*0.95,H2/2*0.95,0,0,7);ctx.fill();
+
+  // inside this wrap: two pairs and the doubled null region
+  // pair 1 on left, pair 2 on right, null region in middle (a band, not a point)
+  const innerW = W2*0.74;
+  const pairR = innerW*0.18;
+  const p1cx = cx - innerW/2 + pairR;
+  const p2cx = cx + innerW/2 - pairR;
+  const nullL = cx - innerW*0.10, nullR = cx + innerW*0.10;
+
+  // doubled null region (a band)
+  ctx.fillStyle=`rgba(255,255,255,${alpha*0.04})`;
+  ctx.fillRect(nullL,cy-H2*0.35,nullR-nullL,H2*0.70);
+  // edge ticks
+  ctx.strokeStyle=`rgba(255,255,255,${alpha*0.4})`;ctx.setLineDash([2,4]);ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(nullL,cy-H2*0.35);ctx.lineTo(nullL,cy+H2*0.35);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(nullR,cy-H2*0.35);ctx.lineTo(nullR,cy+H2*0.35);ctx.stroke();
+  ctx.setLineDash([]);
+  // the two nulls (pulsing)
+  const pulseN=0.5+0.5*Math.sin(t*2.4+lvl);
+  [nullL+8,nullR-8].forEach(nx=>{
+    const g=ctx.createRadialGradient(nx,cy,0,nx,cy,14);
+    g.addColorStop(0,`rgba(255,255,255,${alpha*(0.3+0.4*pulseN)})`);g.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(nx,cy,14,0,7);ctx.fill();
+    ctx.fillStyle=`rgba(255,255,255,${alpha*(0.7+0.3*pulseN)})`;ctx.beginPath();ctx.arc(nx,cy,3,0,7);ctx.fill();
+  });
+  if(lvl===0){
+    ctx.fillStyle='rgba(255,255,255,.5)';ctx.font='9px JetBrains Mono,monospace';ctx.textAlign='center';
+    ctx.fillText('0  0',cx,cy-H2*0.40);
+    ctx.fillStyle='rgba(91,74,138,.6)';ctx.fillText('— the null as a region —',cx,cy+H2*0.46);
+  }
+
+  // pair 1 (left): two bodies + their own little parenthesis wrap
+  drawPair(p1cx,cy,pairR,1,2,'251,191,36',alpha,lvl);
+  // pair 2 (right): the inverse pair
+  drawPair(p2cx,cy,pairR,3,4,'34,211,238',alpha,lvl);
+
+  // label
+  if(lvl<3){
+    ctx.fillStyle=`rgba(199,210,254,${alpha*0.5})`;ctx.font=`${10-lvl}px JetBrains Mono,monospace`;ctx.textAlign='center';
+    ctx.fillText(`level ${lvl} · one unit to the level above`, cx, y-8);
+  }
+
+  // recursion: this whole thing nests INSIDE a smaller version of itself one level deeper,
+  // placed inside pair 1 (showing how each closed pair could itself be a (12)(34) one level down)
+  if(lvl<depth){
+    drawLevel(p1cx, cy, pairR*0.78, lvl+1, alpha*0.55);
+    drawLevel(p2cx, cy, pairR*0.78, lvl+1, alpha*0.55);
+  }
+}
+
+function drawPair(cx,cy,r,a,b,col,alpha,lvl){
+  // small paren wrap around the pair
+  const w=r*1.7, h=r*1.0;
+  ctx.strokeStyle=`rgba(${col},${alpha*0.35})`;ctx.lineWidth=1.2;
+  ctx.beginPath();
+  ctx.moveTo(cx-w/2+4,cy-h/2+4);
+  ctx.bezierCurveTo(cx-w/2-r*0.1,cy-h/4, cx-w/2-r*0.1,cy+h/4, cx-w/2+4,cy+h/2-4);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(cx+w/2-4,cy-h/2+4);
+  ctx.bezierCurveTo(cx+w/2+r*0.1,cy-h/4, cx+w/2+r*0.1,cy+h/4, cx+w/2-4,cy+h/2-4);
+  ctx.stroke();
+  // the two bodies inside
+  const off=r*0.45;
+  [{x:cx-off,n:a},{x:cx+off,n:b}].forEach(b=>{
+    const g=ctx.createRadialGradient(b.x,cy,0,b.x,cy,r*0.8);
+    g.addColorStop(0,`rgba(${col},${alpha*0.55})`);g.addColorStop(1,`rgba(${col},0)`);
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(b.x,cy,r*0.8,0,7);ctx.fill();
+    ctx.fillStyle=`rgba(${col},${alpha})`;ctx.beginPath();ctx.arc(b.x,cy,r*0.18,0,7);ctx.fill();
+    if(lvl===0){
+      ctx.fillStyle='#fff';ctx.font='bold 11px JetBrains Mono,monospace';ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText(b.n,b.x,cy);
+    }
+  });
+  // pair bond
+  ctx.strokeStyle=`rgba(${col},${alpha*0.3})`;ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(cx-off+r*0.18,cy);ctx.lineTo(cx+off-r*0.18,cy);ctx.stroke();
+}
+
+document.getElementById('depth').oninput=e=>{depth=+e.target.value;document.getElementById('depthv').textContent=depth;};
+document.getElementById('anim').onclick=e=>{anim=!anim;e.target.classList.toggle('on',anim);e.target.textContent=anim?'▮▮ animate':'▶ paused';};
+resize();requestAnimationFrame(frame);
+</script>
+</body>
+</html>

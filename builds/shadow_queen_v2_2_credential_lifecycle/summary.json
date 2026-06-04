@@ -1,0 +1,21 @@
+{
+  "name": "Shadow Queen",
+  "version": "2.2.0",
+  "status": "credential lifecycle engine",
+  "new_features": [
+    "issuance",
+    "renewal",
+    "suspension",
+    "revocation",
+    "expiration processing",
+    "replacement",
+    "credential history",
+    "chain-of-custody",
+    "invalid transition detection"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "stats_returncode": 0,
+  "verify_returncode": 0,
+  "created_utc": "2026-05-29T21:21:52.614606+00:00"
+}

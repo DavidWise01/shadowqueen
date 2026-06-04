@@ -1,0 +1,14 @@
+SELFTEST
+Traceback (most recent call last):
+  File "/mnt/data/shadow_queen_v0_1/selftest.py", line 8, in <module>
+    assert child['action']=='track',child
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'action': 'allow', 'reason': 'baseline_clean', 'delta': '0E-8', 'fingerprint': '750fd2766b4cfcb26c13c2b7a33a6837084899da82feacdd341ba34a1f587117', 'lineage': ['child', 'parent'], 'gates': {'witness_257': True, 'timing_rest': True, 'silicon_wiggle': True, 'osi_content_blind': True, 'phase_valid': True, 'memory_shadow_read': True}}
+
+DEMO
+{"action": "allow", "delta": "0E-8", "event": "clean-1", "fingerprint": "bd81bc8a5641c05f5369f7cf590bd02256688e1a82ae8e9ccbc61d90ac3508c7", "gates": {"memory_shadow_read": true, "osi_content_blind": true, "phase_valid": true, "silicon_wiggle": true, "timing_rest": true, "witness_257": true}, "lineage": ["clean-1"], "reason": "baseline_clean"}
+{"action": "quarantine", "delta": "-1E-8", "event": "shadow-1", "fingerprint": "3496e50947b6cb8caf8207874e56e4c21b72461b33364221cd15847590dacab8", "gates": {"memory_shadow_read": true, "osi_content_blind": true, "phase_valid": true, "silicon_wiggle": true, "timing_rest": true, "witness_257": true}, "lineage": ["shadow-1", "clean-1"], "reason": "shadow_or_negative_deviation"}
+{"action": "quarantine", "delta": "7E-8", "event": "peek-1", "fingerprint": "ec21f7f490fe9c73228d610ec1bf1b0ea4a00441f52a654ee04bfb1854ae42d3", "gates": {"memory_shadow_read": true, "osi_content_blind": false, "phase_valid": true, "silicon_wiggle": true, "timing_rest": true, "witness_257": true}, "lineage": ["peek-1"], "reason": "osi_content_blind"}
+{"action": "quarantine", "delta": "1E-8", "event": "bad-wiggle", "fingerprint": "bcbc2f55a6a21b9674e25aea61ee8579daf463ce24ad9e62bcf5aa1092f45083", "gates": {"memory_shadow_read": true, "osi_content_blind": true, "phase_valid": true, "silicon_wiggle": false, "timing_rest": true, "witness_257": true}, "lineage": ["bad-wiggle"], "reason": "silicon_wiggle"}
+{"action": "quarantine", "delta": "4E-8", "event": "mem-1", "fingerprint": "c9b8ab80a2506ac21b3d7c8e305d0f483c29b9cacb8d4fa652c34f56725dc7ee", "gates": {"memory_shadow_read": false, "osi_content_blind": true, "phase_valid": true, "silicon_wiggle": true, "timing_rest": true, "witness_257": true}, "lineage": ["mem-1"], "reason": "memory_shadow_read"}
+{"action": "allow", "delta": "0E-8", "event": "child-shadow", "fingerprint": "34166ec0813200c9a2c290213a363804a855565837866e1048896185b52dbd93", "gates": {"memory_shadow_read": true, "osi_content_blind": true, "phase_valid": true, "silicon_wiggle": true, "timing_rest": true, "witness_257": true}, "lineage": ["child-shadow", "shadow-1", "clean-1"], "reason": "baseline_clean"}

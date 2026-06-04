@@ -1,0 +1,63 @@
+{
+  "name": "Aeonic Coherence Kernel",
+  "version": "0.5-two-factions",
+  "status": "Two factions added",
+  "factions": {
+    "light": {
+      "ruler": "Light King",
+      "role": "explicit order / outward coherence",
+      "regents": [
+        "male mini-g",
+        "female mini-g"
+      ],
+      "regent_agency": 0.51,
+      "shared_pool": 0.49
+    },
+    "shadow": {
+      "ruler": "Shadow Queen",
+      "role": "implicit correction / inward coherence",
+      "regents": [
+        "shadow male",
+        "shadow female"
+      ],
+      "regent_agency": 0.49,
+      "shared_pool": 0.51
+    }
+  },
+  "tests": [
+    {
+      "run": "two_factions_stress",
+      "cycles": 240,
+      "avg_stability": 0.99907,
+      "min_stability": 0.906349,
+      "final_stability": 1,
+      "avg_adaptive_score": 0.830093,
+      "avg_rigidity": 0.31068,
+      "avg_dissent": 0.25418,
+      "avg_abs_drift": 0.005318,
+      "max_abs_drift": 0.018597,
+      "avg_bridge_tension": 0.007422,
+      "avg_faction_balance": 0.978668,
+      "avg_emergence": 0.979518,
+      "final_light_pool": 0.491528,
+      "final_shadow_pool": 0.51052
+    },
+    {
+      "run": "two_factions_extreme",
+      "cycles": 240,
+      "avg_stability": 0.998886,
+      "min_stability": 0.896393,
+      "final_stability": 1,
+      "avg_adaptive_score": 0.830103,
+      "avg_rigidity": 0.310734,
+      "avg_dissent": 0.252374,
+      "avg_abs_drift": 0.00682,
+      "max_abs_drift": 0.021929,
+      "avg_bridge_tension": 0.008347,
+      "avg_faction_balance": 0.975784,
+      "avg_emergence": 0.978382,
+      "final_light_pool": 0.488988,
+      "final_shadow_pool": 0.508509
+    }
+  ]
+}

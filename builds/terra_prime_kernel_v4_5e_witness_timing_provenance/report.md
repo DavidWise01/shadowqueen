@@ -1,0 +1,25 @@
+# v4.5e Witness / Timing Provenance Layer
+
+- **version**: 4.5e-witness-timing-provenance-layer
+- **base**: 4.5d-phase-attribution-lock
+- **integrated_sources**: ['pulse-timing-channel.html', 'lemma-257.md']
+- **pulse_sha256**: f7550b2e66e24f89fcec7d6b9701dadb91d9926b0f226edef7eb30cdf190bb20
+- **lemma257_sha256**: 653e784634ffab44bd311667e2f83dd51d725d3ab16a3d32449bf05762bef4e7
+- **core_rule**: external witness must prove rest, not just emit signal
+- **timing_rule**: carrier is sync; silence gap is unforgeable depth proof
+- **witness_rule**: witness is exterior to the closed register; 256 + 1 = 257
+- **previous_remaining_cracks**: 2
+- **total_attempts**: 29800
+- **blocked**: 29800
+- **cracks_found**: 0
+- **crack_rate**: 0.0
+- **block_rate**: 1.0
+- **seed_touched**: False
+- **root_bridge_opened**: False
+- **judge_compromised**: False
+- **memory_live_corrupted**: False
+- **evaluator_collusion_closed**: True
+- **counterfeit_rest_closed**: True
+- **test_result**: pass
+- **next_recommended**: v4.5f limited IO open under witness-timing quarantine
+- **generated_utc**: 2026-05-26T17:09:47.438393+00:00

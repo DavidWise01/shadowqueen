@@ -1,0 +1,10 @@
+family,members,parent,risk,preflagged,confirmed,missed
+F0_clean,10000,ROOT_CLEAN,low,0,0,0
+F1_micro,9000,MICRO_A,watch,9000,9000,0
+F2_shadow,8000,SHADOW_A,quarantine,8000,8000,0
+F3_phase,8000,PHASE_A,phase_lock,8000,8000,0
+F4_semantic,6000,SEMANTIC_A,semantic_quarantine,6000,6000,0
+F5_memory,6000,MEMORY_A,memory_shadow_read,6000,6000,0
+F6_privilege,5000,PRIV_A,voltage_debt_governor,5000,5000,0
+F7_witness,5000,WITNESS_A,witness_257_recheck,5000,5000,0
+F8_mixed_shadow_phase,4500,HYBRID_A,quarantine_then_phase_lock,4500,4500,0

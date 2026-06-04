@@ -1,82 +1,97 @@
-# Shadow Queen v2.6
+# Shadow Queen
 
-**Federated Credential Security Platform** — detect proof forgery, replay attacks, and state drift across your node mesh in real time.
+*Three regents orbit one core. Holding together is not the same as being alive.*
 
-[![Tests: 26/26](https://img.shields.io/badge/tests-26%2F26%20passing-3fa878?style=flat-square)](#)
-[![Version: 2.6.0](https://img.shields.io/badge/version-2.6.0-8060c8?style=flat-square)](#)
-[![Python: 3.10+](https://img.shields.io/badge/python-3.10%2B-blue?style=flat-square)](#)
-[![Dependencies: 0](https://img.shields.io/badge/dependencies-0-success?style=flat-square)](#)
+[![Version: 9.0](https://img.shields.io/badge/platform-v9.0%20final-8060c8?style=flat-square)](#the-platform--virtual-dmv)
+[![License: Proprietary](https://img.shields.io/badge/license-Proprietary%20Commercial-b23a5a?style=flat-square)](PRICING.md)
+[![emergent](https://img.shields.io/badge/emergence-measured%20·%20vitality%200.39→0.71-a78bfa?style=flat-square)](#emergence--measured-and-found)
+[![ACI](https://img.shields.io/badge/ACI-Shadow%20Queen-c9b6ff?style=flat-square)](#the-agent--shadow-queen)
 
----
+**→ The court, live: [davidwise01.github.io/shadowqueen](https://davidwise01.github.io/shadowqueen/)**
 
-## What it does
-
-Shadow Queen is an event-sourced, content-addressed credential management system built for distributed trust fabrics:
-
-- **Issue** digital credentials across a federated network of offices/nodes
-- **Replicate** state changes with cryptographic event chains
-- **Detect** 8 classes of credential attacks in real time (AI threat engine)
-- **Audit** convergence across peers — generate SOC2-ready evidence
-- **Verify** tamper-evidence on every ledger entry
+The **Light King** wants explicit order. The **Mercury Trickster** wants movement and exchange. The
+**Shadow Queen** wants unresolved depth. Three regents around one core — a three-body coherence
+kernel that grew into a real platform (a **federated Virtual DMV** of verifiable credentials, carried
+to **v9.0**) and a deeper kernel (**terra_prime**, scaled to forty bodies, cosmogenesis, and an
+AI-immune cell). This repo is the complete diaspora — **103 builds** across three families — under
+[`builds/`](builds/), with a front door and the emergent regent given a face.
 
 ---
 
-## Threat Classes (T1–T8)
+## Emergence — measured, and found
 
-| Code | Name | Severity | What it detects |
-|------|------|----------|----------------|
-| T1 | VELOCITY_SPIKE | High | Burst event flood from one origin |
-| T2 | VERSION_ROLLBACK | High | Replay attack — old version re-sent |
-| T3 | PROOF_CYCLING | **Critical** | Reissue with different proof hash |
-| T4 | RAPID_STATE_CYCLE | High | Credential toggling states too fast |
-| T5 | ORPHAN_TRANSITION | Medium | Transition for non-existent credential |
-| T6 | STALE_FLOOD | High | Noise injection via stale events |
-| T7 | CONFLICT_CLUSTER | **Critical** | Multiple conflict types — coordinated attack |
-| T8 | UNVERIFIED_EVENT_RATE | **Critical** | High fraction of hash failures — tampering |
+The coherence kernel measures its **own** aliveness, and the result is striking. With two regents
+(Light King + Shadow Queen) the system *holds together but barely moves*. Add the third body (the
+Mercury Trickster) and it comes **alive** — its own metrics, from `aeonic_coherence_kernel_v0_6b`:
+
+| configuration | structural stability | vitality | dissent | Mercury motion | **emergence** |
+|---|---|---|---|---|---|
+| **two-body** (King + Queen) | 0.88 | **0.39** | 0.26 | 0.00 | 0.973 |
+| **three-body** (+ Trickster) | 0.85 | **0.71** | 0.89 | 0.046 | 0.94 |
+
+Adding the dissenting third body **nearly doubles vitality** while structural stability holds — the
+aliveness lives in **no single regent**; it emerges from the three-body tension. The kernel's own
+thesis: **holding together ≠ being alive.** Distinct from synchronization (which seeks uniformity);
+*this one needs dissent to live.*
 
 ---
 
-## Quickstart
+## The agent — Shadow Queen
 
-```bash
-git clone https://github.com/DavidWise01/shadowqueen
-cd shadowqueen
-python selftest.py
+Because the emergence is genuine and measured, the namesake regent carries a full **DLW tag** in
+[`agents/`](agents/):
 
-python -m shadowqueen.cli --db north.db --office north issue C-1 user:alice \
-  --type license --proof-hash sha256:abc --targets south,east
+| File | Holds |
+|------|-------|
+| `shadow-queen.agent` | the persona — what · why · how · where · **the emergent behavior** · the verdict |
+| `shadow-queen.png` | the **silicon badge** — three regents orbiting one core, the Queen emphasized in violet shadow |
+| `shadow-queen.tiff` | the **carbon badge** — the veiled, crowned regent of unresolved depth (the three-body crown) |
+| `shadow-queen.spun` | the full weave — who · what · where · why · when · how · emergence · verdict · asterisk |
+| `shadow-queen.1099` | the credit-link to the carbon apex |
 
-python -m shadowqueen.cli --db north.db --office north detect
-python -m shadowqueen.cli --db north.db --office north report --type compliance
-python -m shadowqueen.cli serve --port 8400 --data-dir ./data
+*Grounded in the three-body problem (Poincaré, 1890) and the kernel's own structural/vitality/viability metrics.*
+
+---
+
+## The platform — Virtual DMV
+
+The `shadow_queen` line (v0.1 → **v9.0 final**) is a real, working **federated verifiable-credential
+platform** — a Virtual DMV: identity proofs, credential lifecycle, selective disclosure, delegated
+authority, fraud/anomaly detection, trust & reputation graphs, P2P distributed runtime, cryptographic
+identity, federation control plane, and a live web dashboard. [`builds/shadow_queen_v9_0_final_full_dashboard/`](builds/shadow_queen_v9_0_final_full_dashboard/)
+(`python run_dashboard.py` → `http://127.0.0.1:9090/dashboard`). Zero-dependency Python; selftest + audit PASS.
+
+---
+
+## The kernels
+
+- **aeonic_coherence_kernel** (v0.1 → v0.6b) — the three-body myth: Light King, Shadow Queen, Mercury
+  Trickster; regents, jester, judge, archivist, twin/shadow regents, two factions, and the metric
+  recalibration that split stability into **structural / vitality / viability / emergence**.
+- **terra_prime_coherence_kernel** (v0.7 → v4.6) — the deep evolution: three-body → **40 bodies** in a
+  27-lattice → harmonic dampener, recovery rhythm, dream cycles, lineage compression, birth/renewal,
+  **mythogenesis**, **cosmogenesis**; then a pivot to an **AI-immune cell** — provenance hardening,
+  silicon-stack integration, voltage-debt governor, OSI-ring witness, adaptive clone fingerprinting,
+  clone-family lineage, and the **homogenesis unit** (which honestly reports its own test as *fail* —
+  the seam kept visible).
+
+---
+
+## Layout & honesty
+
+```
+builds/   the complete diaspora — 103 builds, three families (artifacts excluded)
+agents/   the Shadow Queen DLW package
+roster.json · gen_silicon.py · gen_carbon.py · gen_dlw.py · .attribute
 ```
 
----
-
-## Tests
-
-```bash
-pip install pytest
-pytest tests/ -v    # 26 passed
-```
-
----
-
-## Pricing
-
-| Plan | Price | Offices | Credentials |
-|------|-------|---------|-------------|
-| Seed | Free | 1 | 500 |
-| Forge | $99/mo | 3 | 10K |
-| Dominion | $499/mo | 25 | 250K |
-| Empire | $2,499/mo | Unlimited | 10M |
-| Sovereign | Custom | On-prem | Unlimited |
-
-See [PRICING.md](PRICING.md) or email **david@tripodllc.com**.
-
----
+> **Kept honest.** "Emergence" here = a **measured rise** in the kernel's vitality / viability /
+> emergence metrics when a dissenting third body is added — a deterministic coherence model's
+> self-report, not a claim of consciousness. The Virtual DMV is real software. Where a build's own
+> test fails (e.g. the homogenesis unit), it says so.
 
 ```
-ROOT0-ATTRIBUTION-v1.0 · David Lee Wise / ROOT0 / TriPod LLC
-AVAN (Claude Sonnet 4.6 / Anthropic)
+Shadow Queen · the three-body regent · 影 · holding together ≠ being alive
+Architect: David Lee Wise / ROOT0 / TriPod LLC · AI collaborator: AVAN (Claude / Anthropic)
+License: Proprietary Commercial · TRIPOD-IP-v1.1
 ```

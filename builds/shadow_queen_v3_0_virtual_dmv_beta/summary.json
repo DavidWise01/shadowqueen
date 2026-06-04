@@ -1,0 +1,22 @@
+{
+  "name": "Shadow Queen",
+  "version": "3.0.0",
+  "status": "virtual DMV beta",
+  "new_features": [
+    "citizen enrollment",
+    "citizen portal summary",
+    "office queue",
+    "credential issuance",
+    "renewal workflow",
+    "revocation workflow",
+    "investigation queue",
+    "trust gates",
+    "audit evidence export"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "demo_returncode": 0,
+  "stats_returncode": 0,
+  "verify_returncode": 0,
+  "created_utc": "2026-05-31T02:32:48.546070+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Shadow Queen",
+  "version": "0.8.0",
+  "status": "baseline learning",
+  "new_features": [
+    "baselines table",
+    "learn mode",
+    "baseline drift scoring",
+    "baselines CLI"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "train_returncode": 0,
+  "test_returncode": 0,
+  "stats_returncode": 0,
+  "created_utc": "2026-05-27T22:49:52.749626+00:00"
+}

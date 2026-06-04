@@ -1,0 +1,15 @@
+{
+  "name": "Shadow Queen",
+  "version": "3.4.0",
+  "status": "selective disclosure engine",
+  "new_features": [
+    "disclosure policies",
+    "allow-list field release",
+    "required-field proof checks",
+    "redaction map",
+    "trust-gated presentations",
+    "presentation proof hashes",
+    "presentation verification"
+  ],
+  "selftest_output": "SELFTEST PASS"
+}

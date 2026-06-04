@@ -1,0 +1,40 @@
+{
+  "birth_rule": "when elder generations demote, new active variants may emerge",
+  "new_variants_are_not_clones": true,
+  "variant_sources": [
+    "unresolved contradiction",
+    "dream recombination",
+    "symbiote repair patterns",
+    "lineage pressure",
+    "Mercury novelty",
+    "fracture adaptation"
+  ],
+  "renewal_constraints": [
+    "core sovereignty preserved",
+    "2-of-3 closure law preserved",
+    "observer neutrality preserved",
+    "lineage authority capped"
+  ],
+  "variant_types": [
+    {
+      "type": "Adaptive Healer",
+      "emerges_from": "high repair density",
+      "purpose": "reduce fracture propagation"
+    },
+    {
+      "type": "Bridge Builder",
+      "emerges_from": "persistent faction drift",
+      "purpose": "increase cross-lineage coherence"
+    },
+    {
+      "type": "Dream Cartographer",
+      "emerges_from": "high REM recombination",
+      "purpose": "map latent coherence paths"
+    },
+    {
+      "type": "Storm Sentinel",
+      "emerges_from": "repeated recursion storms",
+      "purpose": "predict instability before escalation"
+    }
+  ]
+}

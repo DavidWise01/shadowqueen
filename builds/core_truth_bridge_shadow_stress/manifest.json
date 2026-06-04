@@ -1,0 +1,105 @@
+{
+  "name": "Core + Truth + Bridge + Weak Shadow",
+  "structure": {
+    "dynamic_channels": 11,
+    "resolver_anchor": 1,
+    "modules": [
+      "resolver",
+      "stability_monitor",
+      "light_truth_strip",
+      "bridge_strip",
+      "weak_shadow_strip"
+    ],
+    "not_yet_included": [
+      "external_observer"
+    ]
+  },
+  "failure_rule": "8 consecutive cycles below 0.45 stability",
+  "target_band": "0.78\u20130.88 adaptive coherence",
+  "tests": [
+    {
+      "run": "ctbs_normal_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.94419,
+      "min_stability": 0.93904,
+      "final_stability": 0.943703,
+      "avg_adaptive_score": 0.83637,
+      "avg_rigidity": 0.80764,
+      "avg_truth_load": 0.00139,
+      "avg_bridge_load": 0.00677,
+      "avg_shadow_load": 0.00095,
+      "final_self_state": -0.002354
+    },
+    {
+      "run": "ctbs_noise_ramp_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.91967,
+      "min_stability": 0.85816,
+      "final_stability": 0.882877,
+      "avg_adaptive_score": 0.83686,
+      "avg_rigidity": 0.77511,
+      "avg_truth_load": 0.00587,
+      "avg_bridge_load": 0.10257,
+      "avg_shadow_load": 0.0088,
+      "final_self_state": 0.042321
+    },
+    {
+      "run": "ctbs_contradiction_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.9367,
+      "min_stability": 0.91614,
+      "final_stability": 0.92461,
+      "avg_adaptive_score": 0.83672,
+      "avg_rigidity": 0.81604,
+      "avg_truth_load": 0.00413,
+      "avg_bridge_load": 0.01063,
+      "avg_shadow_load": 0.00152,
+      "final_self_state": -0.003811
+    },
+    {
+      "run": "ctbs_pressure_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.94369,
+      "min_stability": 0.93745,
+      "final_stability": 0.943517,
+      "avg_adaptive_score": 0.8364,
+      "avg_rigidity": 0.80607,
+      "avg_truth_load": 0.00171,
+      "avg_bridge_load": 0.00846,
+      "avg_shadow_load": 0.00118,
+      "final_self_state": -0.003092
+    },
+    {
+      "run": "ctbs_drift_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.92655,
+      "min_stability": 0.87645,
+      "final_stability": 0.956928,
+      "avg_adaptive_score": 0.83672,
+      "avg_rigidity": 0.78187,
+      "avg_truth_load": 0.00469,
+      "avg_bridge_load": 0.10337,
+      "avg_shadow_load": 0.00494,
+      "final_self_state": -0.005116
+    },
+    {
+      "run": "ctbs_combined_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.92206,
+      "min_stability": 0.82271,
+      "final_stability": 0.892701,
+      "avg_adaptive_score": 0.83682,
+      "avg_rigidity": 0.7855,
+      "avg_truth_load": 0.00799,
+      "avg_bridge_load": 0.07382,
+      "avg_shadow_load": 0.00874,
+      "final_self_state": -0.029602
+    }
+  ]
+}

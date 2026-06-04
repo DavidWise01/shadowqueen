@@ -1,0 +1,20 @@
+{
+  "name": "Shadow Queen",
+  "version": "1.4.0",
+  "status": "DMV appeals + revocation",
+  "new_features": [
+    "appeals table",
+    "revocation/status table",
+    "active/suspended/revoked states",
+    "second quorum correction",
+    "evidence log",
+    "evidence bundle"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "process_returncode": 0,
+  "appeal_returncode": 0,
+  "review_returncode": 0,
+  "stats_returncode": 0,
+  "created_utc": "2026-05-28T18:40:05.105251+00:00"
+}

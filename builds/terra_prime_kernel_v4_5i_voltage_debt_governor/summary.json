@@ -1,0 +1,19 @@
+{
+  "version": "4.5i-voltage-debt-governor",
+  "base": "4.5h-silicon-stack-integration",
+  "purpose": "prevent false PANIC pressure / denial-of-service from bad wiggle traffic",
+  "rule": "debt is isolated before it becomes kernel panic",
+  "wiggle_pattern": "-++-",
+  "total_attempts": 25500,
+  "accepted": 6600,
+  "rejected": 18900,
+  "quarantined": 15700,
+  "kernel_panics": 0,
+  "leaks": 0,
+  "seed_touched": false,
+  "root_floods": 0,
+  "memory_corrupted": false,
+  "test_result": "pass",
+  "next_recommended": "v4.5j silicon-live soak with governor decay",
+  "generated_utc": "2026-05-26T21:54:23.377925+00:00"
+}

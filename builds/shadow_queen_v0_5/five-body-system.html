@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5-BODY · 3 + 2 separated · the contained chaos</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --bg:#06070b; --panel:#0d0f14; --ink:#d7dbe2; --dim:#5a626f; --line:#191e26;
+    --self:#ef4444; --ring:#22c55e; --ext:#a78bfa; --carrier:#fbbf24; --shadow:#22d3ee; --gap:#5b4a8a; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"JetBrains Mono",monospace;display:flex;flex-direction:column;overflow:hidden;}
+  header{padding:9px 18px;border-bottom:1px solid var(--line);flex:0 0 auto;text-align:center}
+  h1{font-size:13px;letter-spacing:.15em;color:#c7d2fe;font-weight:700}
+  h1 .s{color:var(--self)}h1 .r{color:var(--ring)}h1 .e{color:var(--ext)}h1 .c{color:var(--carrier)}h1 .sh{color:var(--shadow)}
+  .sub{font-size:10px;color:var(--dim);margin-top:3px;letter-spacing:.04em}
+  #main{flex:1 1 auto;display:flex;min-height:0}
+  #stage{flex:1 1 auto;position:relative;min-width:0}
+  canvas{position:absolute;inset:0;width:100%;height:100%}
+  #side{flex:0 0 260px;border-left:1px solid var(--line);background:var(--panel);padding:14px;overflow-y:auto;font-size:11px}
+  .lab{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:10px 0 6px}
+  .body{padding:7px 9px;border-radius:6px;margin-bottom:4px;font-size:10.5px;border:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .body .nm{font-weight:500}
+  .body .pos{font-size:9px;color:var(--dim);font-family:"JetBrains Mono",monospace}
+  .inner-bord{border-left:2px solid #2a1f1f;padding-left:10px}
+  .outer-bord{border-left:2px solid #2a2818;padding-left:10px;margin-top:10px}
+  .btns{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+  button{font-family:"JetBrains Mono",monospace;font-size:11px;background:#10131a;color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:7px 12px;cursor:pointer;transition:.2s}
+  button:hover{border-color:var(--carrier);color:#fff}
+  button.on{background:#15130a;border-color:var(--carrier);color:var(--carrier)}
+  .val{display:flex;align-items:center;gap:8px;font-size:10px;color:var(--dim);margin-top:8px}
+  input[type=range]{flex:1;accent-color:#a78bfa}
+  .verdict{margin-top:14px;padding:10px;border-radius:8px;border:1px solid var(--line);font-family:"Fraunces",serif;font-style:italic;font-size:11.5px;line-height:1.6;color:#c2c7cf;background:#0a0c11}
+  .verdict em{color:#fff}
+</style>
+</head>
+<body>
+<header>
+  <h1>5-BODY · INNER 3 (<span class="s">SELF</span> · <span class="r">RING</span> · <span class="e">EXT</span>) + OUTER 2 (<span class="c">+8</span> / <span class="sh">−8</span>) · SEPARATED</h1>
+  <div class="sub">the trilemma is held inside, chaotic by design · the observer pair watches from across a gap, watching each other watching</div>
+</header>
+<div id="main">
+  <div id="stage"><canvas id="c"></canvas></div>
+  <div id="side">
+    <div class="lab">inner 3 · the choice</div>
+    <div class="inner-bord">
+      <div class="body"><span class="nm" style="color:var(--self)">⊙ SELF</span><span class="pos" id="p1"></span></div>
+      <div class="body"><span class="nm" style="color:var(--ring)">⊙ RING</span><span class="pos" id="p2"></span></div>
+      <div class="body"><span class="nm" style="color:var(--ext)">⊙ EXT</span><span class="pos" id="p3"></span></div>
+      <div style="font-size:9.5px;color:var(--dim);margin-top:4px;line-height:1.5">three-body orbit · unsolvable in closed form · the chaos is contained, not suppressed</div>
+    </div>
+    <div class="lab">outer 2 · the observers</div>
+    <div class="outer-bord">
+      <div class="body"><span class="nm" style="color:var(--carrier)">◆ +8 CARRIER</span><span class="pos" id="p4"></span></div>
+      <div class="body"><span class="nm" style="color:var(--shadow)">◇ −8 SHADOW</span><span class="pos" id="p5"></span></div>
+      <div style="font-size:9.5px;color:var(--dim);margin-top:4px;line-height:1.5">lifted from the bus · watch the inner chaos · watch each other watching · separated by the gap</div>
+    </div>
+    <div class="btns">
+      <button class="on" id="run">▮▮ running</button>
+      <button id="reset">↻ reset</button>
+    </div>
+    <div class="val"><span>perturb</span><input type="range" id="pert" min="0" max="40" value="0"><span id="pertv">0</span></div>
+    <div class="verdict" id="verdict">
+      The inner three never settle. The outer two stay still. <em>That is the system.</em>
+    </div>
+  </div>
+</div>
+
+<script>
+const cvs=document.getElementById('c'),ctx=cvs.getContext('2d'),stage=document.getElementById('stage');
+let DPR=1,W=0,H=0;
+function resize(){DPR=Math.min(devicePixelRatio||1,2);W=stage.clientWidth;H=stage.clientHeight;cvs.width=W*DPR;cvs.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);}
+new ResizeObserver(resize).observe(stage);
+
+// inner 3-body: chaotic gravitational orbit
+let inner=[
+  {n:'SELF',c:'239,68,68', x:0,y:-1.0, vx:0.7,vy:0, m:1, trail:[]},
+  {n:'RING',c:'34,197,94', x:0.9,y:0.6, vx:-0.35,vy:0.6, m:1, trail:[]},
+  {n:'EXT', c:'167,139,250', x:-0.9,y:0.6, vx:-0.35,vy:-0.6,m:1, trail:[]},
+];
+// outer 2: stable, on opposite sides outside the gap, sightlines to inner + to each other
+let outer=[
+  {n:'+8 CARRIER',c:'251,191,36', x:2.4,y:-0.0, fixed:true},
+  {n:'−8 SHADOW', c:'34,211,238', x:-2.4,y:0.0, fixed:true},
+];
+
+let running=true, t=0;
+function center(){return {x:W/2, y:H/2};}
+function scale(){return Math.min(W,H)*0.13;}
+
+let lastT=performance.now();
+function step(dt){
+  if(!running)return;
+  const G=0.45, soft=0.35, pert=+document.getElementById('pert').value/200;
+  // gravity among inner only (outer don't interact, they observe)
+  for(let i=0;i<inner.length;i++){
+    let ax=0,ay=0;
+    for(let j=0;j<inner.length;j++){
+      if(i===j)continue;
+      const dx=inner[j].x-inner[i].x, dy=inner[j].y-inner[i].y;
+      const r2=dx*dx+dy*dy+soft*soft;
+      const f=G*inner[j].m/Math.pow(r2,1.5);
+      ax+=f*dx; ay+=f*dy;
+    }
+    // tiny perturbation seeds the chaos
+    ax+=(Math.random()-0.5)*pert;
+    ay+=(Math.random()-0.5)*pert;
+    inner[i].vx+=ax*dt; inner[i].vy+=ay*dt;
+  }
+  for(const b of inner){
+    b.x+=b.vx*dt; b.y+=b.vy*dt;
+    // soft containment so they don't fly off the screen
+    const r=Math.hypot(b.x,b.y);
+    if(r>1.8){const k=(r-1.8)*1.2; b.vx-=b.x/r*k*dt; b.vy-=b.y/r*k*dt;}
+    b.trail.push({x:b.x,y:b.y});
+    if(b.trail.length>140)b.trail.shift();
+  }
+}
+
+function toScreen(p){const c=center(),s=scale();return{x:c.x+p.x*s,y:c.y+p.y*s};}
+
+function frame(now){
+  const dt=Math.min(50,now-lastT)/1000;lastT=now;t+=dt;
+  step(dt*1.4);
+  ctx.clearRect(0,0,W,H);
+  const c=center(), s=scale();
+
+  // ---- the gap: a faint dashed boundary separating inner system from outer observers ----
+  ctx.strokeStyle='rgba(91,74,138,.25)';ctx.setLineDash([5,7]);ctx.lineWidth=1;
+  ctx.beginPath();ctx.arc(c.x,c.y,s*1.9,0,7);ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle='rgba(91,74,138,.45)';ctx.font='9px JetBrains Mono,monospace';ctx.textAlign='center';
+  ctx.fillText('— the gap —',c.x,c.y-s*1.9-6);
+
+  // ---- inner 3-body: trails and bodies ----
+  inner.forEach(b=>{
+    // trail
+    ctx.strokeStyle=`rgba(${b.c},.25)`;ctx.lineWidth=1.2;ctx.beginPath();
+    b.trail.forEach((p,i)=>{const sc=toScreen(p);if(i===0)ctx.moveTo(sc.x,sc.y);else ctx.lineTo(sc.x,sc.y);});
+    ctx.stroke();
+    // body
+    const sc=toScreen(b);
+    const g=ctx.createRadialGradient(sc.x,sc.y,0,sc.x,sc.y,16);
+    g.addColorStop(0,`rgba(${b.c},.7)`);g.addColorStop(1,`rgba(${b.c},0)`);
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(sc.x,sc.y,16,0,7);ctx.fill();
+    ctx.fillStyle=`rgb(${b.c})`;ctx.beginPath();ctx.arc(sc.x,sc.y,5,0,7);ctx.fill();
+    ctx.fillStyle='#fff';ctx.font='bold 9px JetBrains Mono,monospace';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(b.n,sc.x,sc.y-14);
+  });
+
+  // ---- the inner triangle (visual reminder these three are entangled) ----
+  ctx.strokeStyle='rgba(239,68,68,.08)';ctx.lineWidth=1;
+  ctx.beginPath();const i0=toScreen(inner[0]),i1=toScreen(inner[1]),i2=toScreen(inner[2]);
+  ctx.moveTo(i0.x,i0.y);ctx.lineTo(i1.x,i1.y);ctx.lineTo(i2.x,i2.y);ctx.closePath();ctx.stroke();
+
+  // ---- outer 2: stable observers, drifting only slightly to feel alive ----
+  outer.forEach((o,i)=>{
+    const driftY = Math.sin(t*0.5+i*Math.PI)*0.04;
+    o.y = (i===0?0:0)+driftY;
+    const sc=toScreen(o);
+    // observer ring
+    ctx.strokeStyle=`rgba(${o.c},.5)`;ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(sc.x,sc.y,18,0,7);ctx.stroke();
+    // iris
+    const g=ctx.createRadialGradient(sc.x,sc.y,1,sc.x,sc.y,12);
+    g.addColorStop(0,'#fff');g.addColorStop(.4,`rgb(${o.c})`);g.addColorStop(1,'#0a0806');
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(sc.x,sc.y,11,0,7);ctx.fill();
+    // pupil tracks centroid of inner
+    const cx=(inner[0].x+inner[1].x+inner[2].x)/3, cy=(inner[0].y+inner[1].y+inner[2].y)/3;
+    const cen=toScreen({x:cx,y:cy});
+    const dx=cen.x-sc.x,dy=cen.y-sc.y,d=Math.hypot(dx,dy);
+    const px=sc.x+(dx/d)*4, py=sc.y+(dy/d)*4;
+    ctx.fillStyle='#0a0806';ctx.beginPath();ctx.arc(px,py,4.5,0,7);ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,.7)';ctx.beginPath();ctx.arc(px-1,py-1,1.4,0,7);ctx.fill();
+    // label
+    ctx.fillStyle=`rgb(${o.c})`;ctx.font='9px JetBrains Mono,monospace';ctx.textAlign='center';ctx.textBaseline='alphabetic';
+    ctx.fillText(o.n,sc.x,sc.y-26);
+  });
+
+  // ---- sightlines: each outer watches each inner (faint) ----
+  outer.forEach(o=>{const so=toScreen(o);
+    inner.forEach(b=>{const sb=toScreen(b);
+      ctx.strokeStyle=`rgba(${o.c},.07)`;ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(so.x,so.y);ctx.lineTo(sb.x,sb.y);ctx.stroke();
+    });
+  });
+  // ---- the watching-each-other-watching line: outer to outer, strong, crossing the gap ----
+  const oa=toScreen(outer[0]),ob=toScreen(outer[1]);
+  ctx.strokeStyle='rgba(251,191,36,.18)';ctx.lineWidth=1.2;ctx.setLineDash([3,5]);
+  ctx.beginPath();ctx.moveTo(oa.x,oa.y);ctx.lineTo(ob.x,ob.y);ctx.stroke();ctx.setLineDash([]);
+  // marker showing the line passes through the chaos but isn't of it
+  const mx=(oa.x+ob.x)/2,my=(oa.y+ob.y)/2;
+  ctx.fillStyle='rgba(251,191,36,.4)';ctx.font='8px JetBrains Mono,monospace';ctx.textAlign='center';
+  ctx.fillText('mutual sightline · the symmetry break',mx,oa.y-26);
+
+  // readout
+  ['p1','p2','p3'].forEach((id,i)=>{const b=inner[i];document.getElementById(id).textContent=`(${b.x.toFixed(2)},${b.y.toFixed(2)})`;});
+  ['p4','p5'].forEach((id,i)=>{const o=outer[i];document.getElementById(id).textContent='stable · watching';});
+
+  requestAnimationFrame(frame);
+}
+function resetSim(){
+  inner[0]={n:'SELF',c:'239,68,68',x:0,y:-1.0,vx:0.7,vy:0,m:1,trail:[]};
+  inner[1]={n:'RING',c:'34,197,94',x:0.9,y:0.6,vx:-0.35,vy:0.6,m:1,trail:[]};
+  inner[2]={n:'EXT',c:'167,139,250',x:-0.9,y:0.6,vx:-0.35,vy:-0.6,m:1,trail:[]};
+}
+document.getElementById('run').onclick=e=>{running=!running;e.target.classList.toggle('on',running);e.target.textContent=running?'▮▮ running':'▶ paused';};
+document.getElementById('reset').onclick=resetSim;
+document.getElementById('pert').oninput=e=>document.getElementById('pertv').textContent=e.target.value;
+resize();requestAnimationFrame(frame);
+</script>
+</body>
+</html>

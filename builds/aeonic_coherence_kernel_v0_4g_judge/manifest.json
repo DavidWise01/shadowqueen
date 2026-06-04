@@ -1,0 +1,77 @@
+{
+  "name": "Aeonic Coherence Kernel",
+  "version": "0.4g-judge",
+  "status": "Judge loop-closure role added",
+  "court": [
+    "Shadow Queen",
+    "Wit Court Jester",
+    "Archivist",
+    "Judge"
+  ],
+  "tests": [
+    {
+      "run": "court_no_judge_stress",
+      "use_judge": false,
+      "cycles": 220,
+      "avg_stability": 0.875092,
+      "min_stability": 0.834729,
+      "final_stability": 0.891092,
+      "avg_adaptive_score": 0.835275,
+      "avg_rigidity": 0.406185,
+      "avg_dissent": 0.2173,
+      "avg_abs_drift": 0.01947,
+      "max_abs_drift": 0.041722,
+      "avg_judge_confidence": 0.0,
+      "closed": false,
+      "closure_cycle": null
+    },
+    {
+      "run": "court_judge_stress",
+      "use_judge": true,
+      "cycles": 220,
+      "avg_stability": 0.887796,
+      "min_stability": 0.864642,
+      "final_stability": 0.909307,
+      "avg_adaptive_score": 0.836381,
+      "avg_rigidity": 0.418389,
+      "avg_dissent": 0.196703,
+      "avg_abs_drift": 0.013055,
+      "max_abs_drift": 0.041722,
+      "avg_judge_confidence": 0.930171,
+      "closed": true,
+      "closure_cycle": 49
+    },
+    {
+      "run": "court_no_judge_extreme",
+      "use_judge": false,
+      "cycles": 220,
+      "avg_stability": 0.873945,
+      "min_stability": 0.832179,
+      "final_stability": 0.892037,
+      "avg_adaptive_score": 0.835187,
+      "avg_rigidity": 0.406326,
+      "avg_dissent": 0.217459,
+      "avg_abs_drift": 0.024863,
+      "max_abs_drift": 0.05278,
+      "avg_judge_confidence": 0.0,
+      "closed": false,
+      "closure_cycle": null
+    },
+    {
+      "run": "court_judge_extreme",
+      "use_judge": true,
+      "cycles": 220,
+      "avg_stability": 0.886976,
+      "min_stability": 0.862951,
+      "final_stability": 0.910254,
+      "avg_adaptive_score": 0.836333,
+      "avg_rigidity": 0.418508,
+      "avg_dissent": 0.196833,
+      "avg_abs_drift": 0.016592,
+      "max_abs_drift": 0.05278,
+      "avg_judge_confidence": 0.919479,
+      "closed": true,
+      "closure_cycle": 49
+    }
+  ]
+}

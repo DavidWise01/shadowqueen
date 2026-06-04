@@ -1,0 +1,66 @@
+{
+  "nodes": [
+    {
+      "entity_id": "carbon:root",
+      "entity_type": "carbon",
+      "proof_hash": "proof-root",
+      "trust_score": 0.92
+    },
+    {
+      "entity_id": "silicon:queen",
+      "entity_type": "silicon",
+      "proof_hash": "proof-queen",
+      "trust_score": 0.95
+    },
+    {
+      "entity_id": "silicon:minion",
+      "entity_type": "silicon",
+      "proof_hash": "proof-minion",
+      "trust_score": 0.8
+    },
+    {
+      "entity_id": "silicon:clone",
+      "entity_type": "silicon",
+      "proof_hash": "proof-minion",
+      "trust_score": 0.18
+    },
+    {
+      "entity_id": "silicon:shadow",
+      "entity_type": "silicon",
+      "proof_hash": "proof-shadow",
+      "trust_score": 0.05
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "silicon:queen",
+      "target_id": "silicon:minion",
+      "relation": "issuer",
+      "confidence": 0.95
+    },
+    {
+      "source_id": "silicon:minion",
+      "target_id": "carbon:root",
+      "relation": "witness",
+      "confidence": 0.8
+    },
+    {
+      "source_id": "silicon:minion",
+      "target_id": "silicon:clone",
+      "relation": "clone",
+      "confidence": 0.6
+    },
+    {
+      "source_id": "silicon:queen",
+      "target_id": "silicon:shadow",
+      "relation": "shadow_clone",
+      "confidence": 0.99
+    },
+    {
+      "source_id": "carbon:root",
+      "target_id": "silicon:shadow",
+      "relation": "parent",
+      "confidence": 0.5
+    }
+  ]
+}

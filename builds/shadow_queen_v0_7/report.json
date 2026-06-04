@@ -1,0 +1,53 @@
+{
+  "alerts": [
+    {
+      "action": "quarantine",
+      "event_type": "agent_call",
+      "reason": "shadow_phase",
+      "recommended_action": "quarantine source and preserve evidence",
+      "severity": "high",
+      "source_id": "shadow",
+      "ts": 1779912263.578891
+    },
+    {
+      "action": "quarantine",
+      "event_type": "five_body",
+      "reason": "gap_not_crossed",
+      "recommended_action": "quarantine source and preserve evidence",
+      "severity": "high",
+      "source_id": "gap-cross",
+      "ts": 1779912263.5768769
+    },
+    {
+      "action": "quarantine",
+      "event_type": "five_body",
+      "reason": "payload_blind",
+      "recommended_action": "quarantine immediately and block propagation",
+      "severity": "critical",
+      "source_id": "payload-peek",
+      "ts": 1779912263.57504
+    },
+    {
+      "action": "quarantine",
+      "event_type": "nested_closure",
+      "reason": "doubled_null_region",
+      "recommended_action": "track lineage and increase sampling",
+      "severity": "medium",
+      "source_id": "single-null",
+      "ts": 1779912263.5725815
+    }
+  ],
+  "stats": {
+    "alerts": 4,
+    "by_action": {
+      "allow": 1,
+      "quarantine": 4
+    },
+    "by_severity": {
+      "critical": 1,
+      "high": 2,
+      "medium": 1
+    },
+    "events": 5
+  }
+}

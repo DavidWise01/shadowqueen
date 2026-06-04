@@ -1,0 +1,5 @@
+{
+  "module": "v6.0 Live Mesh Alpha",
+  "status": "included",
+  "description": "Registry, heartbeat, discovery, routing, replication, failover."
+}

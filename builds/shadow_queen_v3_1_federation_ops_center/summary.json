@@ -1,0 +1,22 @@
+{
+  "name": "Shadow Queen",
+  "version": "3.1.0",
+  "status": "federation operations center",
+  "new_features": [
+    "office registry",
+    "office health monitor",
+    "office trust scores",
+    "drift detection",
+    "cross-office credential validation",
+    "investigation routing",
+    "office quarantine",
+    "office recovery",
+    "federation dashboard"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "demo_returncode": 0,
+  "stats_returncode": 0,
+  "verify_returncode": 0,
+  "created_utc": "2026-05-31T03:14:53.719672+00:00"
+}

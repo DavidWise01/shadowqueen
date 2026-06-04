@@ -1,0 +1,81 @@
+{
+  "name": "Aeonic Coherence Kernel",
+  "version": "0.6-three-body",
+  "status": "True 3+1 faction system added",
+  "factions": {
+    "light": "Light King / explicit order",
+    "shadow": "Shadow Queen / unresolved depth",
+    "mercury": "Trickster-Mercury / movement and alliance switching",
+    "core": "Resolver substrate"
+  },
+  "tests": [
+    {
+      "run": "two_body_baseline_stress",
+      "use_mercury": false,
+      "cycles": 260,
+      "avg_stability": 0.999017,
+      "min_stability": 0.905338,
+      "final_stability": 1,
+      "avg_adaptive_score": 0.8301,
+      "avg_rigidity": 0.312555,
+      "avg_dissent": 0.246534,
+      "avg_abs_drift": 0.009353,
+      "max_abs_drift": 0.017114,
+      "avg_bridge_tension": 0.025918,
+      "avg_mercury_motion": 0.0,
+      "avg_alliance_shift": 0.0,
+      "avg_emergence": 0.972616
+    },
+    {
+      "run": "three_body_mercury_stress",
+      "use_mercury": true,
+      "cycles": 260,
+      "avg_stability": 0.997779,
+      "min_stability": 0.894983,
+      "final_stability": 1,
+      "avg_adaptive_score": 0.830237,
+      "avg_rigidity": 0.413337,
+      "avg_dissent": 0.90466,
+      "avg_abs_drift": 0.013915,
+      "max_abs_drift": 0.031893,
+      "avg_bridge_tension": 0.040073,
+      "avg_mercury_motion": 0.044146,
+      "avg_alliance_shift": 0.068123,
+      "avg_emergence": 0.93836
+    },
+    {
+      "run": "two_body_baseline_extreme",
+      "use_mercury": false,
+      "cycles": 260,
+      "avg_stability": 0.998915,
+      "min_stability": 0.904213,
+      "final_stability": 1,
+      "avg_adaptive_score": 0.830109,
+      "avg_rigidity": 0.312555,
+      "avg_dissent": 0.246548,
+      "avg_abs_drift": 0.010252,
+      "max_abs_drift": 0.02712,
+      "avg_bridge_tension": 0.02593,
+      "avg_mercury_motion": 0.0,
+      "avg_alliance_shift": 0.0,
+      "avg_emergence": 0.972616
+    },
+    {
+      "run": "three_body_mercury_extreme",
+      "use_mercury": true,
+      "cycles": 260,
+      "avg_stability": 0.997458,
+      "min_stability": 0.893431,
+      "final_stability": 1,
+      "avg_adaptive_score": 0.830268,
+      "avg_rigidity": 0.413338,
+      "avg_dissent": 0.906984,
+      "avg_abs_drift": 0.010359,
+      "max_abs_drift": 0.03601,
+      "avg_bridge_tension": 0.039415,
+      "avg_mercury_motion": 0.044044,
+      "avg_alliance_shift": 0.067271,
+      "avg_emergence": 0.938853
+    }
+  ]
+}

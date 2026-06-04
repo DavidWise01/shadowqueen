@@ -1,0 +1,68 @@
+[
+  {
+    "observer_id": "minion-1",
+    "role": "clerk",
+    "record": {
+      "person_id": "P-1001",
+      "legal_name": "Ada Lovelace",
+      "address": "12 Logic Lane",
+      "dob": "1815-12-10",
+      "document_id": "DOC-ADA-1"
+    }
+  },
+  {
+    "observer_id": "minion-2",
+    "role": "address_verifier",
+    "record": {
+      "person_id": "P-1001",
+      "legal_name": "Ada Lovelace",
+      "address": "12 Logic Lane",
+      "dob": "1815-12-10",
+      "document_id": "DOC-ADA-1"
+    }
+  },
+  {
+    "observer_id": "minion-3",
+    "role": "document_verifier",
+    "record": {
+      "person_id": "P-1001",
+      "legal_name": "Ada Lovelace",
+      "address": "12 Logic Lane",
+      "dob": "1815-12-10",
+      "document_id": "DOC-ADA-1"
+    }
+  },
+  {
+    "observer_id": "minion-1",
+    "role": "clerk",
+    "record": {
+      "person_id": "P-2002",
+      "legal_name": "Mirror Bad",
+      "address": "99 False St",
+      "dob": "2000-01-01",
+      "document_id": "DOC-BAD-1"
+    }
+  },
+  {
+    "observer_id": "minion-2",
+    "role": "address_verifier",
+    "record": {
+      "person_id": "P-2002",
+      "legal_name": "Mirror Bad",
+      "address": "100 False St",
+      "dob": "2000-01-01",
+      "document_id": "DOC-BAD-1"
+    }
+  },
+  {
+    "observer_id": "minion-3",
+    "role": "document_verifier",
+    "record": {
+      "person_id": "P-2002",
+      "legal_name": "Mirror Bad",
+      "address": "99 False St",
+      "dob": "2000-01-01",
+      "document_id": "DOC-BAD-1"
+    }
+  }
+]

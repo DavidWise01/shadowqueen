@@ -1,0 +1,58 @@
+{
+  "version": "9.0.0-final",
+  "status": "operational-final",
+  "federation": {
+    "offices": 4,
+    "healthy": 3,
+    "degraded": 1,
+    "leader": "office:north",
+    "mesh_status": "operational"
+  },
+  "activity": {
+    "citizens": 100,
+    "silicon_agents": 25,
+    "credentials": 1000,
+    "investigations": 100,
+    "workflows": 5
+  },
+  "credentials": {
+    "active": 875,
+    "revoked": 75,
+    "expired": 50,
+    "verification_success_rate": 0.982
+  },
+  "authority": {
+    "active_grants": 64,
+    "revoked_grants": 9,
+    "scope_denials": 14
+  },
+  "fraud": {
+    "duplicate_identity": 8,
+    "forged_credential": 4,
+    "revoked_credential_presented": 11,
+    "authority_escalation": 3,
+    "cross_office_conflict": 6
+  },
+  "mesh": {
+    "heartbeat": "active",
+    "replication": "active",
+    "cross_office_query": "active",
+    "failover": "enabled",
+    "leader_election": "enabled"
+  },
+  "reports": {
+    "audit": "generated",
+    "workflow": "generated",
+    "credential": "generated",
+    "fraud": "generated",
+    "authority": "generated",
+    "federation": "generated"
+  },
+  "analytics": {
+    "mesh_health": 0.94,
+    "revocation_propagation": 0.91,
+    "investigation_throughput": 0.88,
+    "trust_score": 0.9,
+    "system_maturity": 0.99
+  }
+}

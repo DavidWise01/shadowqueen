@@ -1,0 +1,7 @@
+run,mythogenesis,avg_structural_stability,avg_vitality,avg_viability,avg_lattice_coherence,wisdom_gain,innovation_rate,authority_lock,historical_density,mythic_compression,symbolic_resonance,ritual_stability,narrative_continuity,myth_cycles,archetypal_attractors
+v14_extreme_renewal,False,0.861,0.772,0.781,0.897,0.268,0.314,0.029,0.0,0.0,0.0,0.0,0.0,0,0
+v15_extreme_mythic,True,0.874,0.766,0.792,0.913,0.321,0.336,0.021,0.804,0.771,0.746,0.818,0.842,18,8
+v14_contradiction_renewal,False,0.865,0.768,0.783,0.903,0.259,0.301,0.027,0.0,0.0,0.0,0.0,0.0,0,0
+v15_contradiction_mythic,True,0.879,0.761,0.795,0.918,0.314,0.328,0.019,0.791,0.758,0.731,0.809,0.836,16,8
+v15_drift_mythic,True,0.883,0.752,0.798,0.924,0.337,0.347,0.017,0.832,0.784,0.761,0.827,0.851,21,8
+v15_normal_mythic,True,0.887,0.738,0.801,0.929,0.291,0.302,0.014,0.776,0.743,0.719,0.836,0.864,14,8

@@ -1,0 +1,16 @@
+{
+  "name": "Shadow Queen",
+  "version": "0.4.0",
+  "status": "runnable user-space collector prototype",
+  "new_features": [
+    "process snapshot collector",
+    "file snapshot collector",
+    "network connection snapshot",
+    "SQLite persistence"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "collector_returncode": 0,
+  "stats_returncode": 0,
+  "created_utc": "2026-05-27T15:38:17.989788+00:00"
+}

@@ -1,0 +1,6 @@
+SELFTEST PASS
+router ok
+forwarder ok
+sync ok
+ledger ok
+dashboard ok

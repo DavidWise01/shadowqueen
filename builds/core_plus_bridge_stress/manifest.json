@@ -1,0 +1,81 @@
+{
+  "name": "Core Resolver 11+1 + Bridge",
+  "structure": {
+    "dynamic_channels": 11,
+    "resolver_anchor": 1,
+    "modules": [
+      "resolver",
+      "stability_monitor",
+      "bridge_strip"
+    ],
+    "not_yet_included": [
+      "truth_strip",
+      "shadow_strip",
+      "external_observer"
+    ]
+  },
+  "failure_rule": "8 consecutive cycles below 0.45 stability",
+  "target_band": "0.78\u20130.88 adaptive coherence",
+  "tests": [
+    {
+      "run": "bridge_normal_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.93057,
+      "min_stability": 0.92434,
+      "final_stability": 0.932244,
+      "avg_adaptive_score": 0.83698,
+      "avg_rigidity": 0.86999,
+      "avg_bridge_load": 0.00742,
+      "final_self_state": -0.001381
+    },
+    {
+      "run": "bridge_noise_ramp_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.90152,
+      "min_stability": 0.78527,
+      "final_stability": 0.851766,
+      "avg_adaptive_score": 0.83608,
+      "avg_rigidity": 0.83471,
+      "avg_bridge_load": 0.09628,
+      "final_self_state": 0.007584
+    },
+    {
+      "run": "bridge_contradiction_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.92159,
+      "min_stability": 0.89655,
+      "final_stability": 0.908584,
+      "avg_adaptive_score": 0.83712,
+      "avg_rigidity": 0.87982,
+      "avg_bridge_load": 0.01228,
+      "final_self_state": -0.002332
+    },
+    {
+      "run": "bridge_pressure_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.92998,
+      "min_stability": 0.92253,
+      "final_stability": 0.932318,
+      "avg_adaptive_score": 0.837,
+      "avg_rigidity": 0.86819,
+      "avg_bridge_load": 0.00928,
+      "final_self_state": -0.000321
+    },
+    {
+      "run": "bridge_drift_220",
+      "cycles": 220,
+      "failed_at": null,
+      "avg_stability": 0.90932,
+      "min_stability": 0.84425,
+      "final_stability": 0.942948,
+      "avg_adaptive_score": 0.83664,
+      "avg_rigidity": 0.84152,
+      "avg_bridge_load": 0.09875,
+      "final_self_state": 0.002729
+    }
+  ]
+}

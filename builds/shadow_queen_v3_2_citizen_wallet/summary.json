@@ -1,0 +1,20 @@
+{
+  "name": "Shadow Queen",
+  "version": "3.2.0",
+  "status": "citizen wallet",
+  "new_features": [
+    "wallet owner profile",
+    "portable credentials",
+    "local proof store",
+    "revocation checks",
+    "trust-gated presentations",
+    "wallet summary",
+    "evidence export"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "demo_returncode": 0,
+  "stats_returncode": 0,
+  "verify_returncode": 0,
+  "created_utc": "2026-05-31T04:09:43.794272+00:00"
+}

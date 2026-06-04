@@ -1,0 +1,25 @@
+{
+  "name": "Shadow Queen",
+  "version": "5.5.0",
+  "status": "live server api dashboard",
+  "new_features": [
+    "local HTTP server",
+    "dashboard route",
+    "API routes",
+    "live JSON refresh",
+    "seeded federation state",
+    "route self-test"
+  ],
+  "routes": [
+    "/dashboard",
+    "/api/status",
+    "/api/offices",
+    "/api/credentials",
+    "/api/fraud",
+    "/api/authority",
+    "/api/analytics",
+    "/api/all"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS"
+}

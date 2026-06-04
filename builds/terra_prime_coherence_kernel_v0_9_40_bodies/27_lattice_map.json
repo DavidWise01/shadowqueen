@@ -1,0 +1,260 @@
+{
+  "lattice": [
+    {
+      "cell": 1,
+      "vector": "Light",
+      "depth": 1,
+      "pass": 1,
+      "bodies": [
+        1
+      ]
+    },
+    {
+      "cell": 2,
+      "vector": "Shadow",
+      "depth": 1,
+      "pass": 1,
+      "bodies": [
+        2
+      ]
+    },
+    {
+      "cell": 3,
+      "vector": "Mercury",
+      "depth": 1,
+      "pass": 1,
+      "bodies": [
+        3
+      ]
+    },
+    {
+      "cell": 4,
+      "vector": "Light",
+      "depth": 2,
+      "pass": 1,
+      "bodies": [
+        5
+      ]
+    },
+    {
+      "cell": 5,
+      "vector": "Shadow",
+      "depth": 2,
+      "pass": 1,
+      "bodies": [
+        6,
+        29
+      ]
+    },
+    {
+      "cell": 6,
+      "vector": "Mercury",
+      "depth": 2,
+      "pass": 1,
+      "bodies": [
+        7,
+        37
+      ]
+    },
+    {
+      "cell": 7,
+      "vector": "Light",
+      "depth": 3,
+      "pass": 1,
+      "bodies": [
+        8
+      ]
+    },
+    {
+      "cell": 8,
+      "vector": "Shadow",
+      "depth": 3,
+      "pass": 1,
+      "bodies": [
+        9,
+        30
+      ]
+    },
+    {
+      "cell": 9,
+      "vector": "Mercury",
+      "depth": 3,
+      "pass": 1,
+      "bodies": [
+        10
+      ]
+    },
+    {
+      "cell": 10,
+      "vector": "Light",
+      "depth": 1,
+      "pass": 2,
+      "bodies": [
+        11
+      ]
+    },
+    {
+      "cell": 11,
+      "vector": "Shadow",
+      "depth": 1,
+      "pass": 2,
+      "bodies": [
+        12,
+        31
+      ]
+    },
+    {
+      "cell": 12,
+      "vector": "Mercury",
+      "depth": 1,
+      "pass": 2,
+      "bodies": [
+        13,
+        38
+      ]
+    },
+    {
+      "cell": 13,
+      "vector": "Light",
+      "depth": 2,
+      "pass": 2,
+      "bodies": [
+        14
+      ]
+    },
+    {
+      "cell": 14,
+      "vector": "Shadow",
+      "depth": 2,
+      "pass": 2,
+      "bodies": [
+        4,
+        15,
+        32
+      ]
+    },
+    {
+      "cell": 15,
+      "vector": "Mercury",
+      "depth": 2,
+      "pass": 2,
+      "bodies": [
+        16
+      ]
+    },
+    {
+      "cell": 16,
+      "vector": "Light",
+      "depth": 3,
+      "pass": 2,
+      "bodies": [
+        17
+      ]
+    },
+    {
+      "cell": 17,
+      "vector": "Shadow",
+      "depth": 3,
+      "pass": 2,
+      "bodies": [
+        18,
+        33
+      ]
+    },
+    {
+      "cell": 18,
+      "vector": "Mercury",
+      "depth": 3,
+      "pass": 2,
+      "bodies": [
+        19,
+        39
+      ]
+    },
+    {
+      "cell": 19,
+      "vector": "Light",
+      "depth": 1,
+      "pass": 3,
+      "bodies": [
+        20
+      ]
+    },
+    {
+      "cell": 20,
+      "vector": "Shadow",
+      "depth": 1,
+      "pass": 3,
+      "bodies": [
+        21,
+        34
+      ]
+    },
+    {
+      "cell": 21,
+      "vector": "Mercury",
+      "depth": 1,
+      "pass": 3,
+      "bodies": [
+        22
+      ]
+    },
+    {
+      "cell": 22,
+      "vector": "Light",
+      "depth": 2,
+      "pass": 3,
+      "bodies": [
+        23
+      ]
+    },
+    {
+      "cell": 23,
+      "vector": "Shadow",
+      "depth": 2,
+      "pass": 3,
+      "bodies": [
+        24,
+        35
+      ]
+    },
+    {
+      "cell": 24,
+      "vector": "Mercury",
+      "depth": 2,
+      "pass": 3,
+      "bodies": [
+        25,
+        40
+      ]
+    },
+    {
+      "cell": 25,
+      "vector": "Light",
+      "depth": 3,
+      "pass": 3,
+      "bodies": [
+        26
+      ]
+    },
+    {
+      "cell": 26,
+      "vector": "Shadow",
+      "depth": 3,
+      "pass": 3,
+      "bodies": [
+        27,
+        36
+      ]
+    },
+    {
+      "cell": 27,
+      "vector": "Mercury",
+      "depth": 3,
+      "pass": 3,
+      "bodies": [
+        28
+      ]
+    }
+  ]
+}

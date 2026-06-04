@@ -1,0 +1,19 @@
+{
+  "name": "Shadow Queen",
+  "version": "1.5.0",
+  "status": "federation + external audit",
+  "new_features": [
+    "office IDs",
+    "federated registry comparison",
+    "cross-office conflict detection",
+    "external auditor review",
+    "evidence bundle export"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "process_returncode": 0,
+  "federate_returncode": 0,
+  "audit_returncode": 0,
+  "stats_returncode": 0,
+  "created_utc": "2026-05-28T21:28:03.362348+00:00"
+}

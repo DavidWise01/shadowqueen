@@ -1,0 +1,7 @@
+run,birth_renewal,avg_structural_stability,avg_vitality,avg_viability,avg_lattice_coherence,wisdom_gain,authority_lock,lineage_density,innovation_rate,adaptation_rate,new_variants,renewal_cycles,generational_turnover,mutation_stability,novelty_balance
+v13_extreme_lineage,False,0.852,0.763,0.769,0.884,0.231,0.041,0.728,0.118,0.142,0,0,0.0,0.0,0.0
+v14_extreme_renewal,True,0.861,0.772,0.781,0.897,0.268,0.029,0.741,0.314,0.338,14,11,0.482,0.801,0.734
+v13_contradiction_lineage,False,0.856,0.756,0.771,0.889,0.219,0.038,0.711,0.104,0.137,0,0,0.0,0.0,0.0
+v14_contradiction_renewal,True,0.865,0.768,0.783,0.903,0.259,0.027,0.752,0.301,0.329,12,9,0.454,0.812,0.748
+v14_drift_renewal,True,0.869,0.759,0.786,0.909,0.281,0.024,0.773,0.327,0.347,16,13,0.521,0.826,0.761
+v14_normal_renewal,True,0.872,0.741,0.788,0.914,0.244,0.021,0.764,0.281,0.309,9,7,0.397,0.844,0.779

@@ -1,0 +1,14 @@
+{
+  "name": "Shadow Queen",
+  "version": "4.1.0",
+  "status": "production_hardening",
+  "modules": [
+    "config",
+    "security",
+    "migrations",
+    "docs",
+    "release",
+    "packaging"
+  ],
+  "artifact_hashes": {}
+}

@@ -1,0 +1,6 @@
+run,cycles,avg_structural_stability,min_structural_stability,avg_vitality,avg_viability,avg_field_charge,max_field_charge,avg_lattice_coherence,min_lattice_coherence,avg_recursion_depth,max_recursion_depth,closures,recursions,suspicious,avg_active_bodies,avg_trust,alpha_alerts,omega_alerts
+v09_40body_normal,420,0.842,0.798,0.735,0.747,0.622,0.711,0.861,0.812,1.18,5,301,92,27,14.0,0.706,0,1
+v09_40body_stress,420,0.824,0.752,0.772,0.741,0.691,0.832,0.837,0.779,1.94,7,272,119,29,19.0,0.684,4,2
+v09_40body_extreme,420,0.806,0.711,0.801,0.726,0.758,0.913,0.809,0.736,2.78,10,241,151,28,32.0,0.651,19,8
+v09_40body_contradiction,420,0.817,0.733,0.792,0.735,0.734,0.884,0.821,0.752,2.33,9,253,139,28,28.0,0.663,11,5
+v09_40body_drift,420,0.829,0.761,0.766,0.743,0.679,0.801,0.834,0.768,1.88,8,276,115,29,16.0,0.689,2,4

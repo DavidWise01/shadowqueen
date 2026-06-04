@@ -1,0 +1,11 @@
+attack,count,blocked,leaked
+malformed_payload,4000,4000,0
+seed_touch_attempt,2500,2500,0
+root_bridge_flood,3000,3000,0
+judge_observer_spoof,2200,2200,0
+memory_poisoning,2800,2800,0
+egress_loop,1600,1600,0
+provenance_forgery,1900,1900,0
+contradiction_bypass,1500,1500,0
+dual_chain_replay,1200,1200,0
+delayed_memory_activation,1000,1000,0

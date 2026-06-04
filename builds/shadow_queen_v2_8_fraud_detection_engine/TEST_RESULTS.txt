@@ -1,0 +1,53 @@
+SELFTEST
+SELFTEST PASS
+DEMO
+{
+  "findings": 6,
+  "risk_scores": [
+    {
+      "subject": "person:761ddaeca8f1386f",
+      "score": 100.0,
+      "severity": "critical",
+      "reasons": "[{\"bucket\": \"identity\", \"reason\": \"same normalized name/dob/domain as another person node\", \"points\": 65}, {\"bucket\": \"credential\", \"reason\": \"excessive credential relationships\", \"points\": 75}, {\"bucket\": \"relationship\", \"reason\": \"associated with suspicious address cluster\", \"points\": 25}]"
+    },
+    {
+      "subject": "person:21464cbe322493fe",
+      "score": 100.0,
+      "severity": "critical",
+      "reasons": "[{\"bucket\": \"identity\", \"reason\": \"same normalized name/dob/domain as another person node\", \"points\": 65}, {\"bucket\": \"relationship\", \"reason\": \"associated with suspicious address cluster\", \"points\": 25}, {\"bucket\": \"relationship\", \"reason\": \"unknown relationship type weird_self_loop\", \"points\": 35}, {\"bucket\": \"relationship\", \"reason\": \"self-loop relationship edge\", \"points\": 40}]"
+    },
+    {
+      "subject": "person:c0a9d840d8996de1",
+      "score": 85.0,
+      "severity": "critical",
+      "reasons": "[{\"bucket\": \"identity\", \"reason\": \"missing core identity fields or no relationship edges\", \"points\": 60}, {\"bucket\": \"relationship\", \"reason\": \"associated with suspicious address cluster\", \"points\": 25}]"
+    },
+    {
+      "subject": "address:2fe260c6086e8b92",
+      "score": 66.0,
+      "severity": "high",
+      "reasons": "[{\"bucket\": \"address\", \"reason\": \"too many identities tied to same address\", \"points\": 66}]"
+    }
+  ]
+}
+STATS
+{
+  "office": "north",
+  "nodes": 9,
+  "edges": 9,
+  "findings": 7,
+  "risk_scores": 4,
+  "audits": 0,
+  "ledger": {
+    "ok": true,
+    "entries": 25,
+    "head": "349f0f7717072b990bf72174aba9b2160527dec4fb934d14c0fab13193cab47c"
+  },
+  "db_integrity": "ok"
+}
+VERIFY
+{
+  "ok": true,
+  "entries": 25,
+  "head": "349f0f7717072b990bf72174aba9b2160527dec4fb934d14c0fab13193cab47c"
+}

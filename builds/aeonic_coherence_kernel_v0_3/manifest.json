@@ -1,0 +1,21 @@
+{
+  "name": "Aeonic Coherence Kernel",
+  "version": "0.3.0",
+  "status": "active retrieval adapters added",
+  "modules": [
+    "core_resolver",
+    "truth_validator",
+    "weak_shadow_archive",
+    "bridge_mediator",
+    "observer_a",
+    "observer_b",
+    "ledger",
+    "warning_feedback",
+    "external_validation",
+    "retrieval_gate",
+    "source_adapters",
+    "source_ranker",
+    "adapter_observer"
+  ],
+  "sovereignty_rule": "adapters fetch; source ranks constrain; core decides"
+}

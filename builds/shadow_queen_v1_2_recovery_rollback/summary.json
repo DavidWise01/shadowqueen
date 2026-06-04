@@ -1,0 +1,20 @@
+{
+  "name": "Shadow Queen",
+  "version": "1.2.0",
+  "status": "recovery + rollback branch",
+  "new_features": [
+    "snapshot table",
+    "recovery actions table",
+    "DB backup checkpoint",
+    "config backup checkpoint",
+    "restore command",
+    "evidence bundle export",
+    "checkpoint-on-quarantine"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "scan_returncode": 0,
+  "daemon_returncode": 0,
+  "stats_returncode": 0,
+  "created_utc": "2026-05-28T13:48:48.647567Z"
+}

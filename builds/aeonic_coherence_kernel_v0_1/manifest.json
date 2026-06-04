@@ -1,0 +1,30 @@
+{
+  "name": "Aeonic Coherence Kernel",
+  "version": "0.1.0",
+  "status": "complete inner kernel",
+  "structure": {
+    "core": "11+1 resolver anchor",
+    "modules": [
+      "core_resolver",
+      "truth_validator",
+      "weak_shadow_archive",
+      "bridge_mediator",
+      "observer_a_trust_audit",
+      "observer_b_anomaly_history",
+      "hash_chain_report_ledger",
+      "ledger_warning_feedback"
+    ],
+    "target_stability_band": [
+      0.78,
+      0.88
+    ]
+  },
+  "latest_extreme_test": {
+    "final_stability": 0.829,
+    "max_warning": 0.086,
+    "failures": 0,
+    "observer_alerts": 0,
+    "hash_chain_valid": true
+  },
+  "control_law": "core decides; truth validates; shadow preserves alternatives; bridge reconciles; observers audit; ledger remembers; warning dampens"
+}

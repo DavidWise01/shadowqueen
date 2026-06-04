@@ -1,0 +1,20 @@
+{
+  "name": "Shadow Queen",
+  "version": "5.9.0",
+  "status": "reporting engine",
+  "new_features": [
+    "audit reports",
+    "workflow reports",
+    "credential reports",
+    "fraud reports",
+    "authority reports",
+    "federation reports",
+    "evidence records",
+    "evidence packet generator",
+    "report manifest",
+    "hash receipts"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "note": "Evidence rows are hash-deduplicated when identical report evidence repeats."
+}

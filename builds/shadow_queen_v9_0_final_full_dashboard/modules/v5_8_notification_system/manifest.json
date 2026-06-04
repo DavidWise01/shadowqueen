@@ -1,0 +1,5 @@
+{
+  "module": "v5.8 Notification System",
+  "status": "included",
+  "description": "Subscriptions, local email/SMS/operator adapters, retries."
+}

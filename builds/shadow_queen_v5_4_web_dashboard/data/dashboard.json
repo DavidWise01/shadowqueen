@@ -1,0 +1,40 @@
+{
+  "version": "5.4.0",
+  "status": "web_dashboard",
+  "federation": {
+    "offices": 4,
+    "healthy": 3,
+    "degraded": 1,
+    "mesh_status": "operational"
+  },
+  "activity": {
+    "citizens": 100,
+    "silicon_agents": 25,
+    "credentials": 1000,
+    "investigations": 100
+  },
+  "credentials": {
+    "active": 875,
+    "revoked": 75,
+    "expired": 50,
+    "verification_success_rate": 0.982
+  },
+  "fraud": {
+    "duplicate_identity": 8,
+    "forged_credential": 4,
+    "revoked_credential_presented": 11,
+    "authority_escalation": 3,
+    "cross_office_conflict": 6
+  },
+  "authority": {
+    "active_grants": 64,
+    "revoked_grants": 9,
+    "scope_denials": 14
+  },
+  "analytics": {
+    "mesh_health": 0.94,
+    "revocation_propagation": 0.91,
+    "investigation_throughput": 0.88,
+    "trust_score": 0.9
+  }
+}

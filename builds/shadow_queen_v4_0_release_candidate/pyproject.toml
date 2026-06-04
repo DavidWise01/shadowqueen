@@ -1,0 +1,5 @@
+[project]
+name="shadowqueen"
+version="4.0.0rc1"
+requires-python=">=3.10"
+dependencies=[]

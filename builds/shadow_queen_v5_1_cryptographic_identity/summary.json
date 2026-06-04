@@ -1,0 +1,21 @@
+{
+  "name": "Shadow Queen",
+  "version": "5.1.0",
+  "status": "cryptographic identity",
+  "new_features": [
+    "node key registry",
+    "trusted peer keys",
+    "signed messages",
+    "signed credentials",
+    "signed presentations",
+    "signed authority grants",
+    "signature verification",
+    "tamper rejection",
+    "key rotation",
+    "signed ledger receipts"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "demo_returncode": 0,
+  "status_returncode": 0
+}

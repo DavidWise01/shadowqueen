@@ -1,0 +1,19 @@
+# v4.5k OSI Ring Witness Integration
+
+- **version**: 4.5k-osi-ring-witness-integration
+- **base**: 4.5j-silicon-live-soak
+- **integrated_source**: osi-ring-witness.html
+- **source_sha256**: 24dd4838f98ac20c57c533c1eba6bb80698369c8b0244c531080ece8d3afefb9
+- **core_rule**: L2 may witness that/who across the ring closure, but never what L5 means
+- **witness_position**: external tangent ring at L2/floor point
+- **airgap_rule**: no-ack airgap is crossed by sightline, not payload
+- **total_attempts**: 24100
+- **accepted**: 11900
+- **rejected**: 12200
+- **leaks**: 0
+- **payload_read_leaks**: 0
+- **seed_touched**: False
+- **root_floods**: 0
+- **test_result**: pass
+- **next_recommended**: v4.5l adaptive IO rate governor using L2 witness trust tiers
+- **generated_utc**: 2026-05-26T23:51:09.950326+00:00

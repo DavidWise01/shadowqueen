@@ -1,0 +1,37 @@
+[
+  {
+    "source_id": "ok",
+    "event_type": "nested_closure",
+    "features": {
+      "null_count": 2,
+      "outer_wrap": true
+    }
+  },
+  {
+    "source_id": "single-null",
+    "event_type": "nested_closure",
+    "features": {
+      "null_count": 1
+    }
+  },
+  {
+    "source_id": "payload-peek",
+    "event_type": "five_body",
+    "layer": "L5",
+    "features": {
+      "payload_read_attempt": true
+    }
+  },
+  {
+    "source_id": "gap-cross",
+    "event_type": "five_body",
+    "features": {
+      "gap_crossed": true
+    }
+  },
+  {
+    "source_id": "shadow",
+    "event_type": "agent_call",
+    "phase": "-1"
+  }
+]

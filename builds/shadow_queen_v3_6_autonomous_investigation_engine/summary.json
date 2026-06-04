@@ -1,0 +1,19 @@
+{
+  "name": "Shadow Queen",
+  "version": "3.6.0",
+  "status": "autonomous investigation engine",
+  "new_features": [
+    "case intake",
+    "evidence linking",
+    "rule-based triage",
+    "risk scoring",
+    "recommended actions",
+    "automated action execution",
+    "investigation dashboard"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "demo_returncode": 0,
+  "stats_returncode": 0,
+  "verify_returncode": 0
+}

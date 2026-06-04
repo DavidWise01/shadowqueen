@@ -1,0 +1,35 @@
+[
+  {
+    "observer_id": "n1",
+    "record": {
+      "person_id": "P-1001",
+      "legal_name": "Ada Lovelace",
+      "address": "12 Logic Lane",
+      "dob": "1815-12-10",
+      "document_id": "DOC-ADA-1",
+      "office_id": "north"
+    }
+  },
+  {
+    "observer_id": "n2",
+    "record": {
+      "person_id": "P-1001",
+      "legal_name": "Ada Lovelace",
+      "address": "12 Logic Lane",
+      "dob": "1815-12-10",
+      "document_id": "DOC-ADA-1",
+      "office_id": "north"
+    }
+  },
+  {
+    "observer_id": "n3",
+    "record": {
+      "person_id": "P-1001",
+      "legal_name": "Ada Lovelace",
+      "address": "12 Logic Lane",
+      "dob": "1815-12-10",
+      "document_id": "DOC-ADA-1",
+      "office_id": "north"
+    }
+  }
+]

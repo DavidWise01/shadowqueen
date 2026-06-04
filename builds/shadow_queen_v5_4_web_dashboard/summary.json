@@ -1,0 +1,17 @@
+{
+  "name": "Shadow Queen",
+  "version": "5.4.0",
+  "status": "web dashboard",
+  "audit_status": "PASS",
+  "new_features": [
+    "static web dashboard",
+    "dashboard JSON data",
+    "embedded offline dashboard",
+    "federation health view",
+    "credential view",
+    "fraud view",
+    "authority view",
+    "analytics view",
+    "audit report"
+  ]
+}

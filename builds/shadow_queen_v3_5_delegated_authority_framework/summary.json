@@ -1,0 +1,21 @@
+{
+  "name": "Shadow Queen",
+  "version": "3.5.0",
+  "status": "delegated authority framework",
+  "new_features": [
+    "authority principals",
+    "scoped grants",
+    "permission checks",
+    "expiration windows",
+    "delegation parent records",
+    "grant revocation",
+    "authority proofs",
+    "decision audit"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "demo_returncode": 0,
+  "stats_returncode": 0,
+  "verify_returncode": 0,
+  "created_utc": "2026-05-31T16:42:13.438024+00:00"
+}

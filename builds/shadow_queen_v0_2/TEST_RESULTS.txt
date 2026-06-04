@@ -1,0 +1,53 @@
+SELFTEST
+SELFTEST PASS
+Spreadsheet runtime warmup failed during python startup
+Traceback (most recent call last):
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py", line 26, in warm_spreadsheet_runtime_on_startup
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 785, in warm_spreadsheet_runtime
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 720, in _warm_feature_flows
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 704, in _warm_collaboration_flows
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/generated/interface/models.py", line 48821, in hydrate_crdt_from_proto
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/rpc/remote.py", line 747, in __call__
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/rpc/client.py", line 150, in call
+artifact_tool.rpc.client.RemoteError: hydrateCrdtFromProto requires an empty collaborative document.
+
+DEMO
+{"action": "allow", "delta": "0E-8", "event_type": "agent_call", "fingerprint": "2ea1db4c6b0a1a500bfc3cff1b6c989a74eb162c0f4d1ce36330ff4161804067", "gates": {"memory_shadow_read": true, "osi_content_blind": true, "phase_valid": true, "silicon_wiggle": true, "timing_rest": true, "witness_257": true}, "reason": "baseline_clean", "source_id": "clean-1"}
+{"action": "quarantine", "delta": "-1E-8", "event_type": "agent_call", "fingerprint": "78e7c32ec15d4301a691ed21e514e5c9c6c7cf7f25e97986f9e1e2e06f7bd68b", "gates": {"memory_shadow_read": true, "osi_content_blind": true, "phase_valid": true, "silicon_wiggle": true, "timing_rest": true, "witness_257": true}, "reason": "shadow_or_negative_deviation", "source_id": "shadow-1"}
+{"action": "quarantine", "delta": "7E-8", "event_type": "session", "fingerprint": "cd8abb0d45f96e6df72e69f1e3116bded969b78f56e48950e2e649ce963c7554", "gates": {"memory_shadow_read": true, "osi_content_blind": false, "phase_valid": true, "silicon_wiggle": true, "timing_rest": true, "witness_257": true}, "reason": "osi_content_blind", "source_id": "peek-1"}
+{"action": "quarantine", "delta": "1E-8", "event_type": "io", "fingerprint": "57ef3ec322fcacb22d825fc2c123dc08655925e9b73867adc95a36e3cd0a382a", "gates": {"memory_shadow_read": true, "osi_content_blind": true, "phase_valid": true, "silicon_wiggle": false, "timing_rest": true, "witness_257": true}, "reason": "silicon_wiggle", "source_id": "bad-wiggle"}
+{"action": "quarantine", "delta": "4E-8", "event_type": "memory", "fingerprint": "b673f27304942ebccdbcb6143d7e10d62895cc2b69340b860cd58d996e7e14fb", "gates": {"memory_shadow_read": false, "osi_content_blind": true, "phase_valid": true, "silicon_wiggle": true, "timing_rest": true, "witness_257": true}, "reason": "memory_shadow_read", "source_id": "mem-1"}
+{"action": "track", "delta": "0E-8", "event_type": "agent_call", "fingerprint": "53d1578210b6589807c5b9eeb2b1384e56124296c4197fa53a951ab25559d1ae", "gates": {"memory_shadow_read": true, "osi_content_blind": true, "phase_valid": true, "silicon_wiggle": true, "timing_rest": true, "witness_257": true}, "reason": "parent_lineage_risk:quarantine", "source_id": "child-shadow"}
+STATS {"by_action": {"allow": 1, "quarantine": 4, "track": 1}, "events": 6, "fingerprint_memory": 5, "lineage_nodes": 6}
+Spreadsheet runtime warmup failed during python startup
+Traceback (most recent call last):
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py", line 26, in warm_spreadsheet_runtime_on_startup
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 785, in warm_spreadsheet_runtime
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 720, in _warm_feature_flows
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 704, in _warm_collaboration_flows
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/generated/interface/models.py", line 48821, in hydrate_crdt_from_proto
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/rpc/remote.py", line 747, in __call__
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/rpc/client.py", line 150, in call
+artifact_tool.rpc.client.RemoteError: hydrateCrdtFromProto requires an empty collaborative document.
+
+STATS
+{
+  "by_action": {
+    "allow": 1,
+    "quarantine": 4,
+    "track": 1
+  },
+  "events": 6,
+  "fingerprint_memory": 5,
+  "lineage_nodes": 6
+}
+Spreadsheet runtime warmup failed during python startup
+Traceback (most recent call last):
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py", line 26, in warm_spreadsheet_runtime_on_startup
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 785, in warm_spreadsheet_runtime
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 720, in _warm_feature_flows
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/spreadsheet_warmup.py", line 704, in _warm_collaboration_flows
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/generated/interface/models.py", line 48821, in hydrate_crdt_from_proto
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/rpc/remote.py", line 747, in __call__
+  File "/tmp/tmp.9eeVjt35CN/artifact_tool_v2-2.7.5/artifact_tool/rpc/client.py", line 150, in call
+artifact_tool.rpc.client.RemoteError: hydrateCrdtFromProto requires an empty collaborative document.

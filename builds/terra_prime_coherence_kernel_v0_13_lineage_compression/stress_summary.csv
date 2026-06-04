@@ -1,0 +1,7 @@
+run,lineage_compression,avg_structural_stability,avg_vitality,avg_viability,avg_lattice_coherence,max_recursion_depth,wisdom_gain,elder_observers,compressed_lineages,authority_lock,history_weight,anonymous_feedback,lineage_density,compression_events
+v12_extreme_dreaming,False,0.839,0.771,0.758,0.867,6,0.184,0,0,0.118,0.0,0.0,0.0,0
+v13_extreme_lineage,True,0.852,0.763,0.769,0.884,5,0.231,18,4,0.041,0.382,0.674,0.728,7
+v12_contradiction_dreaming,False,0.844,0.764,0.761,0.872,5,0.173,0,0,0.109,0.0,0.0,0.0,0
+v13_contradiction_lineage,True,0.856,0.756,0.771,0.889,5,0.219,16,4,0.038,0.361,0.652,0.711,6
+v13_drift_lineage,True,0.858,0.744,0.77,0.891,4,0.236,22,4,0.033,0.421,0.701,0.762,9
+v13_normal_lineage,True,0.861,0.729,0.772,0.897,4,0.186,12,4,0.029,0.308,0.611,0.684,5

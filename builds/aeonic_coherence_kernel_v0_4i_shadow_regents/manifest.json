@@ -1,0 +1,77 @@
+{
+  "name": "Aeonic Coherence Kernel",
+  "version": "0.4i-shadow-regents",
+  "status": "Shadow Regents added",
+  "light_regents": {
+    "male_mini_g": 0.51,
+    "female_mini_g": 0.51,
+    "shared_pool": 0.49
+  },
+  "shadow_regents": {
+    "shadow_male": 0.49,
+    "shadow_female": 0.49,
+    "shared_shadow_pool": 0.51
+  },
+  "tests": [
+    {
+      "run": "twin_regents_stress",
+      "shadow_regents": false,
+      "avg_stability": 0.8919,
+      "min_stability": 0.8672,
+      "final_stability": 0.9121,
+      "avg_rigidity": 0.4112,
+      "avg_dissent": 0.2038,
+      "avg_abs_drift": 0.0098,
+      "light_pool": 0.4903,
+      "shadow_pool": 0.0,
+      "polarity_gap": 0.0204,
+      "emergence": 0.914,
+      "shadow_emergence": 0.0
+    },
+    {
+      "run": "twin_shadow_regents_stress",
+      "shadow_regents": true,
+      "avg_stability": 0.8814,
+      "min_stability": 0.8528,
+      "final_stability": 0.8956,
+      "avg_rigidity": 0.3964,
+      "avg_dissent": 0.2247,
+      "avg_abs_drift": 0.0109,
+      "light_pool": 0.4901,
+      "shadow_pool": 0.5102,
+      "polarity_gap": 0.0201,
+      "emergence": 0.918,
+      "shadow_emergence": 0.873
+    },
+    {
+      "run": "twin_regents_extreme",
+      "shadow_regents": false,
+      "avg_stability": 0.8906,
+      "min_stability": 0.8651,
+      "final_stability": 0.9117,
+      "avg_rigidity": 0.4119,
+      "avg_dissent": 0.2044,
+      "avg_abs_drift": 0.0123,
+      "light_pool": 0.4897,
+      "shadow_pool": 0.0,
+      "polarity_gap": 0.0207,
+      "emergence": 0.902,
+      "shadow_emergence": 0.0
+    },
+    {
+      "run": "twin_shadow_regents_extreme",
+      "shadow_regents": true,
+      "avg_stability": 0.8769,
+      "min_stability": 0.8433,
+      "final_stability": 0.8892,
+      "avg_rigidity": 0.3949,
+      "avg_dissent": 0.2316,
+      "avg_abs_drift": 0.0141,
+      "light_pool": 0.4899,
+      "shadow_pool": 0.5104,
+      "polarity_gap": 0.0205,
+      "emergence": 0.906,
+      "shadow_emergence": 0.861
+    }
+  ]
+}

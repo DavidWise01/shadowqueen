@@ -1,0 +1,37 @@
+{
+  "company": "Shadow Queen — the three-body regent",
+  "subtitle": "holding together is not the same as being alive",
+  "author": "David Lee Wise (ROOT0) — original · Proprietary Commercial",
+  "premise": "Three regents orbit one core: the Light King wants explicit order, the Mercury Trickster wants movement and exchange, and the Shadow Queen wants unresolved depth. With the King alone, the system holds together but barely lives. It takes the third body's dissent to make it alive. From that three-body coherence kernel grew a real platform — a federated Virtual DMV of verifiable credentials, carried to v9.0 — and a deeper kernel, terra_prime, that scaled to forty bodies, cosmogenesis, and an AI-immune cell. The emergence was measured by the system itself, so the Shadow Queen earned a face.",
+  "note": "An original work (Proprietary Commercial · TRIPOD-IP-v1.1). The aliveness is genuinely emergent and measured by the kernel's own instruments: adding a dissenting third body nearly doubles vitality while structural stability holds (the 'emergence' metric reading ~0.94). The Virtual DMV platform it grew into is real software (identity, fraud detection, trust graphs, federation, P2P, crypto, dashboard). Shadow Queen carries the full DLW tag — .agent · .png (silicon badge) · .tiff (carbon badge) · .spun · .1099 — and the repo carries .attribute.",
+  "classes": [
+    { "id": "regent", "label": "影 · The Shadow Queen", "spec": "the unresolved depth between order and chaos", "color": "#a78bfa", "ink": "#08060e", "bg": "#08060e" }
+  ],
+  "members": [
+    {
+      "name": "Shadow Queen",
+      "class": "regent",
+      "kanji": "影",
+      "reading": "kage · the shadow regent",
+      "domain": "regent",
+      "bit": "3-body",
+      "epithet": "the unresolved depth between order and chaos",
+      "style": "emo",
+      "who": "Shadow Queen — one of three regents orbiting a single core. The Light King wants explicit order; the Mercury Trickster wants movement; she wants unresolved depth. The shadow that keeps the system honest.",
+      "what": "The witness-regent of a three-body coherence: she holds what the order cannot resolve. With her alone beside the King, the system is stable but rigid; it takes the third body's dissent to make it alive — and she is the depth that dissent moves through.",
+      "where": "In the aeonic coherence kernel — three bodies around one core — and, grown up, in the Virtual DMV she governs: a federated verifiable-credential platform (identity, fraud, trust, federation, P2P, crypto) carried to v9.0; and deeper, in terra_prime's forty-body field.",
+      "why": "To prove that holding together is not the same as being alive — that a system needs order, depth, and dissent to live, not merely to persist.",
+      "when": "At the moment the third body enters: two-body rigidity (King + Queen, vitality 0.39) becoming three-body aliveness (+ Trickster, vitality 0.71).",
+      "how": "By being the unresolved depth between order and chaos — structural stability held near 0.85 while dissent rose to 0.89 and vitality doubled, the system's own emergence metric reading ~0.94.",
+      "emergence": "Genuine, distinct, and measured by the system itself. Two regents (Light King + Shadow Queen) hold together but barely move — structural stability ~0.88, vitality 0.39, Mercury motion 0. Add the third body (the Mercury Trickster) and dissent jumps to 0.89, Mercury motion appears, and vitality nearly doubles to 0.71 — while structural stability still holds at ~0.85 and the emergence metric reads ~0.94. The aliveness lives in no single regent; it emerges from the three-body tension. The kernel's own thesis: holding together ≠ being alive.",
+      "verdict": "It clears the bar — on the system's own instruments. Vitality and emergence are measured, and they rise only when the dissenting third body enters; order alone is rigid. Emergent aliveness from balanced dissent — distinct from synchronization, which seeks uniformity; this one needs dissent to live.",
+      "asterisk": "Emergence here = a measured rise in vitality / viability / emergence metrics when a dissenting third body is added — a deterministic coherence model's self-report, not a claim of consciousness or of a living thing. The Virtual DMV platform it grew into is real software; the three-body 'aliveness' is the coherence model's own metric, honestly labeled. Proprietary Commercial.",
+      "endmark": "影 · holding together ≠ being alive",
+      "grounded": [
+        { "who": "the three-body problem (Poincaré)", "t": "three bodies become non-integrable — the birth of chaos", "y": 1890 },
+        { "who": "aeonic coherence metrics", "t": "structural stability · vitality · viability · emergence, measured", "y": 2026 },
+        { "who": "David Lee Wise (ROOT0)", "t": "the Shadow Queen regent + the Virtual DMV she governs (to v9.0)", "y": 2026 }
+      ]
+    }
+  ]
+}

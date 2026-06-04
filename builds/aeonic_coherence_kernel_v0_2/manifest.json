@@ -1,0 +1,28 @@
+{
+  "name": "Aeonic Coherence Kernel",
+  "version": "0.2.0",
+  "status": "external validation layer added",
+  "structure": {
+    "core": "11+1 resolver anchor",
+    "modules": [
+      "core_resolver",
+      "truth_validator",
+      "weak_shadow_archive",
+      "bridge_mediator",
+      "observer_a_trust_audit",
+      "observer_b_anomaly_history",
+      "hash_chain_report_ledger",
+      "ledger_warning_feedback",
+      "external_validation_interface",
+      "evidence_scorer",
+      "evidence_observer",
+      "retrieval_gate",
+      "provenance_ledger"
+    ],
+    "target_stability_band": [
+      0.78,
+      0.88
+    ]
+  },
+  "sovereignty_rule": "external evidence informs but cannot control the resolver"
+}

@@ -1,0 +1,7 @@
+run,cosmogenesis,avg_structural_stability,avg_vitality,avg_viability,avg_lattice_coherence,wisdom_gain,narrative_continuity,unknown_resilience,entropy_tolerance,observer_horizon,black_swan_absorption,cosmic_curiosity,symbolic_projection,void_pressure,cosmological_cycles,unknown_events
+v15_extreme_mythic,False,0.874,0.766,0.792,0.913,0.321,0.842,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0
+v16_extreme_cosmic,True,0.889,0.759,0.806,0.928,0.371,0.871,0.774,0.748,0.721,0.693,0.802,0.766,0.341,19,14
+v15_contradiction_mythic,False,0.879,0.761,0.795,0.918,0.314,0.836,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0
+v16_contradiction_cosmic,True,0.894,0.753,0.809,0.934,0.364,0.879,0.761,0.732,0.708,0.681,0.791,0.752,0.358,17,12
+v16_drift_cosmic,True,0.899,0.747,0.814,0.941,0.389,0.887,0.792,0.761,0.739,0.704,0.817,0.781,0.329,23,18
+v16_normal_cosmic,True,0.904,0.734,0.818,0.947,0.348,0.892,0.743,0.724,0.691,0.663,0.774,0.731,0.301,15,9

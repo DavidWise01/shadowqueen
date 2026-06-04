@@ -1,0 +1,2 @@
+run,confidence_decay,avg_structural_stability,avg_vitality,avg_viability,close_2_of_3,suspicious_closures,continue_recursion,max_recursion_depth,avg_lazy_certainty,avg_confidence_decay
+v07_baseline_extreme,False,0.827,0.758,0.729,178,16,86,7,0.166,0.0

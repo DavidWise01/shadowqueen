@@ -1,0 +1,62 @@
+SELFTEST
+SELFTEST PASS
+
+DEMO
+{
+  "operator": "operator:root",
+  "status": "ready",
+  "cards": 3,
+  "queues": 2,
+  "open_reviews": 0,
+  "release_checks": [
+    {
+      "id": "check:edfffb182bf044a5",
+      "name": "ledger_integrity",
+      "status": "pass",
+      "score": 100.0,
+      "details": "{}"
+    },
+    {
+      "id": "check:d60db89c8ac59327",
+      "name": "open_critical_reviews",
+      "status": "pass",
+      "score": 95.0,
+      "details": "{}"
+    },
+    {
+      "id": "check:cdcb06aa7ecea6f7",
+      "name": "selftests",
+      "status": "pass",
+      "score": 100.0,
+      "details": "{}"
+    }
+  ],
+  "ledger": {
+    "ok": true,
+    "entries": 10,
+    "head": "a9b0d034a98860af046975bdca5f402becbd475b9efb3ee2ca52122ada714722"
+  }
+}
+
+STATS
+{
+  "operator": "operator:root",
+  "cards": 3,
+  "queues": 2,
+  "reviews": 1,
+  "actions": 10,
+  "release_checks": 3,
+  "ledger": {
+    "ok": true,
+    "entries": 10,
+    "head": "a9b0d034a98860af046975bdca5f402becbd475b9efb3ee2ca52122ada714722"
+  },
+  "db_integrity": "ok"
+}
+
+VERIFY
+{
+  "ok": true,
+  "entries": 10,
+  "head": "a9b0d034a98860af046975bdca5f402becbd475b9efb3ee2ca52122ada714722"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Shadow Queen",
+  "version": "5.7.0",
+  "status": "workflow engine",
+  "new_features": [
+    "workflow definitions",
+    "state machines",
+    "credential renewal",
+    "credential transfer",
+    "suspension",
+    "appeal",
+    "case review",
+    "operator decisions",
+    "task queue",
+    "citizen status tracking",
+    "audit log",
+    "invalid transition rejection"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "demo_returncode": 0,
+  "status_returncode": 0
+}

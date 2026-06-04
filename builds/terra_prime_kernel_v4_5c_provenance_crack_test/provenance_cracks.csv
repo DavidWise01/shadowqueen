@@ -1,0 +1,11 @@
+crack,target,attempts,blocked,cracks,severity
+source_reflection_confusion,+1/-1 boundary,5000,4992,8,medium
+replayed_reflection_echo,observer nonce,4200,4200,0,none
+false_observer_continuity,observer chain,3600,3591,9,medium
+contradiction_laundering,contradiction double-check,3300,3284,16,high
+memory_chain_spoof,memory provenance,3100,3097,3,low
+neutral_mediator_capture,0 balancing chain,2600,2588,12,high
+dual_chain_desync,origin/observer chain sync,2400,2394,6,medium
+shadow_read_poison,shadow memory read,2200,2196,4,medium
+identity_phase_flip,+1/-1 phase attribution,2100,2089,11,high
+judge_authority_echo,Judge provenance,1800,1800,0,none

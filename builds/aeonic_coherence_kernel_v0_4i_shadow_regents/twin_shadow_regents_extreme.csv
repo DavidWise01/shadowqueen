@@ -1,0 +1,2 @@
+run,shadow_regents,avg_stability,min_stability,final_stability,avg_rigidity,avg_dissent,avg_abs_drift,light_pool,shadow_pool,polarity_gap,emergence,shadow_emergence
+twin_shadow_regents_extreme,True,0.8769,0.8433,0.8892,0.3949,0.2316,0.0141,0.4899,0.5104,0.0205,0.906,0.861

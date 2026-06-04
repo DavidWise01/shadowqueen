@@ -1,0 +1,10 @@
+{
+  "name": "Shadow Queen",
+  "version": "0.2.0",
+  "status": "runnable persistent prototype",
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "demo_returncode": 0,
+  "stats_returncode": 0,
+  "created_utc": "2026-05-27T04:33:42.319737+00:00"
+}

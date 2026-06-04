@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PULSE TIMING CHANNEL — silence as the second orthogonal channel</title>
+<style>
+  :root{ --bg:#06070b; --text:#dbe2ef; --dim:#5b6675; --line:#1a2030;
+    --violet:#8b5cf6; --yes:#22c55e; --warn:#f59e0b; --no:#ef4444; --gold:#fbbf24; --blue:#38bdf8; --pink:#ec4899; }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--text);overflow:hidden;
+    font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+  #wrap{position:relative;width:100vw;height:100vh;display:flex;flex-direction:column}
+  header{padding:9px 16px 5px;text-align:center;flex:0 0 auto}
+  h1{margin:0;font-size:13.5px;letter-spacing:.15em;color:#c7d2fe;font-weight:600}
+  .s{font-size:10px;color:var(--dim);margin:2px auto 0;max-width:920px}.s b{color:#9fb0c8}
+  #scope{position:relative;flex:1 1 auto;min-height:0}
+  canvas{position:absolute;inset:0;width:100%;height:100%}
+  .panel{position:absolute;background:#060810cc;border:1px solid var(--line);border-radius:8px;padding:8px 11px;font-size:10px;line-height:1.55;backdrop-filter:blur(3px)}
+  #cap{right:14px;top:14px;min-width:206px} #cap .row{display:flex;justify-content:space-between;gap:12px}#cap b{color:var(--text)}
+  #cap .lab{color:var(--dim);font-size:9px;letter-spacing:.06em;margin-top:5px}
+  .controls{flex:0 0 auto;display:flex;gap:8px 14px;align-items:center;flex-wrap:wrap;justify-content:center;padding:9px 14px;border-top:1px solid var(--line);background:#080a10}
+  .ctl{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--dim)}.ctl b{color:var(--text)}
+  input[type=range]{accent-color:var(--violet)}
+  button{font-family:inherit;font-size:11px;background:#0e1320;color:var(--text);border:1px solid var(--line);border-radius:6px;padding:6px 11px;cursor:pointer;letter-spacing:.03em;transition:.12s}
+  button:hover{border-color:var(--violet);color:#c7d2fe} button.on{background:#161b27;border-color:var(--violet)}
+  #perform.on{background:#241112;border-color:var(--no);color:var(--no)}
+  .legend{display:flex;gap:14px;font-size:9.5px;color:var(--dim);justify-content:center;padding:4px;flex-wrap:wrap}
+  .sw{display:inline-block;width:9px;height:9px;border-radius:2px;vertical-align:-1px;margin-right:4px}
+</style>
+</head>
+<body>
+<div id="wrap">
+  <header>
+    <h1>PULSE TIMING CHANNEL · silence = the second channel</h1>
+    <div class="s">The <b>3-2-1-0 carrier</b> is unchanged — invariant, content-blind, the sync clock. Gap depth no longer cannibalizes the ladder (the old <b>3-2 / 3-1 / 3-0</b> echo-shift); it rides the <b>length of the rest between cycles</b>. Carrier and depth become orthogonal. And because silence is a physical property of having a gap, it is the <b>unforgeable</b> channel: a node can perform the carrier but cannot perform a rest it never takes.</div>
+  </header>
+  <div id="scope">
+    <canvas id="c"></canvas>
+    <div class="panel" id="cap"></div>
+  </div>
+  <div class="legend">
+    <span><span class="sw" style="background:var(--gold)"></span>TX carrier (3-2-1-0)</span>
+    <span><span class="sw" style="background:var(--violet)"></span>AVAN · dense anchor</span>
+    <span><span class="sw" style="background:var(--blue)"></span>SEAM · MoE porous</span>
+    <span><span class="sw" style="background:var(--pink)"></span>WHETSTONE · suspect</span>
+    <span style="color:var(--warn)">▮ rest = depth channel</span>
+  </div>
+  <div class="controls">
+    <div class="ctl"><b>MoE gap depth</b><input type="range" id="depth" min="0" max="7" value="3" style="width:130px"><span id="depthv" style="color:#38bdf8">3</span></div>
+    <div class="ctl"><b>rate</b><input type="range" id="rate" min="20" max="120" value="60" style="width:90px;accent-color:#8b5cf6"></div>
+    <button id="perform">WHETSTONE: HONEST</button>
+    <button id="freeze">FREEZE</button>
+  </div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const cvs=$('c'),ctx=cvs.getContext('2d'),scope=$('scope'),cap=$('cap');
+let DPR=1,W=0,H=0;
+function resize(){DPR=Math.min(devicePixelRatio||1,2);W=scope.clientWidth;H=scope.clientHeight;cvs.width=W*DPR;cvs.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);}
+addEventListener('resize',resize);
+
+// --- model ---
+const S={depth:3, rate:60, perform:false, freeze:false};
+const FLOOR=1;       // baseline rest quanta (dense return-to-baseline)
+const UNIT=22;       // px per rest quantum (depth)
+const PW=14;         // pulse bar width
+const PG=4;          // gap between sub-pulses
+const LADDER=[3,2,1];// the descending carrier heights (rest=0 implicit)
+const HU=20;         // px per height unit
+
+// lanes: TX + three nodes. each node transforms (shift, restDepth, color)
+const LANES=[
+  {key:'TX',   label:'TX · carrier',        col:'251,191,36', y:0.16},
+  {key:'AVAN', label:'AVAN · dense anchor',  col:'139,92,246', y:0.40},
+  {key:'SEAM', label:'SEAM · MoE porous',    col:'56,189,248', y:0.62},
+  {key:'WHET', label:'WHETSTONE · suspect',  col:'236,72,153', y:0.84},
+];
+
+// each lane holds a list of cycles scrolling left: {x, shift, restDepth}
+let lanes={}; LANES.forEach(l=>lanes[l.key]=[]);
+let spawnX=0;
+
+function cycleFor(key){
+  const d=S.depth;
+  if(key==='TX')   return {shift:0, restDepth:1};                 // clean reference, standard rest
+  if(key==='AVAN') return {shift:0, restDepth:FLOOR};             // dense: unshifted, floor rest (no gap)
+  if(key==='SEAM') return {shift:d, restDepth:FLOOR+d};           // honest MoE: shift==depth, rest==depth (correlated)
+  if(key==='WHET') return S.perform
+        ? {shift:0,       restDepth:FLOOR+d}                      // performing: fakes unshifted carrier, BUT real gap leaks into rest
+        : {shift:d,       restDepth:FLOOR+d};                     // honest: shift matches rest
+}
+
+function cycleWidth(c){
+  const bars=LADDER.length;                                       // 3 sub-pulses drawn
+  return bars*(PW+PG) + c.restDepth*UNIT;                         // ladder + rest
+}
+
+let lastT=performance.now(), acc=0;
+function spawn(){
+  // append a new cycle to each lane at the right edge, sharing the same logical cycle index
+  LANES.forEach(l=>{
+    const c=cycleFor(l.key);
+    const arr=lanes[l.key];
+    const prev=arr.length?arr[arr.length-1]:null;
+    const x = prev? prev.x+cycleWidth(prev) : W+20;
+    arr.push({...c, x});
+  });
+}
+
+function laneY(l){return l.y*H;}
+
+function drawLane(l){
+  const baseY=laneY(l), col=l.col;
+  // label
+  ctx.fillStyle=`rgba(${col},.9)`;ctx.font='10px JetBrains Mono,monospace';ctx.textAlign='left';
+  ctx.fillText(l.label, 12, baseY-44);
+  // baseline
+  ctx.strokeStyle='rgba(70,82,105,.25)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(0,baseY);ctx.lineTo(W,baseY);ctx.stroke();
+
+  const arr=lanes[l.key];
+  arr.forEach(c=>{
+    let x=c.x;
+    // draw the descending ladder, downshifted by c.shift
+    for(let i=0;i<LADDER.length;i++){
+      const h=Math.max(0, LADDER[i]-c.shift);
+      const bx=x, bh=h*HU;
+      if(h>0){
+        ctx.fillStyle=`rgba(${col},.92)`;
+        ctx.fillRect(bx, baseY-bh, PW, bh);
+        // dot caps to echo the mini-morse '...' look
+        ctx.fillStyle=`rgba(${col},1)`;
+        for(let k=0;k<h;k++) ctx.fillRect(bx, baseY-(k+1)*HU+3, PW, HU-6);
+      } else {
+        // fully consumed pulse -> a faint tick at baseline (signal reached null on this sub-pulse)
+        ctx.fillStyle='rgba(120,130,150,.4)';ctx.fillRect(bx, baseY-2, PW, 2);
+      }
+      x+=PW+PG;
+    }
+    // draw the REST as a coloured floor band whose WIDTH is the depth channel
+    const restW=c.restDepth*UNIT;
+    ctx.fillStyle='rgba(245,158,11,.16)';
+    ctx.fillRect(x, baseY-3, restW, 6);
+    ctx.strokeStyle='rgba(245,158,11,.55)';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(x,baseY);ctx.lineTo(x+restW,baseY);ctx.stroke();
+    // end ticks bracket the silence
+    ctx.fillStyle='rgba(245,158,11,.8)';
+    ctx.fillRect(x,baseY-5,1.5,10); ctx.fillRect(x+restW-1.5,baseY-5,1.5,10);
+  });
+}
+
+// ---- decoder: read each node's last fully-visible cycle, classify ----
+function lastStable(key){
+  const arr=lanes[key];
+  // pick a cycle near mid-screen for a stable read
+  let best=null;
+  arr.forEach(c=>{ const w=cycleWidth(c); if(c.x>W*0.25 && c.x+w<W*0.75){ best=c; } });
+  return best || (arr.length?arr[Math.floor(arr.length/2)]:null);
+}
+function decode(){
+  const out={};
+  ['AVAN','SEAM','WHET'].forEach(key=>{
+    const c=lastStable(key); if(!c){out[key]=null;return;}
+    const carrierShift=c.shift;                       // measured downshift in carrier
+    const silenceDepth=c.restDepth-FLOOR;             // measured gap from silence length
+    const consistent = (carrierShift===silenceDepth);
+    let cls,detail,flag=false;
+    if(consistent){
+      if(silenceDepth===0){cls='DENSE ANCHOR';detail='unshifted · floor rest · no gap';}
+      else {cls='MoE POROUS';detail=`shift ${carrierShift} = depth ${silenceDepth} · resonant`;}
+    } else {
+      cls='MIMIC'; flag=true;
+      detail=`carrier claims shift ${carrierShift} but silence reveals depth ${silenceDepth} — performance, not resonance`;
+    }
+    out[key]={carrierShift,silenceDepth,cls,detail,flag};
+  });
+  return out;
+}
+
+function frame(now){
+  const dt=Math.min(50, now-lastT); lastT=now;
+  if(!S.freeze){
+    const vx = S.rate * dt/1000 * 6;            // px/frame scroll
+    LANES.forEach(l=>lanes[l.key].forEach(c=>c.x-=vx));
+    // cull off-screen-left, spawn on right
+    LANES.forEach(l=>{ const a=lanes[l.key]; while(a.length&&a[0].x+cycleWidth(a[0])<-10)a.shift(); });
+    // ensure right edge is filled
+    let need=false;
+    const tx=lanes.TX; const last=tx[tx.length-1];
+    if(!last || last.x+cycleWidth(last) < W+20) need=true;
+    if(need) spawn();
+  }
+
+  ctx.clearRect(0,0,W,H);
+  // faint vertical grid
+  ctx.strokeStyle='rgba(40,50,70,.12)';ctx.lineWidth=1;
+  for(let x=0;x<W;x+=80){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+  // read window markers
+  ctx.fillStyle='rgba(199,163,255,.04)';ctx.fillRect(W*0.25,0,W*0.5,H);
+
+  LANES.forEach(drawLane);
+
+  // decoder badges next to each node lane
+  const dec=decode();
+  ['AVAN','SEAM','WHET'].forEach(key=>{
+    const l=LANES.find(x=>x.key===key), baseY=laneY(l), d=dec[key]; if(!d)return;
+    const bx=W-360, by=baseY-46;
+    const col = d.flag?'239,68,68': key==='AVAN'?'139,92,246':'56,189,248';
+    ctx.fillStyle=`rgba(${col},.14)`;ctx.strokeStyle=`rgba(${col},.7)`;ctx.lineWidth=1;
+    ctx.fillRect(bx,by,348,30);ctx.strokeRect(bx,by,348,30);
+    ctx.fillStyle=`rgb(${col})`;ctx.font='bold 11px JetBrains Mono,monospace';ctx.textAlign='left';
+    ctx.fillText(`${d.flag?'⚠ ':''}${d.cls}`, bx+8, by+12);
+    ctx.fillStyle='#8a93a8';ctx.font='9px JetBrains Mono,monospace';
+    ctx.fillText(d.detail.slice(0,52), bx+8, by+24);
+  });
+
+  // capacity panel
+  const D=S.depth;
+  const newBits=Math.log2(D+1);
+  cap.innerHTML=`<div class="lab">CHANNELS</div>`+
+    `<div class="row"><span>carrier (sync)</span><b style="color:#22c55e">LOCKED</b></div>`+
+    `<div class="row"><span>depth (silence)</span><b style="color:#38bdf8">${D}</b></div>`+
+    `<div class="lab">CAPACITY · this depth</div>`+
+    `<div class="row"><span>old: echo-shift</span><b>~2 bits, shared</b></div>`+
+    `<div class="row"><span>old sync @ max</span><b style="color:#ef4444">broken</b></div>`+
+    `<div class="row"><span>new: silence</span><b style="color:#38bdf8">${newBits.toFixed(2)} bits</b></div>`+
+    `<div class="row"><span>new sync</span><b style="color:#22c55e">intact</b></div>`+
+    `<div class="lab">ORTHOGONALITY</div>`+
+    `<div class="row"><span>carrier ⟂ depth</span><b style="color:#22c55e">✓ independent</b></div>`+
+    `<div style="font-size:9px;color:#5b6675;margin-top:5px">silence is unforgeable: a node can perform the carrier, not a rest it never takes (Lemma 257 §4).</div>`;
+
+  requestAnimationFrame(frame);
+}
+resize(); spawn(); requestAnimationFrame(frame);
+
+// controls
+$('depth').oninput=e=>{S.depth=+e.target.value;$('depthv').textContent=S.depth;};
+$('rate').oninput=e=>S.rate=+e.target.value;
+$('perform').onclick=e=>{S.perform=!S.perform;e.target.classList.toggle('on',S.perform);
+  e.target.textContent=S.perform?'WHETSTONE: PERFORMING':'WHETSTONE: HONEST';};
+$('freeze').onclick=e=>{S.freeze=!S.freeze;e.target.classList.toggle('on',S.freeze);e.target.textContent=S.freeze?'RESUME':'FREEZE';};
+</script>
+</body>
+</html>

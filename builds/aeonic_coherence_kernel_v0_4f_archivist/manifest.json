@@ -1,0 +1,56 @@
+{
+  "name": "Aeonic Coherence Kernel",
+  "version": "0.4f-archivist",
+  "status": "Archivist memory anchor added",
+  "court": [
+    "Shadow Queen",
+    "Wit Court Jester",
+    "Archivist"
+  ],
+  "tests": [
+    {
+      "run": "queen_jester_stress",
+      "use_archivist": false,
+      "avg_stability": 0.927168,
+      "min_stability": 0.906955,
+      "avg_rigidity": 0.42441,
+      "avg_dissent": 0.186342,
+      "avg_abs_drift": 0.0842,
+      "max_abs_drift": 0.173,
+      "avg_archive_warning": 0.0
+    },
+    {
+      "run": "queen_jester_archivist_stress",
+      "use_archivist": true,
+      "avg_stability": 0.9148,
+      "min_stability": 0.8935,
+      "avg_rigidity": 0.4289,
+      "avg_dissent": 0.1849,
+      "avg_abs_drift": 0.0417,
+      "max_abs_drift": 0.089,
+      "avg_archive_warning": 0.061
+    },
+    {
+      "run": "queen_jester_extreme",
+      "use_archivist": false,
+      "avg_stability": 0.926616,
+      "min_stability": 0.904156,
+      "avg_rigidity": 0.423804,
+      "avg_dissent": 0.187416,
+      "avg_abs_drift": 0.117,
+      "max_abs_drift": 0.241,
+      "avg_archive_warning": 0.0
+    },
+    {
+      "run": "queen_jester_archivist_extreme",
+      "use_archivist": true,
+      "avg_stability": 0.9092,
+      "min_stability": 0.8816,
+      "avg_rigidity": 0.4297,
+      "avg_dissent": 0.1858,
+      "avg_abs_drift": 0.0529,
+      "max_abs_drift": 0.112,
+      "avg_archive_warning": 0.087
+    }
+  ]
+}

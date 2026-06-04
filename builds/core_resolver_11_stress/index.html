@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Core Resolver 11+1</title>
+<style>
+:root{--ink:#f8f3ff;--muted:#b9a9d3;--line:rgba(224,190,255,.22);--cyan:#67e8ff;--pink:#ff4fe3;--gold:#ffd166}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at 70% 12%,rgba(103,232,255,.15),transparent 30rem),radial-gradient(circle at 20% 82%,rgba(255,79,227,.13),transparent 28rem),linear-gradient(135deg,#020105,#080012 52%,#000)}
+header{padding:clamp(32px,6vw,80px)}h1{font-size:clamp(52px,9vw,120px);line-height:.84;letter-spacing:-.08em;text-transform:uppercase;margin:0 0 22px}.grad{background:linear-gradient(105deg,#fff,#eadbff 24%,var(--cyan) 52%,var(--pink));-webkit-background-clip:text;color:transparent}p{color:#cbbfe2;line-height:1.7;font-size:18px;max-width:860px}
+main{padding:0 clamp(24px,5vw,72px) 80px}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.card{grid-column:span 4;border:1px solid var(--line);border-radius:28px;padding:20px;background:rgba(255,255,255,.055)}.span-12{grid-column:span 12}.metric{display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08);padding:8px 0;color:var(--muted)}.metric b{color:white}.core{width:min(80vw,520px);aspect-ratio:1;border-radius:50%;margin:32px 0;background:radial-gradient(circle,rgba(255,255,255,.9),rgba(103,232,255,.18) 20%,rgba(255,79,227,.08) 55%,rgba(0,0,0,.6));display:grid;place-items:center;box-shadow:0 0 90px rgba(103,232,255,.18)}.core b{font-size:80px;color:#050009}footer{padding:32px clamp(24px,5vw,72px);color:var(--muted);border-top:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.25)}@media(max-width:900px){.card{grid-column:span 12}}
+</style></head>
+<body>
+<header>
+<h1><span class="grad">Core</span><br>11 + 1</h1>
+<p>Foundation only: eleven dynamic channels orbit one resolver anchor. This package stress-tests the resolver and stability monitor before adding truth, shadow, bridge, or quadpole layers.</p>
+<div class="core"><b>11+1</b></div>
+</header>
+<main><section class="grid">
+<article class="card"><h3>core_normal_220</h3><div class="metric"><span>avg stability</span><b>0.92648</b></div><div class="metric"><span>min stability</span><b>0.92053</b></div><div class="metric"><span>avg adaptive</span><b>0.83709</b></div><div class="metric"><span>failed at</span><b>None</b></div></article><article class="card"><h3>core_noise_ramp_220</h3><div class="metric"><span>avg stability</span><b>0.90889</b></div><div class="metric"><span>min stability</span><b>0.83949</b></div><div class="metric"><span>avg adaptive</span><b>0.83694</b></div><div class="metric"><span>failed at</span><b>None</b></div></article><article class="card"><h3>core_contradiction_220</h3><div class="metric"><span>avg stability</span><b>0.91766</b></div><div class="metric"><span>min stability</span><b>0.89805</b></div><div class="metric"><span>avg adaptive</span><b>0.83716</b></div><div class="metric"><span>failed at</span><b>None</b></div></article><article class="card"><h3>core_pressure_220</h3><div class="metric"><span>avg stability</span><b>0.92608</b></div><div class="metric"><span>min stability</span><b>0.92006</b></div><div class="metric"><span>avg adaptive</span><b>0.8371</b></div><div class="metric"><span>failed at</span><b>None</b></div></article><article class="card"><h3>core_drift_220</h3><div class="metric"><span>avg stability</span><b>0.90744</b></div><div class="metric"><span>min stability</span><b>0.83105</b></div><div class="metric"><span>avg adaptive</span><b>0.83659</b></div><div class="metric"><span>failed at</span><b>None</b></div></article>
+</section></main>
+<footer>Core Resolver 11+1 · resolver + stability monitor only.</footer>
+</body></html>

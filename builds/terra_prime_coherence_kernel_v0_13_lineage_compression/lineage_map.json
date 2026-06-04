@@ -1,0 +1,51 @@
+{
+  "usefulness_horizon_years": 55,
+  "demotion_rule": "after 55 years, active generation demotes to internal non-participating observer",
+  "feedback_rule": "wisdom + observation = anonymous feedback",
+  "authority_rule": "elders may observe and bias softly; they may not close loops or command active bodies",
+  "compression_rule": "many elder observers compress into archetypal lineage attractors",
+  "lineage_attractors": [
+    {
+      "name": "Origin Lineage",
+      "compresses": [
+        "founders",
+        "root memories",
+        "first causes",
+        "birth patterns"
+      ],
+      "signal": "where did this begin?"
+    },
+    {
+      "name": "Form Lineage",
+      "compresses": [
+        "builders",
+        "governors",
+        "law keepers",
+        "structure makers"
+      ],
+      "signal": "what shape should hold?"
+    },
+    {
+      "name": "Motion Lineage",
+      "compresses": [
+        "traders",
+        "messengers",
+        "warriors",
+        "migrants",
+        "Mercury patterns"
+      ],
+      "signal": "what must move?"
+    },
+    {
+      "name": "Return Lineage",
+      "compresses": [
+        "healers",
+        "keepers",
+        "witnesses",
+        "grief memory",
+        "completion patterns"
+      ],
+      "signal": "what must be restored?"
+    }
+  ]
+}

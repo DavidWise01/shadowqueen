@@ -1,0 +1,19 @@
+{
+  "name": "Shadow Queen",
+  "version": "5.0.0",
+  "status": "distributed runtime",
+  "new_features": [
+    "node runtime",
+    "peer registry",
+    "node discovery",
+    "signed message envelopes",
+    "inbox/outbox transport",
+    "heartbeat protocol",
+    "replication protocol",
+    "mesh status"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "demo_returncode": 0,
+  "status_returncode": 0
+}

@@ -1,0 +1,5 @@
+{
+  "module": "v5.6 Persistence Cluster",
+  "status": "included",
+  "description": "Snapshots, sync, divergence detection, recovery."
+}

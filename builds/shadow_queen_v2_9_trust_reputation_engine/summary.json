@@ -1,0 +1,20 @@
+{
+  "name": "Shadow Queen",
+  "version": "2.9.0",
+  "status": "trust / reputation engine",
+  "new_features": [
+    "subject registry",
+    "trust signals",
+    "reputation edges",
+    "computed trust scores",
+    "severity bands",
+    "fraud finding ingestion hook",
+    "trust audit"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "demo_returncode": 0,
+  "stats_returncode": 0,
+  "verify_returncode": 0,
+  "created_utc": "2026-05-31T02:01:06.049005+00:00"
+}

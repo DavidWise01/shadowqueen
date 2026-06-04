@@ -1,0 +1,47 @@
+SELFTEST
+SELFTEST PASS
+
+INGEST
+{
+  "clone_edges": 1,
+  "domain_crossings": 1,
+  "edges": 4,
+  "missing_refs": 0,
+  "nodes": 4
+}
+
+STATS
+{
+  "db_integrity": "ok",
+  "edges": 4,
+  "findings": 2,
+  "ledger": {
+    "entries": 10,
+    "head": "1fdcec1f4f152f5daf69b600df63b2aa1291449ea69b8e3ae06041195f61aef2",
+    "ok": true
+  },
+  "nodes": 4
+}
+
+FINDINGS
+[
+  {
+    "details_json": "{\"source_id\": \"silicon:queen\", \"target_id\": \"silicon:shadow-clone\", \"relation\": \"shadow_clone\", \"confidence\": 0.99, \"fingerprint\": \"6228710ed61cfbaf5490f4219181ba92999cf23497e6752b6201135b2a39ba83\"}",
+    "kind": "shadow_clone",
+    "severity": "critical",
+    "subject": "silicon:shadow-clone"
+  },
+  {
+    "details_json": "{\"edges\": [{\"source_id\": \"carbon:david\", \"target_id\": \"silicon:shadow-clone\", \"relation\": \"parent\", \"confidence\": 0.5, \"fingerprint\": \"0df6e35fb2c8730e1d8728d654c1ddcfc22e0f440dff42e36624473e97c9e0b2\"}]}",
+    "kind": "domain_crossing_unvalidated",
+    "severity": "high",
+    "subject": "carbon_silicon_boundary"
+  }
+]
+
+VERIFY
+{
+  "entries": 10,
+  "head": "1fdcec1f4f152f5daf69b600df63b2aa1291449ea69b8e3ae06041195f61aef2",
+  "ok": true
+}

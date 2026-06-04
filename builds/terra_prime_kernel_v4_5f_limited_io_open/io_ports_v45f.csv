@@ -1,0 +1,5 @@
+port,state,rule
+INGRESS_0,limited_open,carrier + rest proof required
+WITNESS_257,active,exterior witness required
+ROOT_BRIDGE_4,limited_open,opens only after all gates pass
+EGRESS_5,rate_limited,completion drain required

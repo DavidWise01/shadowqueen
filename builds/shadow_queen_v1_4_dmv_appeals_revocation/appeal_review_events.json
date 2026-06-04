@@ -1,0 +1,35 @@
+[
+  {
+    "observer_id": "r1",
+    "role": "appeal_clerk",
+    "record": {
+      "person_id": "P-1001",
+      "legal_name": "Ada Lovelace",
+      "address": "42 Corrected Ave",
+      "dob": "1815-12-10",
+      "document_id": "DOC-ADA-1"
+    }
+  },
+  {
+    "observer_id": "r2",
+    "role": "address_review",
+    "record": {
+      "person_id": "P-1001",
+      "legal_name": "Ada Lovelace",
+      "address": "42 Corrected Ave",
+      "dob": "1815-12-10",
+      "document_id": "DOC-ADA-1"
+    }
+  },
+  {
+    "observer_id": "r3",
+    "role": "document_review",
+    "record": {
+      "person_id": "P-1001",
+      "legal_name": "Ada Lovelace",
+      "address": "42 Corrected Ave",
+      "dob": "1815-12-10",
+      "document_id": "DOC-ADA-1"
+    }
+  }
+]

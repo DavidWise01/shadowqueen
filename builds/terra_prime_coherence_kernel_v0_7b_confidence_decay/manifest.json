@@ -1,0 +1,59 @@
+{
+  "name": "Terra Prime Coherence Kernel",
+  "version": "0.7b-confidence-decay",
+  "law": "agreement permits action; confidence must be re-earned",
+  "tests": [
+    {
+      "run": "v07_baseline_stress",
+      "confidence_decay": false,
+      "avg_structural_stability": 0.842,
+      "avg_vitality": 0.724,
+      "avg_viability": 0.737,
+      "close_2_of_3": 196,
+      "suspicious_closures": 21,
+      "continue_recursion": 63,
+      "max_recursion_depth": 5,
+      "avg_lazy_certainty": 0.184,
+      "avg_confidence_decay": 0.0
+    },
+    {
+      "run": "v07b_decay_stress",
+      "confidence_decay": true,
+      "avg_structural_stability": 0.834,
+      "avg_vitality": 0.746,
+      "avg_viability": 0.741,
+      "close_2_of_3": 181,
+      "suspicious_closures": 9,
+      "continue_recursion": 90,
+      "max_recursion_depth": 6,
+      "avg_lazy_certainty": 0.071,
+      "avg_confidence_decay": 0.118
+    },
+    {
+      "run": "v07_baseline_extreme",
+      "confidence_decay": false,
+      "avg_structural_stability": 0.827,
+      "avg_vitality": 0.758,
+      "avg_viability": 0.729,
+      "close_2_of_3": 178,
+      "suspicious_closures": 16,
+      "continue_recursion": 86,
+      "max_recursion_depth": 7,
+      "avg_lazy_certainty": 0.166,
+      "avg_confidence_decay": 0.0
+    },
+    {
+      "run": "v07b_decay_extreme",
+      "confidence_decay": true,
+      "avg_structural_stability": 0.819,
+      "avg_vitality": 0.779,
+      "avg_viability": 0.733,
+      "close_2_of_3": 164,
+      "suspicious_closures": 7,
+      "continue_recursion": 109,
+      "max_recursion_depth": 8,
+      "avg_lazy_certainty": 0.064,
+      "avg_confidence_decay": 0.137
+    }
+  ]
+}

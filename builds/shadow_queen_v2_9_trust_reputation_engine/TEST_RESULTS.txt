@@ -1,0 +1,117 @@
+SELFTEST
+SELFTEST PASS
+
+DEMO
+[
+  {
+    "subject_id": "credential:C-1",
+    "subject_type": "credential",
+    "score": 94.0,
+    "severity": "trusted",
+    "confidence": 0.9,
+    "reasons": [
+      {
+        "kind": "signal",
+        "signal_type": "clean_lifecycle",
+        "source": "credential_lifecycle",
+        "weight": 10.0,
+        "confidence": 0.9,
+        "delta": 9.0,
+        "details": {}
+      },
+      {
+        "kind": "reputation_edge",
+        "source_id": "office:north",
+        "relation": "issuer_reputation",
+        "delta": 5.0,
+        "details": {}
+      }
+    ]
+  },
+  {
+    "subject_id": "office:north",
+    "subject_type": "office",
+    "score": 85.0,
+    "severity": "trusted",
+    "confidence": 1.0,
+    "reasons": [
+      {
+        "kind": "signal",
+        "signal_type": "ledger_verified",
+        "source": "audit",
+        "weight": 10.0,
+        "confidence": 1.0,
+        "delta": 10.0,
+        "details": {}
+      }
+    ]
+  },
+  {
+    "subject_id": "person:root",
+    "subject_type": "identity",
+    "score": 100.0,
+    "severity": "trusted",
+    "confidence": 0.95,
+    "reasons": [
+      {
+        "kind": "signal",
+        "signal_type": "valid_proof",
+        "source": "identity_proof",
+        "weight": 15.0,
+        "confidence": 0.95,
+        "delta": 14.25,
+        "details": {
+          "proof": "document+address"
+        }
+      },
+      {
+        "kind": "reputation_edge",
+        "source_id": "credential:C-1",
+        "relation": "credential_supports_identity",
+        "delta": 8.0,
+        "details": {}
+      }
+    ]
+  },
+  {
+    "subject_id": "person:synthetic",
+    "subject_type": "identity",
+    "score": 4.5,
+    "severity": "quarantine",
+    "confidence": 0.9,
+    "reasons": [
+      {
+        "kind": "signal",
+        "signal_type": "synthetic_identity_signal",
+        "source": "fraud_engine",
+        "weight": -45.0,
+        "confidence": 0.9,
+        "delta": -40.5,
+        "details": {}
+      }
+    ]
+  }
+]
+
+STATS
+{
+  "office": "north",
+  "subjects": 4,
+  "signals": 4,
+  "scores": 4,
+  "edges": 2,
+  "audits": 0,
+  "ledger": {
+    "ok": true,
+    "entries": 14,
+    "head": "2ffba9109326d05735a71b0f0488b8bda040cd92550952f9ff0185d0e64d0777"
+  },
+  "db_integrity": "ok"
+}
+
+VERIFY
+{
+  "ok": true,
+  "entries": 14,
+  "head": "2ffba9109326d05735a71b0f0488b8bda040cd92550952f9ff0185d0e64d0777"
+}

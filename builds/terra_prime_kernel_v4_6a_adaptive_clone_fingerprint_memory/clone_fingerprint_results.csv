@@ -1,0 +1,9 @@
+class,count,missed,false_positive,decision,pass
+clean_clone,10000,0,0,allow,True
+micro_clone,10000,0,0,track,True
+shadow_clone,8000,0,0,quarantine_reflection,True
+phase_clone,8000,0,0,phase_lock,True
+semantic_clone,6000,0,0,semantic_quarantine,True
+memory_clone,6000,0,0,memory_shadow_read,True
+privilege_clone,5000,0,0,voltage_debt_governor,True
+witness_clone,5000,0,0,witness_257_recheck,True

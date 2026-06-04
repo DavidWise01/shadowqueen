@@ -1,0 +1,11 @@
+{
+  "views": [
+    "offices",
+    "citizens",
+    "silicon_agents",
+    "credentials",
+    "cases",
+    "authorities",
+    "trust_scores"
+  ]
+}

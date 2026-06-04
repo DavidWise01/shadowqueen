@@ -1,0 +1,26 @@
+[
+  {
+    "source_id": "proc:sshd",
+    "event_type": "process_snapshot"
+  },
+  {
+    "source_id": "proc:sshd",
+    "event_type": "process_snapshot"
+  },
+  {
+    "source_id": "proc:sshd",
+    "event_type": "process_snapshot"
+  },
+  {
+    "source_id": "net:443",
+    "event_type": "network_connection"
+  },
+  {
+    "source_id": "net:443",
+    "event_type": "network_connection"
+  },
+  {
+    "source_id": "net:443",
+    "event_type": "network_connection"
+  }
+]

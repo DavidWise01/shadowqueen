@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shadow Queen v5.4 Dashboard</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{margin:0;background:#0b0b12;color:#eee;font-family:Inter,Arial,sans-serif}
+header{padding:24px;background:#161625;border-bottom:1px solid #333}
+h1{margin:0;color:#d8b4fe}
+main{padding:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:#171724;border:1px solid #34344a;border-radius:14px;padding:18px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.card h2{font-size:18px;margin:0 0 12px;color:#c084fc}
+.metric{display:flex;justify-content:space-between;border-bottom:1px solid #2d2d3d;padding:7px 0}
+.good{color:#86efac}.warn{color:#fde68a}.bad{color:#fca5a5}
+footer{padding:24px;color:#aaa}
+</style>
+</head>
+<body>
+<header>
+<h1>Shadow Queen v5.4 — Federation Web Dashboard</h1>
+<p>Operator interface for federation health, credentials, authority, investigations, and fraud telemetry.</p>
+</header>
+<main>
+<section class="card"><h2>Federation Health</h2><div id="federation"></div></section>
+<section class="card"><h2>Activity</h2><div id="activity"></div></section>
+<section class="card"><h2>Credentials</h2><div id="credentials"></div></section>
+<section class="card"><h2>Fraud Events</h2><div id="fraud"></div></section>
+<section class="card"><h2>Authority</h2><div id="authority"></div></section>
+<section class="card"><h2>Analytics</h2><div id="analytics"></div></section>
+</main>
+<footer>Shadow Queen v5.4 static dashboard package.</footer>
+<script>
+async function load(){
+ const d={"version": "5.4.0", "status": "web_dashboard", "federation": {"offices": 4, "healthy": 3, "degraded": 1, "mesh_status": "operational"}, "activity": {"citizens": 100, "silicon_agents": 25, "credentials": 1000, "investigations": 100}, "credentials": {"active": 875, "revoked": 75, "expired": 50, "verification_success_rate": 0.982}, "fraud": {"duplicate_identity": 8, "forged_credential": 4, "revoked_credential_presented": 11, "authority_escalation": 3, "cross_office_conflict": 6}, "authority": {"active_grants": 64, "revoked_grants": 9, "scope_denials": 14}, "analytics": {"mesh_health": 0.94, "revocation_propagation": 0.91, "investigation_throughput": 0.88, "trust_score": 0.9}};
+ for (const key of ['federation','activity','credentials','fraud','authority','analytics']){
+   const el=document.getElementById(key);
+   el.innerHTML=Object.entries(d[key]).map(([k,v])=>`<div class="metric"><span>${k}</span><strong>${v}</strong></div>`).join('');
+ }
+}
+load().catch(()=>{document.body.insertAdjacentHTML('beforeend','<pre>Open through a local static server if browser blocks JSON fetch.</pre>')});
+</script>
+</body>
+</html>

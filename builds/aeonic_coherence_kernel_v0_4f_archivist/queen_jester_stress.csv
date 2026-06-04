@@ -1,0 +1,2 @@
+run,use_archivist,avg_stability,min_stability,avg_rigidity,avg_dissent,avg_abs_drift,max_abs_drift,avg_archive_warning
+queen_jester_stress,False,0.927168,0.906955,0.42441,0.186342,0.0842,0.173,0.0

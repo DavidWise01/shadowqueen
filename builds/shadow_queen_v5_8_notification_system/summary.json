@@ -1,0 +1,22 @@
+{
+  "name": "Shadow Queen",
+  "version": "5.8.0",
+  "status": "notification system",
+  "new_features": [
+    "notification channels",
+    "email-style local adapter",
+    "SMS-style local adapter",
+    "operator adapter",
+    "event subscriptions",
+    "filter rules",
+    "notification queue",
+    "workflow hooks",
+    "delivery logs",
+    "failure logs",
+    "retry failed queue"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "demo_returncode": 0,
+  "status_returncode": 0
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Shadow Queen",
+  "version": "3.9.0",
+  "status": "operator interface",
+  "new_features": [
+    "operator dashboard",
+    "dashboard cards",
+    "work queues",
+    "review decisions",
+    "release checks",
+    "operator action log",
+    "release-readiness dashboard"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "demo_returncode": 0,
+  "stats_returncode": 0,
+  "verify_returncode": 0
+}

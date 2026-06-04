@@ -1,0 +1,2 @@
+run,cycles,avg_structural_stability,min_structural_stability,avg_vitality,avg_viability,avg_recursion_depth,max_recursion_depth,closure_2_of_3,recurse_0_of_3,suspicious_3_of_3,avg_confidence_decay,avg_field_charge,avg_lattice_coherence,observer_alpha_alerts,observer_omega_alerts
+v08_field_stress,336,0.829,0.764,0.768,0.742,1.88,7,211,101,24,0.143,0.682,0.841,2,2

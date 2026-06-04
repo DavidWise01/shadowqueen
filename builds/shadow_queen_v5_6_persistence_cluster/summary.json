@@ -1,0 +1,21 @@
+{
+  "name": "Shadow Queen",
+  "version": "5.6.0",
+  "status": "persistence cluster",
+  "new_features": [
+    "multi-node persistent state",
+    "peer registry",
+    "change log",
+    "state hash",
+    "snapshots",
+    "snapshot restore",
+    "node sync",
+    "divergence detection",
+    "conflict records",
+    "peer recovery"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "demo_returncode": 0,
+  "status_returncode": 0
+}

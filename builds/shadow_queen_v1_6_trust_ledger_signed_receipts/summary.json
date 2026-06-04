@@ -1,0 +1,19 @@
+{
+  "name": "Shadow Queen",
+  "version": "1.6.0",
+  "status": "trust ledger + signed receipts",
+  "new_features": [
+    "append-only trust ledger",
+    "chained receipt hashes",
+    "ledger verification",
+    "receipt export in evidence bundle"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "process_returncode": 0,
+  "federate_returncode": 0,
+  "audit_returncode": 0,
+  "verify_returncode": 0,
+  "stats_returncode": 0,
+  "created_utc": "2026-05-28T23:28:12.811214+00:00"
+}

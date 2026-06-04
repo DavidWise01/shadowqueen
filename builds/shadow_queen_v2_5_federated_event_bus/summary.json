@@ -1,0 +1,21 @@
+{
+  "name": "Shadow Queen",
+  "version": "2.5.0",
+  "status": "federated event bus",
+  "new_features": [
+    "event IDs and hashes",
+    "origin office",
+    "causal chain",
+    "federation receipts",
+    "delivery status",
+    "replay-safe inbox/outbox",
+    "duplicate detection",
+    "convergence audit"
+  ],
+  "selftest_returncode": 0,
+  "selftest_output": "SELFTEST PASS",
+  "publish_returncode": 0,
+  "stats_returncode": 0,
+  "verify_returncode": 0,
+  "created_utc": "2026-05-30T17:24:37.065099+00:00"
+}

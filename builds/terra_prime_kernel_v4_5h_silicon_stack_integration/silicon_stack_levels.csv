@@ -1,0 +1,7 @@
+level,name,mv,runtime_role
+1,Quantum Dot,422,E+1 exterior/quantum witness ceiling
+0,User Space,0,normal IO/user ingress surface
+-1,Kernel,-211,trusted execution boundary
+-2,Hypervisor,-422,virtualization/quarantine mediator
+-3,SMM/Root,-633,ROOT integration / silicon floor
+-4,PANIC,-844,fail-closed corruption terminus

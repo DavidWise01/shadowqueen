@@ -1,0 +1,28 @@
+
+import argparse,json
+from .core import DMV, seed_demo
+def demo(args): print(json.dumps(seed_demo(DMV(args.db,args.office)),indent=2))
+def enroll(args): print(json.dumps(DMV(args.db,args.office).enroll_citizen(args.name,args.dob,args.domain,args.trust,actor=args.actor),indent=2))
+def issue(args): print(json.dumps(DMV(args.db,args.office).issue_credential(args.citizen,args.type,args.proof,actor=args.actor),indent=2))
+def renew(args): print(json.dumps(DMV(args.db,args.office).renew_credential(args.credential,actor=args.actor),indent=2))
+def revoke(args): print(json.dumps(DMV(args.db,args.office).revoke_credential(args.credential,args.reason,actor=args.actor),indent=2))
+def queue(args): print(json.dumps(DMV(args.db,args.office).office_queue(),indent=2))
+def portal(args): print(json.dumps(DMV(args.db,args.office).portal_summary(args.citizen),indent=2))
+def stats(args): print(json.dumps(DMV(args.db,args.office).stats(),indent=2))
+def verify(args): print(json.dumps(DMV(args.db,args.office).verify_ledger(),indent=2))
+def evidence(args): print(json.dumps(DMV(args.db,args.office).bundle(args.output),indent=2))
+def main(argv=None):
+    p=argparse.ArgumentParser(); p.add_argument("--db",default="dmv_beta.db"); p.add_argument("--office",default="north")
+    sub=p.add_subparsers(dest="cmd",required=True)
+    sub.add_parser("demo").set_defaults(func=demo)
+    a=sub.add_parser("enroll"); a.add_argument("name"); a.add_argument("dob"); a.add_argument("--domain",default="carbon"); a.add_argument("--trust",type=float,default=50); a.add_argument("--actor",default="citizen"); a.set_defaults(func=enroll)
+    a=sub.add_parser("issue"); a.add_argument("citizen"); a.add_argument("--type",default="license"); a.add_argument("--proof",default=""); a.add_argument("--actor",default="registrar"); a.set_defaults(func=issue)
+    a=sub.add_parser("renew"); a.add_argument("credential"); a.add_argument("--actor",default="registrar"); a.set_defaults(func=renew)
+    a=sub.add_parser("revoke"); a.add_argument("credential"); a.add_argument("--reason",default="policy"); a.add_argument("--actor",default="auditor"); a.set_defaults(func=revoke)
+    sub.add_parser("queue").set_defaults(func=queue)
+    a=sub.add_parser("portal"); a.add_argument("citizen"); a.set_defaults(func=portal)
+    sub.add_parser("stats").set_defaults(func=stats)
+    sub.add_parser("verify-ledger").set_defaults(func=verify)
+    a=sub.add_parser("evidence"); a.add_argument("output"); a.set_defaults(func=evidence)
+    args=p.parse_args(argv); return args.func(args)
+if __name__=="__main__": raise SystemExit(main())
