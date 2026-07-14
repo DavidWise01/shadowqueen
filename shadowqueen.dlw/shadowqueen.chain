@@ -1,0 +1,9 @@
+ROOT0-DLW-CHAIN-v1
+index : 1361
+slug  : shadowqueen
+seal  : 6bbcd8bf28b48c8a2ee8e7736ddefdca202680815551788f81e6f14f617ec75c
+prev  : 54a75113b421c602330e37fbad1d9d2a6514945b9d8b9f8be43332dad85eaf20
+link  : c495531aaf59fb0319d84a4ca1378796443971aaefe96ac838755ae5624803d6
+head  : 41f029ee4eaa0042c67040dc5927434f8e8446341839c86b6a09d79c5fbf30da
+
+— the tether: link = sha256(index|slug|seal|prev). the chain head commits to the whole corpus.
